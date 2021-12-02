@@ -1,0 +1,9 @@
+com/hostelxpress/BuildConfig.java
+ com.hostelxpress.BuildConfig
+com/hostelxpress/MainActivity.java
+ com.hostelxpress.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/hostelxpress/MainApplication.java
+ com.hostelxpress.MainApplication
+ com.hostelxpress.MainApplication$1
