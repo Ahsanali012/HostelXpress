@@ -6,11 +6,16 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
+  Modal,
+  Image,
 } from 'react-native';
 import styles from './Style';
 import {Provider, Appbar, RadioButton} from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+// import {auth} from '../Utils/Exports';
+import auth from '@react-native-firebase/auth';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 const Loginscreen = () => {
@@ -20,7 +25,7 @@ const Loginscreen = () => {
   const [emaill, setEmaill] = useState('');
   const [passwordd, setpasswordd] = useState('');
   const [value, setValue] = React.useState('');
-
+  const [loader, Setloader] = React.useState(false);
   const setValuein = async value1 => {
     await AsyncStorage.setItem('this', JSON.stringify(value1));
     const value2 = await AsyncStorage.getItem('this');
@@ -44,6 +49,37 @@ const Loginscreen = () => {
       .required(),
   });
   console.log('State Value', value);
+
+  const loginFunc = (Email, Password) => {
+    // alert(Email, Password);
+    Setloader(true);
+    auth()
+      .signInWithEmailAndPassword(Email, Password)
+      .then(() => {
+        Setloader(false);
+        {
+          value == 'Owner'
+            ? navigation.replace('BottomTabOwner')
+            : navigation.replace('BottomTabUser');
+        }
+      })
+
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          Setloader(false);
+          alert('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          Setloader(false);
+          alert('That email address is invalid!');
+        }
+
+        // console.error(error);
+        Setloader(false);
+        alert(error);
+      });
+  };
   return (
     <View style={styles.container}>
       <View style={{margin: '2%'}}>
@@ -57,7 +93,10 @@ const Loginscreen = () => {
               Email: email,
               Password: password,
             }}
-            onSubmit={values => {
+            onSubmit={(values, actions) => {
+              // action is use  for call reset form
+              actions.resetForm();
+              loginFunc(values.Email, values.Password);
               // console.warn(values);
               setEmail({
                 email: values.Email,
@@ -171,15 +210,18 @@ const Loginscreen = () => {
 
                   {value === 'Owner' ? (
                     <TouchableOpacity
-                      onPress={() => navigation.navigate('BottomTabOwner')}
+                      onPress={() => {
+                        formikProps.handleSubmit();
+                        // navigation.navigate('BottomTabOwner');
+                      }}
                       // onPress={formikProps.handleSubmit}
                       style={styles.LoginBtn}>
                       <Text style={styles.LoginBtnTxt}>Login</Text>
                     </TouchableOpacity>
                   ) : (
                     <TouchableOpacity
-                      onPress={() => navigation.navigate('BottomTabUser')}
-                      // onPress={formikProps.handleSubmit}
+                      // onPress={() => navigation.navigate('BottomTabUser')}
+                      onPress={formikProps.handleSubmit}
                       style={styles.LoginBtn}>
                       <Text style={styles.LoginBtnTxt}>Login</Text>
                     </TouchableOpacity>
@@ -198,6 +240,22 @@ const Loginscreen = () => {
           </Formik>
         </View>
       </View>
+      <Modal visible={loader}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'center',
+          }}>
+          <Image
+            source={require('../../Assets/Logo.png')}
+            style={{...styles.imgSplash, bottom: '10%'}}
+          />
+          <ActivityIndicator size="large" color={'#1a4499'} />
+          <Text style={styles.txtLoading}>Loading please wait...</Text>
+        </View>
+      </Modal>
     </View>
   );
 };

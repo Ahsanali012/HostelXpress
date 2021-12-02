@@ -10,7 +10,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const UserProfile = () => {
   return (
     <View style={styles.container}>
-      <View style={{width: '95%'}}>
+      <View style={{width: '95%', alignSelf: 'center'}}>
         <Text style={{padding: 30, fontSize: 30, color: '#1a4499'}}>
           Profile
         </Text>
@@ -57,7 +57,7 @@ const UserProfile = () => {
         </View>
         <View style={styles.Card}>
           <Text style={{padding: 15, fontWeight: 'bold'}}>Bio:</Text>
-          <Text style={{paddingLeft: 20, alignSelf: 'center'}}>
+          <Text style={{padding: '2%', alignSelf: 'center'}}>
             Lorem ipsum is a placeholder text commonly used to demonstrate the
             visual form of a document or a typeface without relying on
             meaningful content. Lorem ipsum may be used as a placeholder before

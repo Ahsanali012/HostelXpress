@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     Flex: 1,
+    backgroundColor: 'white',
   },
   Logo: {
     width: 150,

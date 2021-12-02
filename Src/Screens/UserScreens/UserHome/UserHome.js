@@ -16,6 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './Style';
+import Theme from '../../Utils/Theme';
 // create a component
 const UserHome = ({navigation}) => {
   const [isLiked, setIsLike] = useState(false);
@@ -51,7 +52,7 @@ const UserHome = ({navigation}) => {
         style={{
           flexDirection: 'row',
           justifyContent: 'space-evenly',
-          paddingHorizontal: 20,
+          paddingHorizontal: Theme.wp('3%'),
         }}>
         <Image
           style={[styles.Logo, {paddingRight: 20, width: 100}]}
@@ -88,20 +89,20 @@ const UserHome = ({navigation}) => {
           borderRadius: 10,
           borderWidth: 1,
           borderColor: '#d4d4d4',
-          paddingBottom: 10,
+
           margin: 15,
         }}>
         <View
           style={{
             flexDirection: 'row',
           }}>
-          <View>
+          <View style={{}}>
             <Image
               style={styles.Logo1}
               source={require('../../../Assets/Flat.jpeg')}
             />
           </View>
-          <View style={{paddingStart: '6%'}}>
+          <View style={{paddingStart: Theme.wp('6%')}}>
             <View
               style={{
                 flexDirection: 'row',
@@ -116,14 +117,14 @@ const UserHome = ({navigation}) => {
                     name={'star'}
                     size={20}
                     color={'black'}
-                    style={{marginTop: 5}}
+                    style={{marginTop: 5, left: Theme.wp('2%')}}
                   />
                 ) : (
                   <FontAwesome
                     name={'star'}
                     size={22}
                     color={'blue'}
-                    style={{marginTop: 5}}
+                    style={{marginTop: 5, left: Theme.wp('2%')}}
                   />
                 )}
                 {/* <FontAwesome5
@@ -148,47 +149,61 @@ const UserHome = ({navigation}) => {
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                width: 160,
+                width: Theme.wp('44%'),
                 alignItems: 'center',
               }}>
               <AntDesign
                 name={'wifi'}
                 size={20}
                 color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
+                style={{marginTop: 5, marginRight: Theme.wp('3%')}}
               />
               <Ionicons
                 name={'bed-outline'}
                 size={20}
                 color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
+                style={{marginTop: 5, marginRight: Theme.wp('5%')}}
               />
               <FontAwesome5
                 name={'utensils'}
                 size={15}
                 color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
+                style={{marginTop: 5, marginRight: Theme.wp('5%')}}
               />
               <FontAwesome
                 name={'bus'}
                 size={15}
                 color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
+                style={{marginTop: 5, marginRight: Theme.wp('5%')}}
               />
-              <Text>Rs</Text>
+              <Text
+                style={{
+                  left: Theme.wp('3%'),
+                  fontWeight: 'bold',
+                  fontSize: 17,
+                }}>
+                Rs
+              </Text>
             </View>
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                width: 175,
+                width: Theme.wp('47%'),
                 alignItems: 'center',
               }}>
               <Text>Wifi</Text>
               <Text>Bed</Text>
               <Text>Mess</Text>
               <Text>Buss</Text>
-              <Text style={{fontWeight: 'bold'}}>9000</Text>
+              <Text
+                style={{
+                  fontWeight: 'bold',
+                  left: Theme.wp('3%'),
+                  fontSize: 17,
+                }}>
+                9000
+              </Text>
             </View>
           </View>
         </View>

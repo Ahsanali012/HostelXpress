@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.autofill:autofill:1.1.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c763c57121816381d89646c71cb040dc/transformed/jetified-autofill-1.1.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/844f412f6f516f04a7324b29f18bad0d/transformed/jetified-autofill-1.1.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c763c57121816381d89646c71cb040dc/transformed/jetified-autofill-1.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c763c57121816381d89646c71cb040dc/transformed/jetified-autofill-1.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c763c57121816381d89646c71cb040dc/transformed/jetified-autofill-1.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/844f412f6f516f04a7324b29f18bad0d/transformed/jetified-autofill-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/844f412f6f516f04a7324b29f18bad0d/transformed/jetified-autofill-1.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/844f412f6f516f04a7324b29f18bad0d/transformed/jetified-autofill-1.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

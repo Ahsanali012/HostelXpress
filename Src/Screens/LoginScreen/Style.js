@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#1a4499',
   },
+  txtLoading: {
+    fontSize: 16,
+    color: '#1a4499',
+    margin: '5%',
+  },
   HeadingTxt2: {
     fontSize: 15,
     color: '#5373b2',
@@ -89,6 +94,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 10,
     fontWeight: 'bold',
+  },
+  imgSplash: {
+    width: 200,
+    height: 200,
+    alignSelf: 'center',
+    marginTop: '17%',
   },
 });
 export default styles;

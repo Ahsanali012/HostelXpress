@@ -17,6 +17,12 @@ import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
 // @react-native-community/slider
 import com.reactnativecommunity.slider.ReactSliderPackage;
+// @react-native-firebase/app
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
+// @react-native-firebase/auth
+import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+// @react-native-firebase/database
+import io.invertase.firebase.database.ReactNativeFirebaseDatabasePackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
@@ -73,6 +79,9 @@ public class PackageList {
       new AsyncStoragePackage(),
       new ReactCheckBoxPackage(),
       new ReactSliderPackage(),
+      new ReactNativeFirebaseAppPackage(),
+      new ReactNativeFirebaseAuthPackage(),
+      new ReactNativeFirebaseDatabasePackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),

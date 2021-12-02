@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">873754866593-242ri719bg9se4rpq0k9496smsmfbioj.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">873754866593</string>
+    <string name="google_api_key" translatable="false">AIzaSyCQZk2s1-NHerBMkdLgon4Nl86us9_rFos</string>
+    <string name="google_app_id" translatable="false">1:873754866593:android:8e2aa9a9bed6d5c595d1e0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCQZk2s1-NHerBMkdLgon4Nl86us9_rFos</string>
+    <string name="google_storage_bucket" translatable="false">hostelxpress-69238.appspot.com</string>
+    <string name="project_id" translatable="false">hostelxpress-69238</string>
+</resources>

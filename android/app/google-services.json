@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "873754866593",
+    "project_id": "hostelxpress-69238",
+    "storage_bucket": "hostelxpress-69238.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873754866593:android:8e2aa9a9bed6d5c595d1e0",
+        "android_client_info": {
+          "package_name": "com.hostelxpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873754866593-242ri719bg9se4rpq0k9496smsmfbioj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQZk2s1-NHerBMkdLgon4Nl86us9_rFos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873754866593-242ri719bg9se4rpq0k9496smsmfbioj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

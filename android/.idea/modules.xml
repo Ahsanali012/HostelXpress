@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HostelXpress.iml" filepath="$PROJECT_DIR$/.idea/modules/HostelXpress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-875410575/HostelXpress.@react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/-875410575/HostelXpress.@react-native-community_checkbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HostelXpress.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HostelXpress.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1324607569/HostelXpress.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-1324607569/HostelXpress.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-875410575/HostelXpress.react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/-875410575/HostelXpress.react-native-community_checkbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/71481885/HostelXpress.react-native-community_slider.iml" filepath="$PROJECT_DIR$/.idea/modules/71481885/HostelXpress.react-native-community_slider.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1747865872/HostelXpress.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/1747865872/HostelXpress.react-native-reanimated.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/333179637/HostelXpress.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/333179637/HostelXpress.react-native-safe-area-context.iml" />

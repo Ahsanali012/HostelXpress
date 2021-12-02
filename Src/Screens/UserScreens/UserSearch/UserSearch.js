@@ -1,13 +1,19 @@
 //import liraries
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {Provider, Appbar, RadioButton} from 'react-native-paper';
 // create a component
 const UserSearch = () => {
   const [value, setValue] = React.useState('');
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={{padding: 25, width: '95%', alignSelf: 'center'}}>
         <Text style={{fontSize: 30, color: '#1a4499'}}>Advance Search</Text>
         <Text
@@ -240,7 +246,7 @@ const UserSearch = () => {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

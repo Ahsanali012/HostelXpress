@@ -15,6 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Theme from '../../Utils/Theme';
 // create a component
 const UserHostelDetails = ({navigation}) => {
   const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
@@ -51,49 +52,69 @@ const UserHostelDetails = ({navigation}) => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            width: 300,
-            paddingLeft: 10,
+            justifyContent: 'space-between',
+            width: Theme.wp('75%'),
+            // paddingLeft: '5%',
+            alignSelf: 'center',
           }}>
-          <AntDesign name={'wifi'} size={20} color={'black'} style={{}} />
-          <Ionicons name={'bed-outline'} size={20} color={'black'} style={{}} />
+          <AntDesign
+            name={'wifi'}
+            size={20}
+            color={'black'}
+            style={{marginLeft: Theme.wp('5%')}}
+          />
+          <Ionicons
+            name={'bed-outline'}
+            size={20}
+            color={'black'}
+            style={{marginLeft: Theme.wp('5%')}}
+          />
           <FontAwesome5
             name={'utensils'}
             size={15}
             color={'black'}
-            style={{}}
+            style={{marginLeft: Theme.wp('5%')}}
           />
-          <FontAwesome name={'bus'} size={15} color={'black'} style={{}} />
-          <FontAwesome name={'car'} size={15} color={'black'} style={{}} />
+          <FontAwesome
+            name={'bus'}
+            size={15}
+            color={'black'}
+            style={{marginLeft: Theme.wp('5%')}}
+          />
+          <FontAwesome
+            name={'car'}
+            size={15}
+            color={'black'}
+            style={{marginLeft: Theme.wp('5%')}}
+          />
           <MaterialCommunityIcons
             name={'security'}
             size={15}
             color={'black'}
-            style={{left: 7}}
+            style={{marginLeft: Theme.wp('5%')}}
           />
         </View>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            width: 265,
+            width: Theme.wp('75%'),
+
             alignSelf: 'center',
-            // alignItems: 'center',
-            paddingLeft: 10,
           }}>
           <Text>Wifi</Text>
-          <Text style={{paddingLeft: 20}}>Bed</Text>
-          <Text style={{paddingLeft: 20}}>Mess</Text>
-          <Text style={{paddingLeft: 12}}>Buss</Text>
-          <Text style={{paddingLeft: 10}}>Parking</Text>
-          <Text style={{paddingLeft: 10}}>Security</Text>
+          <Text style={{marginLeft: Theme.wp('5%')}}>Bed</Text>
+          <Text style={{marginLeft: Theme.wp('5%')}}>Mess</Text>
+          <Text style={{marginLeft: Theme.wp('5%')}}>Buss</Text>
+          <Text style={{marginLeft: Theme.wp('5%')}}>Parking</Text>
+          <Text style={{marginLeft: Theme.wp('5%')}}>Security</Text>
         </View>
         <View style={{marginTop: 20, paddingLeft: 20}}>
           <Text style={{fontSize: 20, color: 'black'}}>Description</Text>
         </View>
 
         <View style={styles.Card}>
-          <Text style={{padding: 20}}>
+          <Text style={{padding: 10, alignItems: 'center'}}>
             Lorem ipsum is a placeholder text commonly used to demonstrate the
             visual form of a document or a typeface without relying
             ondddddddddddddddddddddddddddd
@@ -117,8 +138,8 @@ const UserHostelDetails = ({navigation}) => {
               <CheckBox
                 disabled={false}
                 style={{alignSelf: 'center'}}
-                value={toggleCheckBox1}
-                onValueChange={newValue => setToggleCheckBox1(newValue)}
+                value={toggleCheckBox2}
+                onValueChange={newValue => setToggleCheckBox2(newValue)}
               />
               <Text>Mess</Text>
             </View>
@@ -137,8 +158,8 @@ const UserHostelDetails = ({navigation}) => {
               <CheckBox
                 disabled={false}
                 style={{alignSelf: 'center'}}
-                value={toggleCheckBox1}
-                onValueChange={newValue => setToggleCheckBox1(newValue)}
+                value={toggleCheckBox3}
+                onValueChange={newValue => setToggleCheckBox3(newValue)}
               />
               <Text>Transport</Text>
             </View>
