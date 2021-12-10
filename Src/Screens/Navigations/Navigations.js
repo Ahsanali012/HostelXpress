@@ -28,17 +28,17 @@ class Navigation extends Component {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     LogBox.ignoreLogs(['Possible Unhandled Promise Rejection']);
   }
-  getitem = async () => {
-    const Val1 = await AsyncStorage.getItem('this');
-    console.log('Val===>', Val1);
-    var item = Val1;
-    this.setState({value: item});
-    console.log('item===>', item);
-  };
+  // getitem = async () => {
+  //   const Val1 = await AsyncStorage.getItem('this');
+  //   console.log('Val===>', Val1);
+  //   var item = Val1;
+  //   this.setState({value: item});
+  //   console.log('item===>', item);
+  // };
 
-  componentDidMount() {
-    this.getitem();
-  }
+  // componentDidMount() {
+  //   this.getitem();
+  // }
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>

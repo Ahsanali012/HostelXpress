@@ -25,7 +25,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
@@ -133,6 +133,9 @@
     <orderEntry type="library" name="Gradle: org.webkit:android-jsc:r250230@aar" level="project" />
     <orderEntry type="library" name="Gradle: artifacts:react-native-reanimated:unspecified" level="project" />
     <orderEntry type="module" module-name="HostelXpress.react-native-community_slider" />
+    <orderEntry type="module" module-name="HostelXpress.react-native-firebase_auth" />
+    <orderEntry type="module" module-name="HostelXpress.react-native-firebase_database" />
+    <orderEntry type="module" module-name="HostelXpress.react-native-firebase_app" />
     <orderEntry type="module" module-name="HostelXpress.react-native-screens" />
     <orderEntry type="module" module-name="HostelXpress.react-native-async-storage_async-storage" />
     <orderEntry type="module" module-name="HostelXpress.react-native-community_checkbox" />

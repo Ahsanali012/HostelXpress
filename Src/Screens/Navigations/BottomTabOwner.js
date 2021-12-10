@@ -26,6 +26,8 @@ const BottomTabOwner = () => (
       tabBarInactiveTintColor: 'gray',
       //   tabBarShowLabel: false,
 
+      tabBarHideOnKeyboard: true,
+
       tabBarStyle: {
         position: 'absolute',
         backgroundColor: '#1a4499',
@@ -42,6 +44,7 @@ const BottomTabOwner = () => (
       component={OwnerHome}
       options={{
         tabBarLabel: 'Home',
+
         tabBarIcon: ({color, size}) => (
           <AntDesign name={'home'} size={20} style={{color}} color={'white'} />
         ),

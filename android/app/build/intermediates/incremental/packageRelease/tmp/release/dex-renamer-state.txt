@@ -1,4 +1,10 @@
-#Wed Nov 24 03:04:32 AST 2021
+#Fri Dec 03 12:53:20 AST 2021
+base.2=C\:\\Users\\user\\Documents\\GitHub\\HostelXpress\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
+path.2=classes2.dex
+base.1=C\:\\Users\\user\\Documents\\GitHub\\HostelXpress\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.1=classes.dex
 base.0=D\:\\Code\\React Native\\GitHub\\HostelXpress\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex
