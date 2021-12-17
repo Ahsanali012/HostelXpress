@@ -1,11 +1,12 @@
 //import liraries
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import styles from './Style';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {auth, db} from '../../Utils/Exports';
 // create a component
 const UserProfile = () => {
   return (

@@ -46,7 +46,7 @@ const SignUp = () => {
       .oneOf([Yup.ref('Password'), null], 'Password must match'),
   });
 
-  const SignUpFunc = (Email, Password, Name) => {
+  const SignUpFunc = (Email, Password, Name, Cnic) => {
     // console.log('Name', Name);
     auth
       .createUserWithEmailAndPassword(Email, Password, Name)
@@ -61,11 +61,13 @@ const SignUp = () => {
                 Email: Email,
                 uid: auth.currentUser.uid,
                 Name: Name,
+                Cnic: Cnic,
               })
             : db.ref('Customer/' + currentUid).set({
                 Email: Email,
                 uid: auth.currentUser.uid,
                 Name: Name,
+                Cnic: Cnic,
               });
         }
       })
@@ -99,7 +101,7 @@ const SignUp = () => {
           }}
           onSubmit={(values, actions) => {
             actions.resetForm();
-            SignUpFunc(values.Email, values.Password, values.Name);
+            SignUpFunc(values.Email, values.Password, values.Name, values.Cnic);
             // console.warn(values);
             setname({
               name: values.Name,

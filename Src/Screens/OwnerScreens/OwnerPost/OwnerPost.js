@@ -69,27 +69,18 @@ const OwnerPost = () => {
 
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+    const refkey = db
+      .ref('Owner/' + currentUid)
+      .child('/OwnerPostAdd')
+      .push().key;
 
-    ref.once('value', snapshot => {
-      if (snapshot.val()) {
-        ref.push({
-          Image: imgUrl,
-          Price: price,
-          Persons: value,
-          Furnished: value2,
-          Mess: value3,
-          Internet: value4,
-        });
-      } else {
-        ref.set({
-          Image: imgUrl,
-          Price: price,
-          Persons: value,
-          Furnished: value2,
-          Mess: value3,
-          Internet: value4,
-        });
-      }
+    ref.child(refkey).set({
+      Image: imgUrl,
+      Price: price,
+      Persons: value,
+      Furnished: value2,
+      Mess: value3,
+      Internet: value4,
     });
 
     // await ref.set({

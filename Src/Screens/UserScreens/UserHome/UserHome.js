@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
@@ -17,14 +18,44 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './Style';
 import Theme from '../../Utils/Theme';
+import {auth, db} from '../../Utils/Exports';
+import UserHomeFlatList from '../../../Components/FlatLists/UserHomeFlatList/UserHomeFlatList';
+import {useNavigation} from '@react-navigation/native';
 // create a component
-const UserHome = ({navigation}) => {
+const UserHome = () => {
+  const navigation = useNavigation();
   const [isLiked, setIsLike] = useState(false);
   const onLikePressed = () => {
     setIsLike(!isLiked);
   };
+
+  const [quesData1, setQuesData1] = useState([]);
+
+  const getValues = async () => {
+    const currentUid = auth.currentUser.uid;
+    const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+
+    await ref.on('value', snapshot => {
+      if (snapshot.val()) {
+        const data = snapshot.val();
+        setQuesData1(Object.values(data));
+        // console.log('Data--', data);
+
+        // Object.values(snapshot.val()).map(item => {
+        //   console.log(item);
+        // });
+      } else {
+      }
+    });
+  };
+  // console.log('thisssss', Object.values(quesData1));
+
+  useEffect(() => {
+    getValues();
+  }, []);
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View
         style={{
           padding: 40,
@@ -80,135 +111,15 @@ const UserHome = ({navigation}) => {
         <Text>Hamid hostel</Text>
         <Text>Royal hostel</Text>
       </View>
+
       <Text style={{padding: 25, fontSize: 20, color: 'black'}}>
         Hostel near you
       </Text>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('HostelDetail')}
-        style={{
-          borderRadius: 10,
-          borderWidth: 1,
-          borderColor: '#d4d4d4',
-
-          margin: 15,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
-          <View style={{}}>
-            <Image
-              style={styles.Logo1}
-              source={require('../../../Assets/Flat.jpeg')}
-            />
-          </View>
-          <View style={{paddingStart: Theme.wp('6%')}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginTop: 5,
-              }}>
-              <Text>Marhaba Hostels</Text>
-              <TouchableOpacity onPress={onLikePressed}>
-                {isLiked ? (
-                  <FontAwesome5
-                    name={'star'}
-                    size={20}
-                    color={'black'}
-                    style={{marginTop: 5, left: Theme.wp('2%')}}
-                  />
-                ) : (
-                  <FontAwesome
-                    name={'star'}
-                    size={22}
-                    color={'blue'}
-                    style={{marginTop: 5, left: Theme.wp('2%')}}
-                  />
-                )}
-                {/* <FontAwesome5
-                  name={'star'}
-                  size={18}
-                  color={'black'}
-                  style={{marginTop: 5}}
-                /> */}
-              </TouchableOpacity>
-            </View>
-            <View style={{flexDirection: 'row'}}>
-              <Entypo
-                name={'location-pin'}
-                size={20}
-                color={'black'}
-                style={{}}
-              />
-
-              <Text>Johar town, Lahore</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: Theme.wp('44%'),
-                alignItems: 'center',
-              }}>
-              <AntDesign
-                name={'wifi'}
-                size={20}
-                color={'black'}
-                style={{marginTop: 5, marginRight: Theme.wp('3%')}}
-              />
-              <Ionicons
-                name={'bed-outline'}
-                size={20}
-                color={'black'}
-                style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-              />
-              <FontAwesome5
-                name={'utensils'}
-                size={15}
-                color={'black'}
-                style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-              />
-              <FontAwesome
-                name={'bus'}
-                size={15}
-                color={'black'}
-                style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-              />
-              <Text
-                style={{
-                  left: Theme.wp('3%'),
-                  fontWeight: 'bold',
-                  fontSize: 17,
-                }}>
-                Rs
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: Theme.wp('47%'),
-                alignItems: 'center',
-              }}>
-              <Text>Wifi</Text>
-              <Text>Bed</Text>
-              <Text>Mess</Text>
-              <Text>Buss</Text>
-              <Text
-                style={{
-                  fontWeight: 'bold',
-                  left: Theme.wp('3%'),
-                  fontSize: 17,
-                }}>
-                9000
-              </Text>
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
-    </View>
+      <UserHomeFlatList
+        UserHomPg={quesData1}
+        Onpress={() => navigation.navigate('HostelDetail')}
+      />
+    </ScrollView>
   );
 };
 

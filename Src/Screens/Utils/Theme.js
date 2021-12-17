@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 
 const Theme = {
-  primary: '#1596F3',
+  primary: '#1a4499',
   // secondary: '#ff6f00',
   secondary: '#ff6f00',
   txtWhite: '#ffffff',

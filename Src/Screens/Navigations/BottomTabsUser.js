@@ -25,7 +25,7 @@ const BottomTabUser = () => (
       tabBarActiveTintColor: 'white',
       tabBarInactiveTintColor: 'gray',
       //   tabBarShowLabel: false,
-
+      tabBarHideOnKeyboard: true,
       tabBarStyle: {
         position: 'absolute',
         backgroundColor: '#1a4499',
