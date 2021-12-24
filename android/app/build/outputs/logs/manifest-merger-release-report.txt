@@ -9,7 +9,9 @@ MERGED from [:react-native-community_checkbox] C:\Users\user\Documents\GitHub\Ho
 MERGED from [:react-native-community_slider] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-community\slider\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\auth\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-15:12
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-15:12
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-15:12
 MERGED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-29:12
+MERGED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-34:12
 MERGED from [:react-native-safe-area-context] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-screens\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-vector-icons] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-11:12
@@ -17,7 +19,7 @@ MERGED from [com.facebook.react:react-native:0.66.3] C:\Users\user\.gradle\cache
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [androidx.browser:browser:1.0.0] C:\Users\user\.gradle\caches\transforms-3\3a48869a16a4fdee6924b3517dd125c4\transformed\browser-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\user\.gradle\caches\transforms-3\924e93f77a98eadb96a1b78bf4f000f9\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\user\.gradle\caches\transforms-3\751ef799dc67a25f7a20a849371c01f5\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] C:\Users\user\.gradle\caches\transforms-3\a169c0c11d4086f35225128da9f4b8de\transformed\swiperefreshlayout-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [org.webkit:android-jsc:r250230] C:\Users\user\.gradle\caches\transforms-3\48df25b5e1347f8eeb849f8de1a8bbfe\transformed\jetified-android-jsc-r250230\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-reanimated\android\build\.transforms\b47c0a2a26cc0b30ef979c3d252ec20c\transformed\jetified-react-native-reanimated-66-jsc\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fresco:2.5.0] C:\Users\user\.gradle\caches\transforms-3\43329c459b481ec9bbf8db33231d7218\transformed\jetified-fresco-2.5.0\AndroidManifest.xml:2:1-9:12
@@ -31,6 +33,7 @@ MERGED from [com.facebook.fresco:memory-type-ashmem:2.5.0] C:\Users\user\.gradle
 MERGED from [com.facebook.fresco:imagepipeline:2.5.0] C:\Users\user\.gradle\caches\transforms-3\bb24d5262f709dd9668a711104202baf\transformed\jetified-imagepipeline-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:nativeimagetranscoder:2.5.0] C:\Users\user\.gradle\caches\transforms-3\b90092c42584c0f59dc99f877961319c\transformed\jetified-nativeimagetranscoder-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:2.5.0] C:\Users\user\.gradle\caches\transforms-3\8a7cc19550498fb3026362897e029319\transformed\jetified-imagepipeline-base-2.5.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\user\.gradle\caches\transforms-3\76056898a77838aa28d554f0e7df1a3c\transformed\jetified-ucrop-2.2.6-native\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\user\.gradle\caches\transforms-3\b02f2999b7cf7281e89d8109a16869ba\transformed\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\user\.gradle\caches\transforms-3\858f9049c9878efa0b912fe20faf168d\transformed\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\user\.gradle\caches\transforms-3\844f412f6f516f04a7324b29f18bad0d\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -38,10 +41,8 @@ MERGED from [com.facebook.fresco:middleware:2.5.0] C:\Users\user\.gradle\caches\
 MERGED from [com.facebook.fresco:ui-common:2.5.0] C:\Users\user\.gradle\caches\transforms-3\2341be2f7a7599a6d565da2f086e964f\transformed\jetified-ui-common-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:soloader:2.5.0] C:\Users\user\.gradle\caches\transforms-3\2b13136425d600bd43a24a0bf30086b1\transformed\jetified-soloader-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\user\.gradle\caches\transforms-3\fedd57f83e1f6d65347c4e4ff21a56d5\transformed\jetified-soloader-0.10.1\AndroidManifest.xml:2:1-13:12
-MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\user\.gradle\caches\transforms-3\365717c729a88a21ce80a1eb5ea176ce\transformed\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\user\.gradle\caches\transforms-3\f75dc8635e29a7f3dd6f2112b9c38a6f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\caches\transforms-3\239dcb6ccd82bc1e794ac9d00cbc293d\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\user\.gradle\caches\transforms-3\1e27dac003a8e54d8257501c1275fe0f\transformed\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\user\.gradle\caches\transforms-3\ba1b1f63aa39c38a32aef153898c562f\transformed\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
@@ -58,6 +59,10 @@ MERGED from [androidx.fragment:fragment:1.2.1] C:\Users\user\.gradle\caches\tran
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\user\.gradle\caches\transforms-3\2632538ffd1a78dee6f487a9cae8cada\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\user\.gradle\caches\transforms-3\2ae8915466fd9d591da47ff0bf5f8e95\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\user\.gradle\caches\transforms-3\07cb5829f83c6077090bc9ec450398d3\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\user\.gradle\caches\transforms-3\365717c729a88a21ce80a1eb5ea176ce\transformed\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\user\.gradle\caches\transforms-3\f75dc8635e29a7f3dd6f2112b9c38a6f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\caches\transforms-3\239dcb6ccd82bc1e794ac9d00cbc293d\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.1.0-beta01] C:\Users\user\.gradle\caches\transforms-3\f045dd00f8608159a1a69355cca08733\transformed\exifinterface-1.1.0-beta01\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\user\.gradle\caches\transforms-3\b76bff72d12bc8da93b8f5cbb61884cc\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\user\.gradle\caches\transforms-3\013050e6d48ff8d811cb280aa8af3e09\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.2.0] C:\Users\user\.gradle\caches\transforms-3\4aae79fa2388e16682375725fce5c813\transformed\transition-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -106,8 +111,12 @@ MERGED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelX
 MERGED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\auth\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-67
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-67
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-67
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-67
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:27:5-67
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:26:5-67
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:26:5-67
 	android:name
@@ -116,6 +125,8 @@ application
 ADDED from C:\Users\user\Documents\GitHub\HostelXpress\android\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-27:19
 MERGED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-27:19
+MERGED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:18:5-32:19
+MERGED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:18:5-32:19
 MERGED from [com.facebook.react:react-native:0.66.3] C:\Users\user\.gradle\caches\transforms-3\db70930c2225aee2c85844d15c9e2803\transformed\jetified-react-native-0.66.3\AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.react:react-native:0.66.3] C:\Users\user\.gradle\caches\transforms-3\db70930c2225aee2c85844d15c9e2803\transformed\jetified-react-native-0.66.3\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:26:5-81:19
@@ -126,6 +137,8 @@ MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\user\.gradle\caches
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\user\.gradle\caches\transforms-3\fedd57f83e1f6d65347c4e4ff21a56d5\transformed\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\user\.gradle\caches\transforms-3\4705f47e27a249e2731f0d8d2793ef2a\transformed\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
@@ -196,8 +209,12 @@ MERGED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelX
 MERGED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\auth\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:6:5-8:41
 MERGED from [:react-native-safe-area-context] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-screens\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
@@ -212,8 +229,8 @@ MERGED from [androidx.browser:browser:1.0.0] C:\Users\user\.gradle\caches\transf
 MERGED from [androidx.browser:browser:1.0.0] C:\Users\user\.gradle\caches\transforms-3\3a48869a16a4fdee6924b3517dd125c4\transformed\browser-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\user\.gradle\caches\transforms-3\924e93f77a98eadb96a1b78bf4f000f9\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\user\.gradle\caches\transforms-3\924e93f77a98eadb96a1b78bf4f000f9\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\user\.gradle\caches\transforms-3\751ef799dc67a25f7a20a849371c01f5\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\user\.gradle\caches\transforms-3\751ef799dc67a25f7a20a849371c01f5\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] C:\Users\user\.gradle\caches\transforms-3\a169c0c11d4086f35225128da9f4b8de\transformed\swiperefreshlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] C:\Users\user\.gradle\caches\transforms-3\a169c0c11d4086f35225128da9f4b8de\transformed\swiperefreshlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [org.webkit:android-jsc:r250230] C:\Users\user\.gradle\caches\transforms-3\48df25b5e1347f8eeb849f8de1a8bbfe\transformed\jetified-android-jsc-r250230\AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r250230] C:\Users\user\.gradle\caches\transforms-3\48df25b5e1347f8eeb849f8de1a8bbfe\transformed\jetified-android-jsc-r250230\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-reanimated\android\build\.transforms\b47c0a2a26cc0b30ef979c3d252ec20c\transformed\jetified-react-native-reanimated-66-jsc\AndroidManifest.xml:5:5-7:41
@@ -240,6 +257,8 @@ MERGED from [com.facebook.fresco:nativeimagetranscoder:2.5.0] C:\Users\user\.gra
 MERGED from [com.facebook.fresco:nativeimagetranscoder:2.5.0] C:\Users\user\.gradle\caches\transforms-3\b90092c42584c0f59dc99f877961319c\transformed\jetified-nativeimagetranscoder-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:2.5.0] C:\Users\user\.gradle\caches\transforms-3\8a7cc19550498fb3026362897e029319\transformed\jetified-imagepipeline-base-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:2.5.0] C:\Users\user\.gradle\caches\transforms-3\8a7cc19550498fb3026362897e029319\transformed\jetified-imagepipeline-base-2.5.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\user\.gradle\caches\transforms-3\76056898a77838aa28d554f0e7df1a3c\transformed\jetified-ucrop-2.2.6-native\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\user\.gradle\caches\transforms-3\76056898a77838aa28d554f0e7df1a3c\transformed\jetified-ucrop-2.2.6-native\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\user\.gradle\caches\transforms-3\b02f2999b7cf7281e89d8109a16869ba\transformed\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\user\.gradle\caches\transforms-3\b02f2999b7cf7281e89d8109a16869ba\transformed\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\user\.gradle\caches\transforms-3\858f9049c9878efa0b912fe20faf168d\transformed\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -254,14 +273,10 @@ MERGED from [com.facebook.fresco:soloader:2.5.0] C:\Users\user\.gradle\caches\tr
 MERGED from [com.facebook.fresco:soloader:2.5.0] C:\Users\user\.gradle\caches\transforms-3\2b13136425d600bd43a24a0bf30086b1\transformed\jetified-soloader-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\user\.gradle\caches\transforms-3\fedd57f83e1f6d65347c4e4ff21a56d5\transformed\jetified-soloader-0.10.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\user\.gradle\caches\transforms-3\fedd57f83e1f6d65347c4e4ff21a56d5\transformed\jetified-soloader-0.10.1\AndroidManifest.xml:7:5-9:41
-MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\user\.gradle\caches\transforms-3\365717c729a88a21ce80a1eb5ea176ce\transformed\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\user\.gradle\caches\transforms-3\365717c729a88a21ce80a1eb5ea176ce\transformed\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\user\.gradle\caches\transforms-3\f75dc8635e29a7f3dd6f2112b9c38a6f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\user\.gradle\caches\transforms-3\f75dc8635e29a7f3dd6f2112b9c38a6f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\caches\transforms-3\239dcb6ccd82bc1e794ac9d00cbc293d\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\caches\transforms-3\239dcb6ccd82bc1e794ac9d00cbc293d\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\user\.gradle\caches\transforms-3\1e27dac003a8e54d8257501c1275fe0f\transformed\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
@@ -294,6 +309,14 @@ MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\user\.gra
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\user\.gradle\caches\transforms-3\2ae8915466fd9d591da47ff0bf5f8e95\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\user\.gradle\caches\transforms-3\07cb5829f83c6077090bc9ec450398d3\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\user\.gradle\caches\transforms-3\07cb5829f83c6077090bc9ec450398d3\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\user\.gradle\caches\transforms-3\365717c729a88a21ce80a1eb5ea176ce\transformed\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\user\.gradle\caches\transforms-3\365717c729a88a21ce80a1eb5ea176ce\transformed\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\user\.gradle\caches\transforms-3\f75dc8635e29a7f3dd6f2112b9c38a6f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\user\.gradle\caches\transforms-3\f75dc8635e29a7f3dd6f2112b9c38a6f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\caches\transforms-3\239dcb6ccd82bc1e794ac9d00cbc293d\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\caches\transforms-3\239dcb6ccd82bc1e794ac9d00cbc293d\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.1.0-beta01] C:\Users\user\.gradle\caches\transforms-3\f045dd00f8608159a1a69355cca08733\transformed\exifinterface-1.1.0-beta01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.1.0-beta01] C:\Users\user\.gradle\caches\transforms-3\f045dd00f8608159a1a69355cca08733\transformed\exifinterface-1.1.0-beta01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\user\.gradle\caches\transforms-3\b76bff72d12bc8da93b8f5cbb61884cc\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\user\.gradle\caches\transforms-3\b76bff72d12bc8da93b8f5cbb61884cc\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\user\.gradle\caches\transforms-3\013050e6d48ff8d811cb280aa8af3e09\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -358,14 +381,20 @@ uses-permission#android.permission.WAKE_LOCK
 ADDED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\auth\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:5-68
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:5-68
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:5-68
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:5-68
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:5-68
 	android:name
 		ADDED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\auth\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:22-65
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [:react-native-firebase_auth] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\auth\android\build\intermediates\library_manifest\release\AndroidManifest.xml:13:5-79
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:13:5-79
 MERGED from [:react-native-firebase_database] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\database\android\build\intermediates\library_manifest\release\AndroidManifest.xml:13:5-79
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:13:5-79
+MERGED from [:react-native-firebase_storage] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\storage\android\build\intermediates\library_manifest\release\AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:26:5-79
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:25:5-79
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:25:5-79
 	android:name
@@ -380,6 +409,8 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:16:9-20:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:74:9-80:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:74:9-80:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\user\.gradle\caches\transforms-3\ff3b4fa3e6b38f04440c4cf73e5672b1\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:33:9-37:35
@@ -408,6 +439,40 @@ ADDED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpr
 		ADDED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:26:13-35
 	android:name
 		ADDED from [:react-native-firebase_app] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\release\AndroidManifest.xml:23:13-88
+queries
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:10:5-14:15
+intent#action:name:android.media.action.IMAGE_CAPTURE
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:9-13:18
+action#android.media.action.IMAGE_CAPTURE
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:13-73
+	android:name
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:21-70
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:16:5-81
+	android:name
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:16:22-78
+provider#androidx.core.content.FileProvider
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:19:9-27:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:23:13-47
+	android:authorities
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:21:13-60
+	android:exported
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:22:13-37
+	android:name
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:20:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:24:13-26:58
+	android:resource
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:26:17-55
+	android:name
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:25:17-67
+activity#com.yalantis.ucrop.UCropActivity
+ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:29:9-31:72
+	android:theme
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:31:13-69
+	android:name
+		ADDED from [:react-native-image-crop-picker] C:\Users\user\Documents\GitHub\HostelXpress\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\release\AndroidManifest.xml:30:13-60
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\user\.gradle\caches\transforms-3\ca02c66580a9d27b83e0f7543c0bface\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
 	android:excludeFromRecents
@@ -496,6 +561,12 @@ ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gra
 		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\user\.gradle\caches\transforms-3\a79038412c1d16fc3a76be7b375f621c\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:34:13-89
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:33:13-35:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:35:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\user\.gradle\caches\transforms-3\6caae797a7df995601addf5494992086\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:34:17-107
 meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
 ADDED from [com.google.firebase:firebase-database:20.0.2] C:\Users\user\.gradle\caches\transforms-3\138330cc7ab4afd8590de795ef56c941\transformed\jetified-firebase-database-20.0.2\AndroidManifest.xml:32:13-34:85
 	android:value

@@ -77,9 +77,7 @@ const UserSearch = props => {
       // if(item.personalInfo.developmentCate!==null)
 
       const itemData = item.Price ? item.Price.toUpperCase() : ''.toUpperCase();
-
       const textData = UserPrice.toUpperCase();
-
       return itemData.indexOf(textData) > -1;
     });
     if (UserPrice == '') {

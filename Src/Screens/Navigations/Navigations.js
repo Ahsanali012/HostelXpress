@@ -16,6 +16,7 @@ import SearchBar from '../../Components/SearchBar/SearchBar';
 import UserHostelDetails from '../UserScreens/UserHostelDetail/UserHostelDetail';
 import UserBooking from '../UserScreens/UserBooking/UserBooking';
 import BottomTabOwner from './BottomTabOwner';
+import Check from '../Utils/Check';
 const Stack = createNativeStackNavigator();
 class Navigation extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Navigation extends Component {
             <StatusBar barStyle="dark-content" backgroundColor={'white'} />
           )}
         </View>
-        <View></View>
+
         <Stack.Navigator
           initialRouteName="Splash"
           screenOptions={{headerShown: false}}>
@@ -62,6 +63,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="BottomTabUser"
             component={BottomTabUser}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Check"
+            component={Check}
             options={{headerShown: false}}
           />
           <Stack.Screen

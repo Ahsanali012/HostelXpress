@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -16,11 +16,56 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Theme from '../../Utils/Theme';
+import {auth, db} from '../../Utils/Exports';
+import openMap from 'react-native-open-maps';
 // create a component
 const UserHostelDetails = ({navigation}) => {
   const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
   const [toggleCheckBox2, setToggleCheckBox2] = useState(false);
   const [toggleCheckBox3, setToggleCheckBox3] = useState(false);
+
+  const [longitude, SetLongitude] = useState('');
+  const [latitude, Setlatitude] = useState('');
+
+  const getValues = async () => {
+    const currentUid = auth.currentUser.uid;
+    const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+
+    const userLong = [];
+    const userLat = [];
+
+    await ref
+      .orderByKey()
+      .once('value', snapshot => {})
+      .then(firstSnapShot => {
+        firstSnapShot.forEach(cordSnapshot => {
+          const {Longitude, Latitude} = cordSnapshot.val();
+          console.log(Longitude, Latitude);
+
+          Setlatitude(Latitude);
+          SetLongitude(Longitude);
+          console.log('lat Stae', latitude);
+          console.log('long Stae', longitude);
+        });
+      })
+      .then(async () => {
+        // SetcustomMarkerCords(arraycords);
+      });
+  };
+  // console.log('thisssss', Object.values(quesData1));
+
+  useEffect(() => {
+    getValues();
+  }, []);
+
+  const GoToLocation = () => {
+    const lat = parseFloat(latitude); //10.256
+    console.log('Map Value', lat);
+
+    const longi = parseFloat(longitude); //10.256
+    openMap({latitude: lat, longitude: longi});
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={{}}>
@@ -53,7 +98,7 @@ const UserHostelDetails = ({navigation}) => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            width: Theme.wp('75%'),
+            width: Theme.wp('82%'),
             // paddingLeft: '5%',
             alignSelf: 'center',
           }}>
@@ -97,20 +142,44 @@ const UserHostelDetails = ({navigation}) => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: Theme.wp('75%'),
-
+            justifyContent: 'space-evenly',
+            // width: Theme.wp('0%'),
+            // paddingLeft: 14,
             alignSelf: 'center',
           }}>
-          <Text>Wifi</Text>
-          <Text style={{marginLeft: Theme.wp('5%')}}>Bed</Text>
-          <Text style={{marginLeft: Theme.wp('5%')}}>Mess</Text>
-          <Text style={{marginLeft: Theme.wp('5%')}}>Buss</Text>
-          <Text style={{marginLeft: Theme.wp('5%')}}>Parking</Text>
-          <Text style={{marginLeft: Theme.wp('5%')}}>Security</Text>
+          <View
+            style={{
+              justifyContent: 'space-evenly',
+              flexDirection: 'row',
+              paddingLeft: 20,
+            }}>
+            <Text>Wifi</Text>
+            <Text style={{marginLeft: Theme.wp('5%')}}>Bed</Text>
+            <Text style={{marginLeft: Theme.wp('5%')}}>Mess</Text>
+            <Text style={{marginLeft: Theme.wp('5%')}}>Buss</Text>
+            <Text style={{marginLeft: Theme.wp('5%')}}>Parking</Text>
+            <Text style={{marginLeft: Theme.wp('5%')}}>Security</Text>
+          </View>
         </View>
-        <View style={{marginTop: 20, paddingLeft: 20}}>
+        <View
+          style={{
+            marginTop: 20,
+            paddingLeft: 20,
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+          }}>
           <Text style={{fontSize: 20, color: 'black'}}>Description</Text>
+          <TouchableOpacity
+            onPress={() => GoToLocation()}
+            style={{
+              width: 100,
+              height: 25,
+              borderRadius: 2,
+              alignItems: 'center',
+              backgroundColor: 'blue',
+            }}>
+            <Text style={{color: 'white', marginTop: 5}}>Get Directions</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.Card}>

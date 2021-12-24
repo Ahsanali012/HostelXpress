@@ -39,7 +39,8 @@ const UserHome = () => {
       if (snapshot.val()) {
         const data = snapshot.val();
         setQuesData1(Object.values(data));
-        // console.log('Data--', data);
+
+        console.log('Data--', data);
 
         // Object.values(snapshot.val()).map(item => {
         //   console.log(item);

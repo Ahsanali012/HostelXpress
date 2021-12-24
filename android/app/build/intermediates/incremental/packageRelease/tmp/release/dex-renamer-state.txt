@@ -1,4 +1,4 @@
-#Fri Dec 03 12:53:20 AST 2021
+#Fri Dec 17 10:59:12 AST 2021
 base.2=C\:\\Users\\user\\Documents\\GitHub\\HostelXpress\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
 path.2=classes2.dex
 base.1=C\:\\Users\\user\\Documents\\GitHub\\HostelXpress\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex

@@ -6,7 +6,10 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  PermissionsAndroid,
+  Platform,
   Image,
+  Button,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -15,6 +18,9 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import {auth, db} from '../../Utils/Exports';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
+import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+//import all the components we are going to use.
+import Geolocation from '@react-native-community/geolocation';
 import Theme from '../../Utils/Theme';
 // create a component
 const OwnerPost = () => {
@@ -23,9 +29,13 @@ const OwnerPost = () => {
   const [value3, setValue3] = React.useState('');
   const [value4, setValue4] = React.useState('');
   const [value5, setValue5] = React.useState('');
+  const [currentLongitude, setCurrentLongitude] = useState('...');
+  const [currentLatitude, setCurrentLatitude] = useState('...');
+  const [locationStatus, setLocationStatus] = useState('');
   const [price, Setprice] = React.useState('');
   const [types, setType] = useState('');
   const [img, SetImg] = useState('');
+
   const pickPicture = () => {
     ImagePicker.openPicker({
       width: 500,
@@ -39,7 +49,35 @@ const OwnerPost = () => {
       setType({type: 'image/jpg'});
     });
   };
+  const getOneTimeLocation = () => {
+    setLocationStatus('Getting Location ...');
+    Geolocation.getCurrentPosition(
+      //Will give you the current location
+      position => {
+        setLocationStatus('You are Here');
 
+        //getting the Longitude from the location json
+        const currentLongitude = JSON.stringify(position.coords.longitude);
+
+        //getting the Latitude from the location json
+        const currentLatitude = JSON.stringify(position.coords.latitude);
+
+        //Setting Longitude state
+        setCurrentLongitude(currentLongitude);
+
+        //Setting Longitude state
+        setCurrentLatitude(currentLatitude);
+      },
+      error => {
+        setLocationStatus(error.message);
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 30000,
+        maximumAge: 1000,
+      },
+    );
+  };
   const uploadImage = async () => {
     const uploadUri = img;
     let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
@@ -81,8 +119,32 @@ const OwnerPost = () => {
       Furnished: value2,
       Mess: value3,
       Internet: value4,
+      Latitude: currentLatitude,
+      Longitude: currentLongitude,
     });
 
+    const handleLocationPermission = async () => {
+      let permissionCheck = '';
+
+      if (Platform.OS === 'android') {
+        permissionCheck = await PermissionsAndroid.request(
+          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+        );
+
+        if (permissionCheck === RESULTS.DENIED) {
+          const permissionRequest = await request(
+            PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+          );
+          permissionRequest === RESULTS.GRANTED
+            ? console.warn('Location permission granted.')
+            : console.warn('Location perrmission denied.');
+        }
+      }
+    };
+
+    useEffect(() => {
+      handleLocationPermission();
+    }, []);
     // await ref.set({
     //   Image: img,
     // });
@@ -267,6 +329,7 @@ const OwnerPost = () => {
             </RadioButton.Group>
           </View>
         </View>
+
         <Text
           style={{
             paddingLeft: 30,
@@ -298,10 +361,12 @@ const OwnerPost = () => {
             </RadioButton.Group>
           </View>
         </View>
+
         <TouchableOpacity
           onPress={() => {
             handleUpdate();
             uploadImage();
+            getOneTimeLocation();
           }}
           style={{
             width: Theme.wp('80%'),
