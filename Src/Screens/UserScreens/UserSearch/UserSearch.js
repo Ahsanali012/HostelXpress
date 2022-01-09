@@ -21,12 +21,21 @@ const UserSearch = props => {
   const [value3, setValue3] = React.useState(false);
   const [value4, setValue4] = React.useState(false);
   const [value5, setValue5] = React.useState(false);
+
+  console.log('RadioButton Value For Persons=== ', value);
+  console.log('RadioButton Value For Type ==== ', value2);
+  console.log('RadioButton Value For Mess==== ', value3);
+  console.log('RadioButton Value For Internet === ', value4);
+  console.log('RadioButton Value For Electricity=== ', value4);
   const [searchData, SetsearchData] = React.useState(false);
   const navigation = useNavigation();
   const [array, SetArray] = useState([]);
+
+  console.log('SearchArrayData==== ', array);
   const [price, Setprice] = useState('');
   const [quesData1, setQuesData1] = useState([]);
 
+  console.log('Filter- ArrayData==== ', quesData1);
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
@@ -35,7 +44,7 @@ const UserSearch = props => {
       if (snapshot.val()) {
         const data = snapshot.val();
         setQuesData1(Object.values(data));
-        console.log('Data--', quesData1);
+        console.log('StateData=======  ', quesData1);
 
         // Object.values(snapshot.val()).map(item => {
         //   console.log(item);
@@ -70,18 +79,27 @@ const UserSearch = props => {
     // var filter = ref.orderByChild("database/username").equalTo("some_data");
   };
 
-  const SearchFilterFunction = UserPrice => {
+  const SearchFilterFunction = (UserPrice, UserFurnishedType) => {
+    console.log('UserFurnishedType======', UserFurnishedType);
     //passing the inserted text in textinput
     const newData = quesData1.filter(function (item) {
       //applying filter for the inserted text in search bar
       // if(item.personalInfo.developmentCate!==null)
 
       const itemData = item.Price ? item.Price.toUpperCase() : ''.toUpperCase();
+      const itemData2 = item.UserFurnishedType
+        ? item.UserFurnishedType.toUpperCase()
+        : ''.toUpperCase();
       const textData = UserPrice.toUpperCase();
-      return itemData.indexOf(textData) > -1;
+      const textData2 = UserFurnishedType.toUpperCase();
+      return (
+        itemData.indexOf(textData) > -1 || itemData2.indexOf(textData2) > -1
+      );
     });
-    if (UserPrice == '') {
+    if (UserPrice == '' || UserFurnishedType == 'Yes') {
       // this.setState({userInfo: this.props.user, text: ''});
+      setQuesData1(quesData1);
+    } else if (UserPrice == '' || UserFurnishedType == 'No') {
       setQuesData1(quesData1);
     } else {
       // this.setState({
@@ -114,7 +132,7 @@ const UserSearch = props => {
           </View>
           <View style={{paddingTop: 50}}>
             <UserHomeFlatList
-              UserHomPg={price == '' ? quesData1 : array}
+              UserHomPg={price == '' || value2 === 'No' ? quesData1 : array}
               Onpress={() => navigation.navigate('HostelDetail')}
             />
           </View>
@@ -302,7 +320,7 @@ const UserSearch = props => {
                         value={value2}>
                         <RadioButton.Item
                           label="Furnished"
-                          value="Furnished"
+                          value="Yes"
                           color={'#1a4499'}
                         />
                       </RadioButton.Group>
@@ -311,8 +329,8 @@ const UserSearch = props => {
                         // status={value === 'first' ? 'checked' : 'unchecked'}
                         value={value2}>
                         <RadioButton.Item
-                          label="Non-Furnished"
-                          value="Non-Furnished"
+                          label="Not-Furnished"
+                          value="No"
                           color={'#1a4499'}
                         />
                       </RadioButton.Group>
@@ -366,7 +384,7 @@ const UserSearch = props => {
                         value={value4}>
                         <RadioButton.Item
                           label="Yes"
-                          value="Yes1"
+                          value="Yes"
                           color={'#1a4499'}
                         />
                       </RadioButton.Group>
@@ -376,7 +394,7 @@ const UserSearch = props => {
                         value={value4}>
                         <RadioButton.Item
                           label="No"
-                          value="No1"
+                          value="No"
                           color={'#1a4499'}
                         />
                       </RadioButton.Group>
@@ -394,7 +412,7 @@ const UserSearch = props => {
                         value={value5}>
                         <RadioButton.Item
                           label="Yes"
-                          value="Yes2"
+                          value="Yes"
                           color={'#1a4499'}
                         />
                       </RadioButton.Group>
@@ -404,7 +422,7 @@ const UserSearch = props => {
                         value={value5}>
                         <RadioButton.Item
                           label="No"
-                          value="No2"
+                          value="No"
                           color={'#1a4499'}
                         />
                       </RadioButton.Group>
@@ -412,7 +430,7 @@ const UserSearch = props => {
                   </View>
                   <TouchableOpacity
                     onPress={() => {
-                      SearchFilterFunction(price);
+                      SearchFilterFunction(price, value2);
 
                       SetsearchData(true);
                     }}

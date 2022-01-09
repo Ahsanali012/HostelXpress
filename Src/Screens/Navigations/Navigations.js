@@ -17,18 +17,11 @@ import UserHostelDetails from '../UserScreens/UserHostelDetail/UserHostelDetail'
 import UserBooking from '../UserScreens/UserBooking/UserBooking';
 import BottomTabOwner from './BottomTabOwner';
 import Check from '../Utils/Check';
+
+import {auth, db} from '../Utils/Exports';
 const Stack = createNativeStackNavigator();
-class Navigation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-    };
-  }
-  componentDidMount() {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-    LogBox.ignoreLogs(['Possible Unhandled Promise Rejection']);
-  }
+
+const Navigation = () => {
   // getitem = async () => {
   //   const Val1 = await AsyncStorage.getItem('this');
   //   console.log('Val===>', Val1);
@@ -40,53 +33,52 @@ class Navigation extends Component {
   // componentDidMount() {
   //   this.getitem();
   // }
-  render() {
-    return (
-      <SafeAreaView style={{flex: 1}}>
-        <View>
-          {Platform.OS === 'ios' ? (
-            <StatusBar barStyle="dark-content" />
-          ) : (
-            <StatusBar barStyle="dark-content" backgroundColor={'white'} />
-          )}
-        </View>
 
-        <Stack.Navigator
-          initialRouteName="Splash"
-          screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Splash" component={SplashScreen} />
-          <Stack.Screen
-            name="BottomTab"
-            component={BottomTab}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="BottomTabUser"
-            component={BottomTabUser}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Check"
-            component={Check}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="BottomTabOwner"
-            component={BottomTabOwner}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen name="Login" component={Loginscreen} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
-          <Stack.Screen name="Recover" component={RecoverEmail} />
-          <Stack.Screen name="Admin" component={LoginAdmin} />
-          <Stack.Screen name="SearchBar" component={SearchBar} />
-          <Stack.Screen name="HostelDetail" component={UserHostelDetails} />
-          <Stack.Screen name="UserBooking" component={UserBooking} />
-        </Stack.Navigator>
-      </SafeAreaView>
-    );
-  }
-}
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <View>
+        {Platform.OS === 'ios' ? (
+          <StatusBar barStyle="dark-content" />
+        ) : (
+          <StatusBar barStyle="dark-content" backgroundColor={'white'} />
+        )}
+      </View>
+
+      <Stack.Navigator
+        initialRouteName="Splash"
+        screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen
+          name="BottomTab"
+          component={BottomTab}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BottomTabUser"
+          component={BottomTabUser}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Check"
+          component={Check}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BottomTabOwner"
+          component={BottomTabOwner}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Login" component={Loginscreen} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+        <Stack.Screen name="Recover" component={RecoverEmail} />
+        <Stack.Screen name="Admin" component={LoginAdmin} />
+        <Stack.Screen name="SearchBar" component={SearchBar} />
+        <Stack.Screen name="HostelDetail" component={UserHostelDetails} />
+        <Stack.Screen name="UserBooking" component={UserBooking} />
+      </Stack.Navigator>
+    </SafeAreaView>
+  );
+};
 
 export default Navigation;

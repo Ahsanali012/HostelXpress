@@ -56,7 +56,7 @@ const UserHome = () => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View
         style={{
           padding: 40,
@@ -120,7 +120,7 @@ const UserHome = () => {
         UserHomPg={quesData1}
         Onpress={() => navigation.navigate('HostelDetail')}
       />
-    </ScrollView>
+    </View>
   );
 };
 

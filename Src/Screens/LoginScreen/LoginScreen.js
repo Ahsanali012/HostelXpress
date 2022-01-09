@@ -14,10 +14,13 @@ import styles from './Style';
 import {Provider, Appbar, RadioButton} from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-// import {auth} from '../Utils/Exports';
+import {db} from '../Utils/Exports';
+import authentication from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+
 const Loginscreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -26,6 +29,7 @@ const Loginscreen = () => {
   const [passwordd, setpasswordd] = useState('');
   const [value, setValue] = React.useState('');
   const [loader, Setloader] = React.useState(false);
+
   const setValuein = async value1 => {
     await AsyncStorage.setItem('this', JSON.stringify(value1));
     const value2 = await AsyncStorage.getItem('this');
@@ -50,8 +54,43 @@ const Loginscreen = () => {
   });
   console.log('State Value', value);
 
+  // const getUserId = async () => {
+  //   const Auth = authentication();
+  //   const currentUid = Auth.currentUser.uid;
+  //   const ref = db.ref('Owner/' + currentUid);
+
+  //   await ref.on('value', snapshot => {
+  //     if (snapshot.val()) {
+  //       const {uid} = snapshot.val();
+  //       let UserId = {uid};
+
+  //       {
+  //         UserId === currentUid ? navigation.navigate('BottomTabOwner') : null;
+  //       }
+
+  //       console.log('currentUid', ref);
+
+  //       // console.log('UserId', UserId);
+  //       // setQuesData1(Object.values(data));
+
+  //       console.log('Data============', uid);
+
+  //       // Object.values(snapshot.val()).map(item => {
+
+  //       //   console.log(item.uid);
+  //       // });
+  //     } else {
+  //     }
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   getUserId();
+  // }, []);
+
   const loginFunc = (Email, Password) => {
     // alert(Email, Password);
+
     Setloader(true);
     auth()
       .signInWithEmailAndPassword(Email, Password)
@@ -154,6 +193,7 @@ const Loginscreen = () => {
                   onPress={() => navigation.navigate('ForgetPassword')}>
                   <Text style={styles.ForgotTxt}>Forgot Password ?</Text>
                 </TouchableOpacity>
+
                 <View style={styles.RadioBtnWrapper}>
                   <RadioButton.Group
                     onValueChange={value1 => setValuein(value1)}
