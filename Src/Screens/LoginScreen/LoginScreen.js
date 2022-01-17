@@ -54,39 +54,34 @@ const Loginscreen = () => {
   });
   console.log('State Value', value);
 
-  // const getUserId = async () => {
-  //   const Auth = authentication();
-  //   const currentUid = Auth.currentUser.uid;
-  //   const ref = db.ref('Owner/' + currentUid);
+  const getUserId = async () => {
+    const Auth = authentication();
+    const currentUid = Auth.currentUser.uid;
+    const ref = db.ref('Owner/' + currentUid);
+    const ref2 = db.ref('Customer/' + currentUid);
 
-  //   await ref.on('value', snapshot => {
-  //     if (snapshot.val()) {
-  //       const {uid} = snapshot.val();
-  //       let UserId = {uid};
+    console.log('current Uid ', currentUid);
 
-  //       {
-  //         UserId === currentUid ? navigation.navigate('BottomTabOwner') : null;
-  //       }
+    await ref.once('value', snapshot => {
+      if (snapshot.val()) {
+        const {uid} = snapshot.val();
+        console.log(' Owner UID ====  ', uid);
+      } else {
+      }
+    });
 
-  //       console.log('currentUid', ref);
+    await ref2.once('value', snapshot => {
+      if (snapshot.val()) {
+        const {uid} = snapshot.val();
+        console.log('  UID ====  ', uid);
+      } else {
+      }
+    });
+  };
 
-  //       // console.log('UserId', UserId);
-  //       // setQuesData1(Object.values(data));
-
-  //       console.log('Data============', uid);
-
-  //       // Object.values(snapshot.val()).map(item => {
-
-  //       //   console.log(item.uid);
-  //       // });
-  //     } else {
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   getUserId();
-  // }, []);
+  useEffect(() => {
+    getUserId();
+  }, []);
 
   const loginFunc = (Email, Password) => {
     // alert(Email, Password);
@@ -94,13 +89,37 @@ const Loginscreen = () => {
     Setloader(true);
     auth()
       .signInWithEmailAndPassword(Email, Password)
-      .then(() => {
+      .then(res => {
+        console.log('Res ki value', auth().currentUser.uid);
+
+        const authID = auth().currentUser.uid;
+        const refOwner = db.ref('Owner/' + authID);
+        const refUser = db.ref('Customer/' + authID);
+        refOwner.once('value', snapshotOwner => {
+          refUser.once('value', snapshotUserr => {
+            if (snapshotOwner.val() && value == 'Owner') {
+              navigation.replace('BottomTabOwner');
+            } else if (snapshotUserr.val() && value == 'Customer') {
+              navigation.replace('BottomTabUser');
+            } else {
+              alert('YOu have to sign up first');
+            }
+          });
+        });
+        // const refOwner=db.ref('Owner/'+)
+
         Setloader(false);
-        {
-          value == 'Owner'
-            ? navigation.replace('BottomTabOwner')
-            : navigation.replace('BottomTabUser');
-        }
+        // {
+        //   value == 'Owner'
+        //     ? navigation.replace('BottomTabOwner')
+        //     : navigation.replace('BottomTabUser');
+        // }
+
+        // if (snapshot.val()) {
+        //   navigation.navigate('BottomTabOwner');
+        // } else {
+        //   navigation.navigate('BottomTabUser');
+        // }
       })
 
       .catch(error => {

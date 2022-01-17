@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -35,7 +35,7 @@ const OwnerPost = () => {
   const [price, Setprice] = React.useState('');
   const [types, setType] = useState('');
   const [img, SetImg] = useState('');
-
+  const [Id, SetId] = useState(0);
   const pickPicture = () => {
     ImagePicker.openPicker({
       width: 500,
@@ -106,11 +106,8 @@ const OwnerPost = () => {
     let imgUrl = await uploadImage();
 
     const currentUid = auth.currentUser.uid;
-    const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
-    const refkey = db
-      .ref('Owner/' + currentUid)
-      .child('/OwnerPostAdd')
-      .push().key;
+    const ref = db.ref('Owner/').child('/OwnerPostAdd');
+    const refkey = db.ref('Owner/').child('/OwnerPostAdd').push().key;
 
     ref.child(refkey).set({
       Image: imgUrl,
@@ -121,35 +118,37 @@ const OwnerPost = () => {
       Internet: value4,
       Latitude: currentLatitude,
       Longitude: currentLongitude,
+      uid: currentUid,
+      id: Id,
     });
 
-    const handleLocationPermission = async () => {
-      let permissionCheck = '';
-
-      if (Platform.OS === 'android') {
-        permissionCheck = await PermissionsAndroid.request(
-          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-        );
-
-        if (permissionCheck === RESULTS.DENIED) {
-          const permissionRequest = await request(
-            PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-          );
-          permissionRequest === RESULTS.GRANTED
-            ? console.warn('Location permission granted.')
-            : console.warn('Location perrmission denied.');
-        }
-      }
-    };
-
-    useEffect(() => {
-      handleLocationPermission();
-    }, []);
     // await ref.set({
     //   Image: img,
     // });
     // console.log('Stored=========>', img);
   };
+  const handleLocationPermission = async () => {
+    let permissionCheck = '';
+
+    if (Platform.OS === 'android') {
+      permissionCheck = await PermissionsAndroid.request(
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      );
+
+      if (permissionCheck === RESULTS.DENIED) {
+        const permissionRequest = await request(
+          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+        );
+        permissionRequest === RESULTS.GRANTED
+          ? console.warn('Location permission granted.')
+          : console.warn('Location perrmission denied.');
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleLocationPermission();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
@@ -367,6 +366,7 @@ const OwnerPost = () => {
             handleUpdate();
             uploadImage();
             getOneTimeLocation();
+            SetId(Id + 1);
           }}
           style={{
             width: Theme.wp('80%'),

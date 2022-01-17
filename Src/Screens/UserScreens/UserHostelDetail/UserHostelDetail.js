@@ -17,9 +17,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Theme from '../../Utils/Theme';
 import {auth, db} from '../../Utils/Exports';
+import {useRoute} from '@react-navigation/core';
 import openMap from 'react-native-open-maps';
 // create a component
 const UserHostelDetails = ({navigation}) => {
+  const item = useRoute().params.item;
   const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
   const [toggleCheckBox2, setToggleCheckBox2] = useState(false);
   const [toggleCheckBox3, setToggleCheckBox3] = useState(false);
@@ -69,10 +71,7 @@ const UserHostelDetails = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={{}}>
-        <Image
-          style={[styles.Image, {}]}
-          source={require('../../../Assets/Flat1.jpeg')}
-        />
+        <Image style={[styles.Image, {}]} source={{uri: item.Image}} />
       </View>
       <View style={{width: '90%', alignSelf: 'center'}}>
         <View
@@ -257,7 +256,7 @@ const UserHostelDetails = ({navigation}) => {
         </View>
         <View style={styles.spaceBetween1}>
           <Text style={{color: 'black', fontSize: 20}}>Rent Per Month</Text>
-          <Text style={{color: 'black', fontSize: 20}}>Rs13000</Text>
+          <Text style={{color: 'black', fontSize: 20}}>{item.Price}</Text>
         </View>
         <View style={styles.spaceBetween1}>
           <TouchableOpacity

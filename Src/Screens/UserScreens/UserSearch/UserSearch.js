@@ -38,7 +38,7 @@ const UserSearch = props => {
   console.log('Filter- ArrayData==== ', quesData1);
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
-    const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+    const ref = db.ref('Owner/').child('/OwnerPostAdd');
 
     await ref.on('value', snapshot => {
       if (snapshot.val()) {

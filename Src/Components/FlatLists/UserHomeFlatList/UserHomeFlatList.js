@@ -15,7 +15,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 const UserHomeFlatList = props => {
+  const navigation = useNavigation();
   const {UserHomPg, Onpress} = props;
   const [isLiked, setIsLike] = useState(false);
   const onLikePressed = () => {
@@ -25,16 +27,16 @@ const UserHomeFlatList = props => {
     <View style={{}}>
       <FlatList
         data={UserHomPg}
+        keyExtractor={item => item.id}
         renderItem={({item, index}) => {
-          //   console.log(item);
+          console.log('-------->', item.id);
           return (
             <TouchableOpacity
-              onPress={Onpress}
+              onPress={() => navigation.navigate('HostelDetail', {item: item})}
               style={{
                 borderRadius: 10,
                 borderWidth: 1,
                 borderColor: '#d4d4d4',
-
                 margin: 15,
               }}>
               <View
