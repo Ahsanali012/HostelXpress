@@ -33,7 +33,7 @@ const OwnerHomeFlatList = props => {
           console.log('--------> Inside OwnerFlatList ', item);
           return (
             <TouchableOpacity
-              // onPress={() => navigation.navigate('HostelDetail', {item: item})}
+              onPress={() => navigation.navigate('Requests', {item: item})}
               style={{
                 borderRadius: 10,
                 borderWidth: 1,

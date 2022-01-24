@@ -8,6 +8,7 @@ import {
   Text,
 } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //importing Screens
 import OwnerHome from '../OwnerScreens/OwnerHome/OwnerHome';
 import OwnerProfile from '../OwnerScreens/OwnerProfile/OwnerProfile';
@@ -16,7 +17,10 @@ import OwnerAds from '../OwnerScreens/OwnerAds/OwnerAds';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Requests from '../OwnerScreens/Requests/Requests';
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
 const BottomTabOwner = () => (
   <Tab.Navigator
     initialRouteName={'OwnerHome'}
@@ -41,7 +45,7 @@ const BottomTabOwner = () => (
     }}>
     <Tab.Screen
       name={'OwnerHome'}
-      component={OwnerHome}
+      component={_userHome}
       options={{
         tabBarLabel: 'Home',
 
@@ -100,6 +104,19 @@ const BottomTabOwner = () => (
   </Tab.Navigator>
 );
 
+const _userHome = () => {
+  return (
+    <Stack.Navigator
+      // screenOptions={{
+      //   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      // }}
+      initialRouteName={'OwnerHomes'}
+      headerMode="none">
+      <Stack.Screen name="OwnerHomes" component={OwnerHome} />
+      <Stack.Screen name="Requests" component={Requests} />
+    </Stack.Navigator>
+  );
+};
 export default BottomTabOwner;
 const styles = StyleSheet.create({
   iconStyle: {alignSelf: 'center'},

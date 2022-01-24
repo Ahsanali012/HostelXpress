@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -8,31 +8,42 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useRoute} from '@react-navigation/core';
+import {auth, db} from '../../Utils/Exports';
 // create a component
 const UserBooking = () => {
   const item = useRoute().params.item;
-
+  const [profile, setProfile] = useState({});
   console.log('Item Came = ', item);
 
   var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
   console.log(seq);
 
-  const HandleBook = () => {
-    // const ref = db.ref('Booking/').child('/OwnerPostAdd').child('/HosteliD');
+  useEffect(() => {
+    const ref = db.ref('Customer').child(auth.currentUser.uid);
+    ref.on('value', snapshot => {
+      console.warn('SNAPSHOTTT', snapshot.val());
+      setProfile(snapshot.val());
+    });
+  }, []);
+  const HandleBook = async () => {
+    console.log('ITEM', item);
+    const ref = db.ref('Booking').child(item?.uid).child(item?.HosteliD);
+    const refRequest = db
+      .ref('Request')
+      .child(auth.currentUser.uid)
+      .child(item?.HosteliD);
 
-    await ref.on('value', snapshot => {
-      if (snapshot.val()) {
-        const data = snapshot.val();
-
-        setQuesData1(Object.values(data));
-
-        console.log('Data--', data);
-
-        // Object.values(snapshot.val()).map(item => {
-        //   console.log(item);
-        // });
-      } else {
-      }
+    ref.child(auth.currentUser.uid).set({
+      name: profile.Name,
+      transactionId: seq,
+      accepted: false,
+      client: auth.currentUser.uid,
+      HosteliD: item?.HosteliD,
+    });
+    refRequest.set({
+      name: profile.Name,
+      transactionId: seq,
+      accepted: false,
     });
   };
 

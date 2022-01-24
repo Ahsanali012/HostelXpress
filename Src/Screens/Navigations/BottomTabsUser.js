@@ -16,6 +16,7 @@ import UserSearch from '../UserScreens/UserSearch/UserSearch';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MyBookings from '../MyBookings/MyBookings';
 const Tab = createBottomTabNavigator();
 const BottomTabUser = () => (
   <Tab.Navigator
@@ -54,6 +55,16 @@ const BottomTabUser = () => (
         tabBarLabel: 'Saved',
         tabBarIcon: ({color, size}) => (
           <Entypo name={'star'} size={20} style={{color}} color={'white'} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name={'MyBookings'}
+      component={MyBookings}
+      options={{
+        tabBarLabel: 'My Bookings',
+        tabBarIcon: ({color, size}) => (
+          <Entypo name={'Book'} size={20} style={{color}} color={'white'} />
         ),
       }}
     />
