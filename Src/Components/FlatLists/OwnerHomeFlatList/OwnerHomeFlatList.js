@@ -16,9 +16,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
-const UserHomeFlatList = props => {
+
+const OwnerHomeFlatList = props => {
   const navigation = useNavigation();
-  const {UserHomPg, Onpress} = props;
+  const {OwnerHomPg, Onpress} = props;
   const [isLiked, setIsLike] = useState(false);
   const onLikePressed = () => {
     setIsLike(!isLiked);
@@ -26,18 +27,19 @@ const UserHomeFlatList = props => {
   return (
     <View style={{}}>
       <FlatList
-        data={UserHomPg}
+        data={OwnerHomPg}
         // keyExtractor={item => item.id}
         renderItem={({item, index}) => {
-          console.log('--------> Inside UserFlatList', item.BookingStatus);
+          console.log('--------> Inside OwnerFlatList ', item);
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('HostelDetail', {item: item})}
+              // onPress={() => navigation.navigate('HostelDetail', {item: item})}
               style={{
                 borderRadius: 10,
                 borderWidth: 1,
                 borderColor: '#d4d4d4',
                 margin: 15,
+                width: '94%',
               }}>
               <View
                 style={{
@@ -64,29 +66,6 @@ const UserHomeFlatList = props => {
                       marginTop: 5,
                     }}>
                     <Text>Marhaba Hostels</Text>
-                    <TouchableOpacity onPress={onLikePressed}>
-                      {isLiked ? (
-                        <FontAwesome5
-                          name={'star'}
-                          size={20}
-                          color={'black'}
-                          style={{marginTop: 5, left: Theme.wp('2%')}}
-                        />
-                      ) : (
-                        <FontAwesome
-                          name={'star'}
-                          size={22}
-                          color={'blue'}
-                          style={{marginTop: 5, left: Theme.wp('2%')}}
-                        />
-                      )}
-                      {/* <FontAwesome5
-                  name={'star'}
-                  size={18}
-                  color={'black'}
-                  style={{marginTop: 5}}
-                /> */}
-                    </TouchableOpacity>
                   </View>
                   <View style={{flexDirection: 'row'}}>
                     <Entypo
@@ -102,14 +81,15 @@ const UserHomeFlatList = props => {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      width: Theme.wp('44%'),
+                      width: Theme.wp('40%'),
+
                       alignItems: 'center',
                     }}>
                     <AntDesign
                       name={'wifi'}
                       size={20}
                       color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('3%')}}
+                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
                     />
                     <Ionicons
                       name={'bed-outline'}
@@ -131,7 +111,7 @@ const UserHomeFlatList = props => {
                     />
                     <Text
                       style={{
-                        left: Theme.wp('3%'),
+                        left: Theme.wp('9%'),
                         fontWeight: 'bold',
                         fontSize: 17,
                       }}>
@@ -142,17 +122,17 @@ const UserHomeFlatList = props => {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      width: Theme.wp('47%'),
+                      width: Theme.wp('45%'),
                       alignItems: 'center',
                     }}>
-                    <Text>Wifi</Text>
-                    <Text>Bed</Text>
-                    <Text>Mess</Text>
-                    <Text>Buss</Text>
+                    <Text style={{marginRight: Theme.wp('1%')}}>Wifi</Text>
+                    <Text style={{marginLeft: Theme.wp('1%')}}>Bed</Text>
+                    <Text style={{marginLeft: Theme.wp('1%')}}>Mess</Text>
+                    <Text style={{marginLeft: Theme.wp('1%')}}>Buss</Text>
                     <Text
                       style={{
                         fontWeight: 'bold',
-                        left: Theme.wp('3%'),
+                        left: Theme.wp('4%'),
                         fontSize: 17,
                       }}>
                       {item.Price}
@@ -167,4 +147,4 @@ const UserHomeFlatList = props => {
     </View>
   );
 };
-export default UserHomeFlatList;
+export default OwnerHomeFlatList;

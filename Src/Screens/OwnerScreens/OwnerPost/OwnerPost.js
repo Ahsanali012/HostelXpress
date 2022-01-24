@@ -29,13 +29,15 @@ const OwnerPost = () => {
   const [value3, setValue3] = React.useState('');
   const [value4, setValue4] = React.useState('');
   const [value5, setValue5] = React.useState('');
+
+  const [BookingStatus, SetBookingStatus] = React.useState(false);
   const [currentLongitude, setCurrentLongitude] = useState('...');
   const [currentLatitude, setCurrentLatitude] = useState('...');
   const [locationStatus, setLocationStatus] = useState('');
   const [price, Setprice] = React.useState('');
   const [types, setType] = useState('');
   const [img, SetImg] = useState('');
-  const [Id, SetId] = useState(0);
+  // const [Id, SetId] = useState(0);
   const pickPicture = () => {
     ImagePicker.openPicker({
       width: 500,
@@ -108,6 +110,11 @@ const OwnerPost = () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner/').child('/OwnerPostAdd');
     const refkey = db.ref('Owner/').child('/OwnerPostAdd').push().key;
+    const ref2 = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+    const refkey2 = db
+      .ref('Owner/' + currentUid)
+      .child('/OwnerPostAdd')
+      .push().key;
 
     ref.child(refkey).set({
       Image: imgUrl,
@@ -119,7 +126,21 @@ const OwnerPost = () => {
       Latitude: currentLatitude,
       Longitude: currentLongitude,
       uid: currentUid,
-      id: Id,
+      BookingStatus: BookingStatus,
+      HosteliD: refkey,
+    });
+    ref2.child(refkey2).set({
+      Image: imgUrl,
+      Price: price,
+      Persons: value,
+      Furnished: value2,
+      Mess: value3,
+      Internet: value4,
+      Latitude: currentLatitude,
+      Longitude: currentLongitude,
+      uid: currentUid,
+      BookingStatus: BookingStatus,
+      HosteliD: refkey2,
     });
 
     // await ref.set({
@@ -366,7 +387,7 @@ const OwnerPost = () => {
             handleUpdate();
             uploadImage();
             getOneTimeLocation();
-            SetId(Id + 1);
+            // SetId(Id + 1);
           }}
           style={{
             width: Theme.wp('80%'),

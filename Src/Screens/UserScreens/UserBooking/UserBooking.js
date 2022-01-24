@@ -7,9 +7,35 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-
+import {useRoute} from '@react-navigation/core';
 // create a component
 const UserBooking = () => {
+  const item = useRoute().params.item;
+
+  console.log('Item Came = ', item);
+
+  var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+  console.log(seq);
+
+  const HandleBook = () => {
+    // const ref = db.ref('Booking/').child('/OwnerPostAdd').child('/HosteliD');
+
+    await ref.on('value', snapshot => {
+      if (snapshot.val()) {
+        const data = snapshot.val();
+
+        setQuesData1(Object.values(data));
+
+        console.log('Data--', data);
+
+        // Object.values(snapshot.val()).map(item => {
+        //   console.log(item);
+        // });
+      } else {
+      }
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View
@@ -110,11 +136,17 @@ const UserBooking = () => {
               borderWidth: 1,
               borderColor: 'gray',
               alignSelf: 'center',
+              alignItems: 'center',
               backgroundColor: '#D4D4D4',
               marginTop: 20,
-            }}></View>
+            }}>
+            <Text style={{marginTop: '3%', fontSize: 20, fontWeight: 'bold'}}>
+              # {seq}
+            </Text>
+          </View>
         </View>
         <TouchableOpacity
+          onPress={HandleBook}
           style={{
             width: 300,
             height: 40,
@@ -126,7 +158,7 @@ const UserBooking = () => {
             alignItems: 'center',
             marginTop: 20,
           }}>
-          <Text style={{marginTop: 10, color: 'white'}}>Confirm Payment</Text>
+          <Text style={{marginTop: 10, color: 'white'}}>Book Now </Text>
         </TouchableOpacity>
       </View>
     </View>

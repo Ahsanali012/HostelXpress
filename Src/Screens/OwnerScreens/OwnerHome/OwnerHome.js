@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -16,10 +17,40 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './Style';
+import {auth, db} from '../../Utils/Exports';
+import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerHomeFlatList/OwnerHomeFlatList';
 // create a component
 const OwnerHome = ({navigation}) => {
+  const [BookingStatus, setBookingStatus] = React.useState(false);
+
+  const [AddsData, SetAddsData] = useState([]);
+
+  const getValues = async () => {
+    const currentUid = auth.currentUser.uid;
+    const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+
+    await ref.on('value', snapshot => {
+      if (snapshot.val()) {
+        const data = snapshot.val();
+        SetAddsData(Object.values(data));
+
+        console.log('Data--', data);
+
+        // Object.values(snapshot.val()).map(item => {
+        //   console.log(item);
+        // });
+      } else {
+      }
+    });
+  };
+  // console.log('thisssss', Object.values(quesData1));
+
+  useEffect(() => {
+    getValues();
+  }, []);
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={{width: '95%', alignSelf: 'center'}}>
         <View
           style={{
@@ -71,7 +102,7 @@ const OwnerHome = ({navigation}) => {
           style={{padding: 10, fontSize: 20, paddingLeft: 30, color: 'black'}}>
           Recent Adds
         </Text>
-        <View
+        {/* <View
           //   onPress={() => navigation.navigate('HostelDetail')}
           style={{
             borderRadius: 10,
@@ -245,9 +276,11 @@ const OwnerHome = ({navigation}) => {
               </View>
             </View>
           </View>
-        </View>
+        </View> */}
+
+        <OwnerHomeFlatList OwnerHomPg={AddsData} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
