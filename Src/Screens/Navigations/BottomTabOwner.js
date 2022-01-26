@@ -110,9 +110,9 @@ const _userHome = () => {
       // screenOptions={{
       //   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       // }}
-      initialRouteName={'OwnerHomes'}
+      initialRouteName={'OwnerHostels'}
       headerMode="none">
-      <Stack.Screen name="OwnerHomes" component={OwnerHome} />
+      <Stack.Screen name="Owner Hostels" component={OwnerHome} />
       <Stack.Screen name="Requests" component={Requests} />
     </Stack.Navigator>
   );

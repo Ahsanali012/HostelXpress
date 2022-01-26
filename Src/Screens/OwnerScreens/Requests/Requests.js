@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 import {auth, db} from '../../Utils/Exports';
@@ -25,14 +25,28 @@ const Requests = () => {
   const renderRequests = ({item, index}) => {
     return (
       <View style={{padding: 10}}>
-        <View style={{flexDirection: 'row'}}>
-          <Text>Name:</Text>
-          <Text>{item?.name}</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            // justifyContent: 'flex-start',
+          }}>
+          <Text style={{fontSize: 20, fontWeight: 'bold'}}>Name:</Text>
+
+          <Text style={{fontSize: 20, paddingHorizontal: 10}}>
+            {item?.name}
+          </Text>
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <Text>Transaction ID:</Text>
-          <Text>{item?.transactionId}</Text>
+
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+            Transaction ID:
+          </Text>
+          <Text style={{fontSize: 20, paddingHorizontal: 10}}>
+            {item?.transactionId}
+          </Text>
         </View>
+
         <View
           style={{
             flexDirection: 'row',
@@ -40,7 +54,17 @@ const Requests = () => {
             width: '30%',
             justifyContent: 'space-between',
           }}>
-          <Text
+          {/* <TouchableOpacity
+            onPress={() => {
+              console.log('id', item?.client);
+              const ref = db
+                .ref('Request')
+                .child(item?.client)
+                .child(item?.HosteliD);
+              ref.update({accepted: true});
+            }}></TouchableOpacity> */}
+
+          <TouchableOpacity
             onPress={() => {
               console.log('id', item?.client);
               const ref = db
@@ -49,9 +73,12 @@ const Requests = () => {
                 .child(item?.HosteliD);
               ref.update({accepted: true});
             }}>
-            Accept
-          </Text>
-          <Text
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: 'green'}}>
+              Accept
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
             onPress={() => {
               console.log('id', item?.client);
               const ref = db
@@ -60,8 +87,10 @@ const Requests = () => {
                 .child(item?.HosteliD);
               ref.update({accepted: false});
             }}>
-            Reject
-          </Text>
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: 'red'}}>
+              Reject
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

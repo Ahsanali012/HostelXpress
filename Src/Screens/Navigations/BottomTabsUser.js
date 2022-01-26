@@ -64,7 +64,7 @@ const BottomTabUser = () => (
       options={{
         tabBarLabel: 'My Bookings',
         tabBarIcon: ({color, size}) => (
-          <Entypo name={'Book'} size={20} style={{color}} color={'white'} />
+          <AntDesign name={'book'} size={20} style={{color}} color={'white'} />
         ),
       }}
     />
