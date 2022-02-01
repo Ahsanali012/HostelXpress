@@ -9,17 +9,42 @@ import {
 } from 'react-native';
 import {useRoute} from '@react-navigation/core';
 import {auth, db} from '../../Utils/Exports';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 // create a component
 const UserBooking = () => {
   const item = useRoute().params.item;
   const [profile, setProfile] = useState({});
+  const [ownerName, setownerName] = useState('');
+
+  const [TId, SetId] = useState('');
+  const [AmountPaid, SetAmountPaid] = useState('');
+  const [AccountName, SetAccountName] = useState('');
+  const [BankName, SetBankName] = useState('');
+  const [Bankaccount, setBankaccount] = useState('');
+  const [Cashaccount, setCashaccount] = useState('');
+
+  const [AllValues, setAllValues] = useState({});
+  console.log('AllValues======', AllValues);
   console.log('Item Came = ', item);
 
-  var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
-  console.log(seq);
+  // var  seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+  // console.log(seq);
 
   useEffect(() => {
+    const currentUid = auth.currentUser.uid;
     const ref = db.ref('Customer').child(auth.currentUser.uid);
+
+    const refowner = db.ref('Owner/').child('z2zU1cFVOTPDicoobIoapTXICFz2');
+
+    console.log('refowner', refowner);
+
+    refowner.on('value', snapshot => {
+      console.warn('SNAPSHOTTTOwner====', snapshot.val());
+      //  setProfile(snapshot.val());
+
+      setAllValues(snapshot.val());
+    });
+
     ref.on('value', snapshot => {
       console.warn('SNAPSHOTTT', snapshot.val());
       setProfile(snapshot.val());
@@ -35,20 +60,22 @@ const UserBooking = () => {
 
     ref.child(auth.currentUser.uid).set({
       name: profile.Name,
-      transactionId: seq,
+      transactionId: TId,
+      AmountPaid: AmountPaid,
+      AccountName: AccountName,
       accepted: false,
       client: auth.currentUser.uid,
       HosteliD: item?.HosteliD,
     });
     refRequest.set({
       name: profile.Name,
-      transactionId: seq,
+      transactionId: TId,
       accepted: false,
     });
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView style={styles.container}>
       <View
         style={{
           width: '90%',
@@ -82,7 +109,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Name : </Text>
-            <Text>Ahmad hassan </Text>
+            <Text>{AllValues.Name} </Text>
           </View>
           <View
             style={{
@@ -93,7 +120,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Name : </Text>
-            <Text>Meezan Bank </Text>
+            <Text>{AllValues.BankName} </Text>
           </View>
           <View
             style={{
@@ -104,7 +131,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Account : </Text>
-            <Text>09863776888 </Text>
+            <Text>{AllValues.BankAccount} </Text>
           </View>
           <View
             style={{
@@ -115,7 +142,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Jazz Cash: </Text>
-            <Text>09883444557 </Text>
+            <Text>{AllValues.CashAccount} </Text>
           </View>
           <View
             style={{
@@ -126,53 +153,55 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Easy Paisa : </Text>
-            <Text>09883444557 </Text>
+            <Text>{AllValues.CashAccount} </Text>
           </View>
         </View>
         <View style={{marginVertical: '10%'}}>
           <Text
             style={{
-              fontSize: 30,
+              fontSize: 24,
               flexDirection: 'row',
 
               color: '#1c449c',
             }}>
-            Transaction Id:
+            Enter Details:
           </Text>
-          <View
-            style={{
-              width: 300,
-              height: 40,
-              borderRadius: 10,
-              borderWidth: 1,
-              borderColor: 'gray',
-              alignSelf: 'center',
-              alignItems: 'center',
-              backgroundColor: '#D4D4D4',
-              marginTop: 20,
-            }}>
-            <Text style={{marginTop: '3%', fontSize: 20, fontWeight: 'bold'}}>
-              # {seq}
-            </Text>
+          <View style={styles.Inputborder}>
+            <TextInput
+              placeholder="Enter Transaction ID"
+              placeholderTextColor="gray"
+              onChangeText={Text => SetId(Text)}
+              value={TId}
+              style={{width: '100%'}}
+              multiline
+            />
+          </View>
+          <View style={styles.Inputborder}>
+            <TextInput
+              placeholder="Enter Amount Paid"
+              placeholderTextColor="gray"
+              onChangeText={Text => SetAmountPaid(Text)}
+              value={AmountPaid}
+              style={{width: '100%'}}
+              multiline
+            />
+          </View>
+          <View style={styles.Inputborder}>
+            <TextInput
+              placeholder="Enter Your Account Name / Mobile Number"
+              placeholderTextColor="gray"
+              onChangeText={Text => SetAccountName(Text)}
+              value={AccountName}
+              style={{width: '100%'}}
+              multiline
+            />
           </View>
         </View>
-        <TouchableOpacity
-          onPress={HandleBook}
-          style={{
-            width: 300,
-            height: 40,
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: 'gray',
-            alignSelf: 'center',
-            backgroundColor: '#1c449c',
-            alignItems: 'center',
-            marginTop: 20,
-          }}>
+        <TouchableOpacity onPress={HandleBook} style={styles.BookNowBTN}>
           <Text style={{marginTop: 10, color: 'white'}}>Book Now </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -189,6 +218,28 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     alignSelf: 'center',
+  },
+  Inputborder: {
+    width: 300,
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    alignSelf: 'center',
+    alignItems: 'center',
+    backgroundColor: '#D4D4D4',
+    marginTop: 20,
+  },
+  BookNowBTN: {
+    width: 300,
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    alignSelf: 'center',
+    backgroundColor: '#1c449c',
+    alignItems: 'center',
+    marginTop: 20,
   },
 });
 

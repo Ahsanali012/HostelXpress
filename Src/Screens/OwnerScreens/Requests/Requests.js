@@ -8,14 +8,14 @@ const Requests = () => {
   const [request, setRequest] = useState([]);
   const item = params?.item;
   useEffect(() => {
-    console.log('ITEM', item);
+    console.log('ITEM====', item);
     const ref = db
       .ref('Booking')
       .child(auth.currentUser.uid)
       .child(item?.HosteliD);
     ref.on('value', snapshot => {
       if (snapshot.val()) {
-        console.log('SNAPSHOT', Object.values(snapshot.val()));
+        console.log('SNAPSHOT===============', Object.values(snapshot.val()));
         setRequest(Object.values(snapshot.val()));
       } else {
         setRequest([]);
@@ -47,11 +47,28 @@ const Requests = () => {
           </Text>
         </View>
 
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+            Account Name | Mobile Number :
+          </Text>
+          <Text style={{fontSize: 20, paddingHorizontal: 10}}>
+            {item?.AccountName}
+          </Text>
+        </View>
+
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold'}}>AmountPaid :</Text>
+          <Text style={{fontSize: 20, paddingHorizontal: 10}}>
+            {item?.AmountPaid}
+          </Text>
+        </View>
+
         <View
           style={{
             flexDirection: 'row',
             alignSelf: 'flex-end',
             width: '30%',
+            marginTop: '5%',
             justifyContent: 'space-between',
           }}>
           {/* <TouchableOpacity
@@ -73,7 +90,13 @@ const Requests = () => {
                 .child(item?.HosteliD);
               ref.update({accepted: true});
             }}>
-            <Text style={{fontSize: 16, fontWeight: 'bold', color: 'green'}}>
+            <Text
+              style={{
+                fontSize: 16,
+
+                fontWeight: 'bold',
+                color: 'green',
+              }}>
               Accept
             </Text>
           </TouchableOpacity>

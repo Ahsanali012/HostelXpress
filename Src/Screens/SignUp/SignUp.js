@@ -19,11 +19,18 @@ import {db, auth} from '../Utils/Exports';
 const SignUp = () => {
   const navigation = useNavigation();
   const [name, setname] = useState('');
+  const [Bankname, setBankname] = useState('');
+  console.log('Bank', Bankname);
+  const [BankAccount, setBankAccount] = useState('');
+  const [CashAccount, setCashAccount] = useState('');
   const [email, setemail] = useState('');
   const [cnic, setcnic] = useState('');
   const [password, setpassword] = useState('');
   const [confirmpassword, setconfirmpassword] = useState('');
   const [value, setValue] = React.useState('');
+  const [HostelName, setHostelName] = useState('');
+
+  console.log('Value===', value);
 
   const validation = Yup.object().shape({
     Name: Yup.string().required(),
@@ -44,9 +51,23 @@ const SignUp = () => {
       .max(8, 'Input short digits string')
       .required()
       .oneOf([Yup.ref('Password'), null], 'Password must match'),
+
+    BankName: Yup.string().required(),
+    BankAccount: Yup.string().required(),
+    CashAccount: Yup.string().required(),
+    HostelName: Yup.string().required(),
   });
 
-  const SignUpFunc = (Email, Password, Name, Cnic) => {
+  const SignUpFunc = (
+    Email,
+    Password,
+    Name,
+    Cnic,
+    BankName,
+    BankAccount,
+    CashAccount,
+    HostelName,
+  ) => {
     // console.log('Name', Name);
     auth
       .createUserWithEmailAndPassword(Email, Password, Name)
@@ -62,6 +83,10 @@ const SignUp = () => {
                 uid: auth.currentUser.uid,
                 Name: Name,
                 Cnic: Cnic,
+                HostelName: HostelName,
+                BankName: BankName,
+                BankAccount: BankAccount,
+                CashAccount: CashAccount,
               })
             : db.ref('Customer/' + currentUid).set({
                 Email: Email,
@@ -98,10 +123,23 @@ const SignUp = () => {
             Cnic: cnic,
             Password: password,
             ConfirmPassword: confirmpassword,
+            BankName: Bankname,
+            BankAccount: BankAccount,
+            CashAccount: CashAccount,
+            HostelName: HostelName,
           }}
           onSubmit={(values, actions) => {
             actions.resetForm();
-            SignUpFunc(values.Email, values.Password, values.Name, values.Cnic);
+            SignUpFunc(
+              values.Email,
+              values.Password,
+              values.Name,
+              values.Cnic,
+              values.BankName,
+              values.BankAccount,
+              values.CashAccount,
+              values.HostelName,
+            );
             // console.warn(values);
             setname({
               name: values.Name,
@@ -117,6 +155,22 @@ const SignUp = () => {
             });
             setconfirmpassword({
               confirmPassword: values.ConfirmPassword,
+            });
+
+            setHostelName({
+              HostelName: values.HostelName,
+            });
+
+            setBankname({
+              BankName: values.BankName,
+            });
+
+            setBankAccount({
+              BankAccount: values.BankAccount,
+            });
+
+            setCashAccount({
+              CashAccount: values.CashAccount,
             });
           }}
           validationSchema={validation}>
@@ -168,6 +222,7 @@ const SignUp = () => {
                 <View style={styles.HeadingEmail}>
                   <Text style={styles.smallHeading1}>Cnic No.</Text>
                 </View>
+
                 <View>
                   <TextInput
                     placeholder="Enter Your Cnic"
@@ -220,6 +275,100 @@ const SignUp = () => {
                     {formikProps.touched.ConfirmPassword &&
                       formikProps.errors.ConfirmPassword}
                   </Text>
+
+                  {value == 'Owner' ? (
+                    <>
+                      <View style={styles.HeadingEmail}>
+                        <Text style={{fontSize: 17, color: 'black'}}>
+                          Hostel Name :
+                        </Text>
+                      </View>
+
+                      <View>
+                        <TextInput
+                          placeholder="Enter Hostel Name"
+                          placeholderTextColor="gray"
+                          // onChangeText={Text => setBankname(Text)}
+                          // value={password}
+                          onChangeText={formikProps.handleChange('HostelName')}
+                          onBlur={formikProps.handleBlur('HostelName')}
+                          style={styles.markerTxin}
+                          multiline
+                        />
+                        <Text style={styles.errorBox}>
+                          {formikProps.touched.HostelName &&
+                            formikProps.errors.HostelName}
+                        </Text>
+                      </View>
+
+                      <View style={styles.HeadingEmail}>
+                        <Text style={{fontSize: 17, color: 'black'}}>
+                          Bank Name:
+                        </Text>
+                      </View>
+                      <View>
+                        <TextInput
+                          placeholder="Enter Bank Name"
+                          placeholderTextColor="gray"
+                          // onChangeText={Text => setBankname(Text)}
+                          // value={password}
+                          onChangeText={formikProps.handleChange('BankName')}
+                          onBlur={formikProps.handleBlur('BankName')}
+                          style={styles.markerTxin}
+                          multiline
+                        />
+                        <Text style={styles.errorBox}>
+                          {formikProps.touched.BankName &&
+                            formikProps.errors.BankName}
+                        </Text>
+                      </View>
+
+                      <View style={styles.HeadingEmail}>
+                        <Text style={{fontSize: 17, color: 'black'}}>
+                          Bank Account:
+                        </Text>
+                      </View>
+                      <View>
+                        <TextInput
+                          placeholder="Enter Bank Account"
+                          placeholderTextColor="gray"
+                          // onChangeText={Text => setBankname(Text)}
+                          // value={password}
+                          onChangeText={formikProps.handleChange('BankAccount')}
+                          onBlur={formikProps.handleBlur('BankAccount')}
+                          style={styles.markerTxin}
+                          multiline
+                        />
+                        <Text style={styles.errorBox}>
+                          {formikProps.touched.BankAccount &&
+                            formikProps.errors.BankAccount}
+                        </Text>
+                      </View>
+                      <View style={styles.HeadingEmail}>
+                        <Text style={{fontSize: 17, color: 'black'}}>
+                          Jazzcash or Easypasia Account:
+                        </Text>
+                      </View>
+                      <View>
+                        <TextInput
+                          placeholder="Enter Jazzcash or Easypasia: "
+                          placeholderTextColor="gray"
+                          // onChangeText={Text => setBankname(Text)}
+                          // value={password}
+                          onChangeText={formikProps.handleChange('CashAccount')}
+                          onBlur={formikProps.handleBlur('CashAccount')}
+                          style={styles.markerTxin}
+                          multiline
+                        />
+                        <Text style={styles.errorBox}>
+                          {formikProps.touched.CashAccount &&
+                            formikProps.errors.CashAccount}
+                        </Text>
+                      </View>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </View>
               </View>
               <View style={{bottom: '3%'}}>
@@ -268,6 +417,7 @@ const SignUp = () => {
                     }}>
                     Already registered?
                   </Text>
+
                   <TouchableOpacity
                     style={styles.BottomSignUp}
                     onPress={() => navigation.navigate('Login')}>
