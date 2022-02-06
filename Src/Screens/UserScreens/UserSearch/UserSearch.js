@@ -22,6 +22,8 @@ const UserSearch = props => {
   const [value4, setValue4] = React.useState(false);
   const [value5, setValue5] = React.useState(false);
 
+  const [spareArray, setspareArray] = React.useState([]);
+
   console.log('RadioButton Value For Persons=== ', value);
   console.log('RadioButton Value For Type ==== ', value2);
   console.log('RadioButton Value For Mess==== ', value3);
@@ -36,6 +38,13 @@ const UserSearch = props => {
   const [quesData1, setQuesData1] = useState([]);
 
   console.log('Filter- ArrayData==== ', quesData1);
+
+  // let custom = quesData1.filter(function (value) {
+  //   return value.Price == price;
+  // });
+
+  // console.log('My Searched Value =====================', custom);
+
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner/').child('/OwnerPostAdd');
@@ -44,78 +53,29 @@ const UserSearch = props => {
       if (snapshot.val()) {
         const data = snapshot.val();
         setQuesData1(Object.values(data));
-        console.log('StateData=======  ', quesData1);
 
-        // Object.values(snapshot.val()).map(item => {
-        //   console.log(item);
-        // });
+        setspareArray(Object.values(data));
       } else {
       }
     });
   };
+  console.log('Value2 ===== ', value2);
 
-  const filter = async () => {
-    const currentUid = auth.currentUser.uid;
-    const ref1 = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
-    let filtered = [];
-    ref1.on('value', snapshot => {
-      snapshot.forEach(child => {
-        ref1
-          .child(child.key)
-          .orderByChild('Price')
-          .equalTo('555')
-          .on('value', snapshot1 => {
-            console.log('==>filtered', child.val());
-            filtered.push(child.val());
-          });
-
-        // filter.on('value', snapshot1 => {
-        //   console.log('==>filtered', child.val());
-        //   filtered.push(child.val());
-        // });
-      });
-      setQuesData1(filtered);
-    });
-    // var filter = ref.orderByChild("database/username").equalTo("some_data");
-  };
-
-  const SearchFilterFunction = (UserPrice, UserFurnishedType) => {
-    console.log('UserFurnishedType======', UserFurnishedType);
-    //passing the inserted text in textinput
-    const newData = quesData1.filter(function (item) {
-      //applying filter for the inserted text in search bar
-      // if(item.personalInfo.developmentCate!==null)
-
-      const itemData = item.Price ? item.Price.toUpperCase() : ''.toUpperCase();
-      const itemData2 = item.UserFurnishedType
-        ? item.UserFurnishedType.toUpperCase()
-        : ''.toUpperCase();
-      const textData = UserPrice.toUpperCase();
-      const textData2 = UserFurnishedType.toUpperCase();
+  const myFilter = () => {
+    let custom = spareArray.filter(function (value) {
       return (
-        itemData.indexOf(textData) > -1 || itemData2.indexOf(textData2) > -1
+        value.Price <= price && value.Furnished == value2
+        // && value.Mess == value3
       );
     });
-    if (UserPrice == '' || UserFurnishedType == 'Yes') {
-      // this.setState({userInfo: this.props.user, text: ''});
-      setQuesData1(quesData1);
-    } else if (UserPrice == '' || UserFurnishedType == 'No') {
-      setQuesData1(quesData1);
-    } else {
-      // this.setState({
-      //   //setting the filtered newData on datasource
-      //   //After setting the data it will automatically re-render the view
-      //   searchedData: newData,
-      //   text: text,
-      // });
-      SetArray(newData);
-    }
+    console.log('My Searched Value =====================', custom);
+    setQuesData1(custom);
   };
 
   useEffect(() => {
     getValues();
   }, []);
-  console.log('thisssss', Object.values(quesData1));
+  // console.log('thisssss', Object.values(quesData1));
   return (
     <>
       {searchData === true ? (
@@ -132,7 +92,7 @@ const UserSearch = props => {
           </View>
           <View style={{paddingTop: 50}}>
             <UserHomeFlatList
-              UserHomPg={price == '' || value2 === 'No' ? quesData1 : array}
+              UserHomPg={quesData1}
               Onpress={() => navigation.navigate('HostelDetail')}
             />
           </View>
@@ -430,8 +390,8 @@ const UserSearch = props => {
                   </View>
                   <TouchableOpacity
                     onPress={() => {
-                      SearchFilterFunction(price, value2);
-
+                      // SearchFilterFunction(price, value2);
+                      myFilter();
                       SetsearchData(true);
                     }}
                     // onPress={() => navigation.navigate('UserHome')}

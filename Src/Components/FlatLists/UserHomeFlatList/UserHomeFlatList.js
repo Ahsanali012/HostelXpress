@@ -29,7 +29,7 @@ const UserHomeFlatList = props => {
         data={UserHomPg}
         // keyExtractor={item => item.id}
         renderItem={({item, index}) => {
-          console.log('--------> Inside UserFlatList', item.BookingStatus);
+          // console.log('--------> Inside UserFlatList', item.BookingStatus);
           return (
             <TouchableOpacity
               onPress={() => navigation.navigate('HostelDetail', {item: item})}

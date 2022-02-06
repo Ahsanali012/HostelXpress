@@ -5,10 +5,13 @@ import {auth, db} from '../../Utils/Exports';
 
 const Requests = () => {
   const {params} = useRoute();
+
+  console.log('These Params', params);
   const [request, setRequest] = useState([]);
   const item = params?.item;
   useEffect(() => {
     console.log('ITEM====', item);
+
     const ref = db
       .ref('Booking')
       .child(auth.currentUser.uid)
@@ -21,6 +24,8 @@ const Requests = () => {
         setRequest([]);
       }
     });
+
+    console.log('This Reference ', ref);
   }, []);
   const renderRequests = ({item, index}) => {
     return (
