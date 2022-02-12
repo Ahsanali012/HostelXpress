@@ -31,10 +31,13 @@ const OwnerPost = () => {
   const [value5, setValue5] = React.useState('');
 
   const [BookingStatus, SetBookingStatus] = React.useState(false);
-  const [currentLongitude, setCurrentLongitude] = useState('...');
-  const [currentLatitude, setCurrentLatitude] = useState('...');
+  const [currentLongitude, setCurrentLongitude] = useState('');
+  const [currentLatitude, setCurrentLatitude] = useState('');
   const [locationStatus, setLocationStatus] = useState('');
   const [price, Setprice] = React.useState('');
+  const [location, Setlocation] = React.useState('');
+  const [phoneNumber, SetphoneNumber] = React.useState('');
+  const [postDesc, SetpostDesc] = React.useState('');
   const [types, setType] = useState('');
   const [img, SetImg] = useState('');
   // const [Id, SetId] = useState(0);
@@ -118,8 +121,11 @@ const OwnerPost = () => {
 
     ref.child(refkey).set({
       Image: imgUrl,
+      postDesc: postDesc,
+      location: location,
       Price: price,
       Persons: value,
+      phoneNumber: phoneNumber,
       Furnished: value2,
       Mess: value3,
       Internet: value4,
@@ -131,7 +137,10 @@ const OwnerPost = () => {
     });
     ref2.child(refkey2).set({
       Image: imgUrl,
+      postDesc: postDesc,
+      location: location,
       Price: price,
+      phoneNumber: phoneNumber,
       Persons: value,
       Furnished: value2,
       Mess: value3,
@@ -178,15 +187,15 @@ const OwnerPost = () => {
           width: '95%',
           alignSelf: 'center',
         }}>
-        <Text style={{fontSize: 25, color: '#1a4499', padding: 15}}>
-          Post a new add
-        </Text>
+        {/* <Text style={{fontSize: 25, color: '#1a4499', padding: 15}}>
+          Post Ad detail
+        </Text> */}
         <TouchableOpacity
           onPress={() => pickPicture()}
           style={{
-            height: 140,
-            width: 300,
-            marginLeft: 15,
+            height: 100,
+            width: 290,
+
             borderRadius: 10,
             borderColor: '#1a4499',
             borderWidth: 1,
@@ -195,9 +204,16 @@ const OwnerPost = () => {
           }}>
           {img === '' || img == null ? (
             <>
-              <View style={{paddingVertical: '15%', alignItems: 'center'}}>
-                <AntDesign name={'pluscircleo'} size={30} color={'#1a4499'} />
-                <Text style={{marginTop: 5, color: '#1a4499'}}>Add images</Text>
+              <View
+                style={{
+                  paddingVertical: '1%',
+                  alignItems: 'center',
+                  marginTop: 25,
+                }}>
+                <AntDesign name={'pluscircleo'} size={20} color={'#1a4499'} />
+                <Text style={{marginTop: 10, color: '#1a4499'}}>
+                  Add images
+                </Text>
               </View>
             </>
           ) : (
@@ -213,172 +229,274 @@ const OwnerPost = () => {
             </>
           )}
         </TouchableOpacity>
+        <Text
+          style={{
+            marginTop: 10,
+            fontWeight: '600',
+            fontSize: 20,
+            paddingLeft: 30,
+            color: '#1c449c',
+          }}>
+          Post Description :
+        </Text>
+        <TextInput
+          onChangeText={Text => SetpostDesc(Text)}
+          value={postDesc}
+          multiline={true}
+          maxLength={100}
+          numberOfLines={3}
+          placeholder="Post Description"
+          style={{
+            width: Theme.wp('84%'),
+
+            alignSelf: 'center',
+            textAlignVertical: 'top',
+            marginTop: 2,
+          }}
+        />
+
         <View style={{marginVertical: '2%'}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+            <View style={{}}>
+              <Text
+                style={{
+                  flexDirection: 'row',
+                  paddingLeft: 10,
+                  color: '#1c449c',
+                  fontWeight: '600',
+                  fontSize: 20,
+                  // paddingBottom: 2,
+                }}>
+                Price:
+              </Text>
+              <TextInput
+                onChangeText={Text => Setprice(Text)}
+                placeholder="Price"
+                value={price}
+                style={{
+                  width: 100,
+                  height: 40,
+                  // marginLeft: 10,
+                  alignSelf: 'flex-start',
+                  // backgroundColor: '#D4D4D4',
+                  marginTop: 2,
+                }}
+              />
+            </View>
+            <View style={{}}>
+              <Text
+                style={{
+                  flexDirection: 'row',
+                  paddingLeft: 30,
+                  color: '#1c449c',
+                  fontWeight: '600',
+                  fontSize: 20,
+                  // paddingBottom: 2,
+                }}>
+                Location:
+              </Text>
+              <TextInput
+                onChangeText={Text => Setlocation(Text)}
+                placeholder="Location"
+                value={location}
+                style={{
+                  width: 150,
+                  height: 40,
+                  marginLeft: 20,
+                  alignSelf: 'flex-start',
+                  // backgroundColor: '#D4D4D4',
+                  marginTop: 2,
+                }}
+              />
+            </View>
+          </View>
+          <View style={{}}>
+            <Text
+              style={{
+                flexDirection: 'row',
+                paddingLeft: 20,
+                color: '#1c449c',
+                fontWeight: '600',
+                fontSize: 20,
+                // paddingBottom: 2,
+              }}>
+              Phone Number:
+            </Text>
+            <TextInput
+              onChangeText={Text => SetphoneNumber(Text)}
+              placeholder="Phone Number"
+              value={phoneNumber}
+              style={{
+                width: Theme.wp('85%'),
+                height: 40,
+                marginLeft: 20,
+                alignSelf: 'flex-start',
+                // backgroundColor: '#D4D4D4',
+                marginTop: 2,
+              }}
+            />
+          </View>
+        </View>
+
+        <View>
           <Text
             style={{
-              fontSize: 30,
-              flexDirection: 'row',
               paddingLeft: 30,
+              // paddingTop: 10,
+              fontWeight: '600',
+              fontSize: 20,
               color: '#1c449c',
-              // paddingBottom: 2,
             }}>
-            Price:
+            Persons :
           </Text>
-          <TextInput
-            onChangeText={Text => Setprice(Text)}
-            value={price}
+          <View
             style={{
-              width: 300,
-              height: 40,
-
-              alignSelf: 'center',
-              // backgroundColor: '#D4D4D4',
-              marginTop: 2,
-            }}
-          />
-        </View>
-        <Text
-          style={{
-            fontSize: 20,
-            color: 'black',
-            fontWeight: 'bold',
-            paddingLeft: 30,
-          }}>
-          Persons:
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            paddingBottom: 3,
-          }}>
-          <View style={styles.RadioBtnWrapper}>
-            <RadioButton.Group
-              onValueChange={value1 => setValue(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value}>
-              <RadioButton.Item
-                label="single"
-                value="Single"
-                color={'#1a4499'}
-              />
-            </RadioButton.Group>
-            <RadioButton.Group
-              onValueChange={value1 => setValue(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value}>
-              <RadioButton.Item
-                label="Double"
-                value="Double"
-                color={'#1a4499'}
-              />
-            </RadioButton.Group>
-            <RadioButton.Group
-              onValueChange={value1 => setValue(value1)}
-              // status={value === 'second' ? 'checked' : 'unchecked'}
-              color={'black'}
-              value={value}>
-              <RadioButton.Item
-                label="Triple"
-                value="Triple"
-                color={'#1a4499'}
-              />
-            </RadioButton.Group>
-          </View>
-        </View>
-        <Text
-          style={{
-            paddingLeft: 30,
-            // paddingTop: 10,
-            color: 'black',
-            fontSize: 18,
-            fontWeight: '700',
-          }}>
-          Furnished :
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-          }}>
-          <View style={styles.RadioBtnWrapper}>
-            <RadioButton.Group
-              onValueChange={value1 => setValue2(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value2}>
-              <RadioButton.Item label="Yes" value="Yes" color={'#1a4499'} />
-            </RadioButton.Group>
-            <RadioButton.Group
-              onValueChange={value1 => setValue2(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value2}>
-              <RadioButton.Item label="No" value="No" color={'#1a4499'} />
-            </RadioButton.Group>
-          </View>
-        </View>
-        <Text
-          style={{
-            paddingLeft: 30,
-
-            color: 'black',
-            fontSize: 18,
-            fontWeight: '700',
-          }}>
-          Mess:
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-          }}>
-          <View style={styles.RadioBtnWrapper}>
-            <RadioButton.Group
-              onValueChange={value1 => setValue3(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value3}>
-              <RadioButton.Item label="Yes" value="Yes" color={'#1a4499'} />
-            </RadioButton.Group>
-            <RadioButton.Group
-              onValueChange={value1 => setValue3(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value3}>
-              <RadioButton.Item label="No" value="No" color={'#1a4499'} />
-            </RadioButton.Group>
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <View style={styles.RadioBtnWrapper}>
+              <RadioButton.Group
+                onValueChange={value1 => setValue(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value}>
+                <RadioButton.Item
+                  label="single"
+                  value="Single"
+                  color={'#1a4499'}
+                />
+              </RadioButton.Group>
+              <RadioButton.Group
+                onValueChange={value1 => setValue(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value}>
+                <RadioButton.Item
+                  label="Double"
+                  value="Double"
+                  color={'#1a4499'}
+                />
+              </RadioButton.Group>
+              <RadioButton.Group
+                onValueChange={value1 => setValue(value1)}
+                // status={value === 'second' ? 'checked' : 'unchecked'}
+                color={'black'}
+                value={value}>
+                <RadioButton.Item
+                  label="Triple"
+                  value="Triple"
+                  color={'#1a4499'}
+                />
+              </RadioButton.Group>
+            </View>
           </View>
         </View>
 
-        <Text
-          style={{
-            paddingLeft: 30,
-
-            color: 'black',
-            fontSize: 18,
-            fontWeight: '700',
-          }}>
-          Internet:
-        </Text>
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
+
             alignItems: 'center',
           }}>
-          <View style={styles.RadioBtnWrapper}>
-            <RadioButton.Group
-              onValueChange={value1 => setValue4(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value4}>
-              <RadioButton.Item label="Yes" value="Yes" color={'#1a4499'} />
-            </RadioButton.Group>
-            <RadioButton.Group
-              onValueChange={value1 => setValue4(value1)}
-              // status={value === 'first' ? 'checked' : 'unchecked'}
-              value={value4}>
-              <RadioButton.Item label="No" value="No" color={'#1a4499'} />
-            </RadioButton.Group>
+          <Text
+            style={{
+              paddingLeft: 30,
+              // paddingTop: 10,
+              color: '#1c449c',
+              fontSize: 18,
+              fontWeight: '700',
+            }}>
+            Furnished :
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <View style={styles.RadioBtnWrapper}>
+              <RadioButton.Group
+                onValueChange={value1 => setValue2(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value2}>
+                <RadioButton.Item label="Yes" value="Yes" color={'#1a4499'} />
+              </RadioButton.Group>
+              <RadioButton.Group
+                onValueChange={value1 => setValue2(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value2}>
+                <RadioButton.Item label="No" value="No" color={'#1a4499'} />
+              </RadioButton.Group>
+            </View>
+          </View>
+        </View>
+
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text
+            style={{
+              paddingLeft: 30,
+
+              color: '#1c449c',
+              fontSize: 18,
+              fontWeight: '700',
+            }}>
+            Mess:
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <View
+              style={[styles.RadioBtnWrapper, {paddingLeft: Theme.wp('11%')}]}>
+              <RadioButton.Group
+                onValueChange={value1 => setValue3(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value3}>
+                <RadioButton.Item label="Yes" value="Yes" color={'#1a4499'} />
+              </RadioButton.Group>
+              <RadioButton.Group
+                onValueChange={value1 => setValue3(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value3}>
+                <RadioButton.Item label="No" value="No" color={'#1a4499'} />
+              </RadioButton.Group>
+            </View>
+          </View>
+        </View>
+
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text
+            style={{
+              paddingLeft: 30,
+
+              color: '#1c449c',
+              fontSize: 18,
+              fontWeight: '700',
+            }}>
+            Internet:
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <View
+              style={[styles.RadioBtnWrapper, {paddingLeft: Theme.wp('5%')}]}>
+              <RadioButton.Group
+                onValueChange={value1 => setValue4(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value4}>
+                <RadioButton.Item label="Yes" value="Yes" color={'#1a4499'} />
+              </RadioButton.Group>
+              <RadioButton.Group
+                onValueChange={value1 => setValue4(value1)}
+                // status={value === 'first' ? 'checked' : 'unchecked'}
+                value={value4}>
+                <RadioButton.Item label="No" value="No" color={'#1a4499'} />
+              </RadioButton.Group>
+            </View>
           </View>
         </View>
 
@@ -391,14 +509,15 @@ const OwnerPost = () => {
           }}
           style={{
             width: Theme.wp('80%'),
-            height: 40,
+            height: '10%',
             backgroundColor: '#1a4499',
             alignSelf: 'center',
             alignItems: 'center',
-            marginTop: 5,
+            marginTop: 10,
+            bottom: 5,
           }}>
           <Text style={{color: 'white', fontSize: 17, paddingTop: 10}}>
-            Post
+            Post Your Ad
           </Text>
         </TouchableOpacity>
       </KeyboardAwareScrollView>
@@ -420,8 +539,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   imgEdit: {
-    height: Theme.hp('19.5%'),
-    width: Theme.wp('82.9%'),
+    height: Theme.hp('13.5%'),
+    width: Theme.wp('80.9%'),
     resizeMode: 'cover',
     // marginLeft: 15,
     borderRadius: 10,

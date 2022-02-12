@@ -22,11 +22,13 @@ import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerHomeFlatList/O
 // create a component
 const OwnerHome = ({navigation}) => {
   const [BookingStatus, setBookingStatus] = React.useState(false);
-
+  const [hostelNamee, SethostelNamee] = useState('');
   const [AddsData, SetAddsData] = useState([]);
 
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
+    const ref2 = db.ref('Owner/' + currentUid);
+
     const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
 
     await ref.on('value', snapshot => {
@@ -42,6 +44,19 @@ const OwnerHome = ({navigation}) => {
       } else {
       }
     });
+
+    await ref2.on('value', snapshot => {
+      if (snapshot.val()) {
+        const {HostelName} = snapshot.val();
+
+        SethostelNamee(HostelName);
+
+        console.log('Data 2 -------', HostelName);
+      } else {
+      }
+    });
+
+    const hostelName = () => {};
   };
   // console.log('thisssss', Object.values(quesData1));
 
@@ -102,183 +117,8 @@ const OwnerHome = ({navigation}) => {
           style={{padding: 10, fontSize: 20, paddingLeft: 30, color: 'black'}}>
           Recent Adds
         </Text>
-        {/* <View
-          //   onPress={() => navigation.navigate('HostelDetail')}
-          style={{
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: '#d4d4d4',
-            paddingBottom: 10,
-            margin: 15,
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
-            <View>
-              <Image
-                style={styles.Logo1}
-                source={require('../../../Assets/Flat.jpeg')}
-              />
-            </View>
-            <View style={{paddingStart: '3.5%'}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginTop: 5,
-                }}>
-                <Text style={{paddingLeft: 5}}>Marhaba Hostels</Text>
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <Entypo
-                  name={'location-pin'}
-                  size={20}
-                  color={'black'}
-                  style={{}}
-                />
 
-                <Text>Johar town, Lahore</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: 160,
-                  alignItems: 'center',
-                }}>
-                <AntDesign
-                  name={'wifi'}
-                  size={20}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <Ionicons
-                  name={'bed-outline'}
-                  size={20}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <FontAwesome5
-                  name={'utensils'}
-                  size={15}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <FontAwesome
-                  name={'bus'}
-                  size={15}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <Text>Rs</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: 175,
-                  alignItems: 'center',
-                }}>
-                <Text>Wifi</Text>
-                <Text>Bed</Text>
-                <Text>Mess</Text>
-                <Text>Buss</Text>
-                <Text style={{fontWeight: 'bold'}}>9000</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={{
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: '#d4d4d4',
-            paddingBottom: 10,
-            margin: 15,
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
-            <View>
-              <Image
-                style={styles.Logo1}
-                source={require('../../../Assets/Flat.jpeg')}
-              />
-            </View>
-            <View style={{paddingStart: '3.5%'}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginTop: 5,
-                }}>
-                <Text style={{paddingLeft: 5}}>Marhaba Hostels</Text>
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <Entypo
-                  name={'location-pin'}
-                  size={20}
-                  color={'black'}
-                  style={{}}
-                />
-
-                <Text>Johar town, Lahore</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: 160,
-                  alignItems: 'center',
-                }}>
-                <AntDesign
-                  name={'wifi'}
-                  size={20}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <Ionicons
-                  name={'bed-outline'}
-                  size={20}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <FontAwesome5
-                  name={'utensils'}
-                  size={15}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <FontAwesome
-                  name={'bus'}
-                  size={15}
-                  color={'black'}
-                  style={{marginTop: 5, marginRight: 10}}
-                />
-                <Text>Rs</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: 175,
-                  alignItems: 'center',
-                }}>
-                <Text>Wifi</Text>
-                <Text>Bed</Text>
-                <Text>Mess</Text>
-                <Text>Buss</Text>
-                <Text style={{fontWeight: 'bold'}}>9000</Text>
-              </View>
-            </View>
-          </View>
-        </View> */}
-
-        <OwnerHomeFlatList OwnerHomPg={AddsData} />
+        <OwnerHomeFlatList OwnerHomPg={AddsData} hostelName={hostelNamee} />
       </View>
     </ScrollView>
   );

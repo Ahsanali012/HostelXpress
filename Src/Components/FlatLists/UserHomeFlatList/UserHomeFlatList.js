@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Linking,
 } from 'react-native';
 import {auth, db} from '../../../Screens/Utils/Exports';
 import styles from './Style';
@@ -16,9 +17,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+
 const UserHomeFlatList = props => {
   const navigation = useNavigation();
-  const {UserHomPg, Onpress} = props;
+  const {UserHomPg, Onpress, hostelName} = props;
+
+  console.log('Coming inside Flatlist User ====>', hostelName);
   const [isLiked, setIsLike] = useState(false);
   const onLikePressed = () => {
     setIsLike(!isLiked);
@@ -35,9 +39,11 @@ const UserHomeFlatList = props => {
               onPress={() => navigation.navigate('HostelDetail', {item: item})}
               style={{
                 borderRadius: 10,
+                borderBottomLeftRadius: 10,
                 borderWidth: 1,
                 borderColor: '#d4d4d4',
                 margin: 15,
+                width: '90%',
               }}>
               <View
                 style={{
@@ -46,24 +52,30 @@ const UserHomeFlatList = props => {
                 <View style={{}}>
                   <Image
                     style={{
-                      width: Theme.wp('30%'),
-                      height: Theme.hp('14%'),
-
+                      width: Theme.wp('33%'),
+                      height: Theme.hp('18%'),
+                      borderRadius: 10,
                       resizeMode: 'cover',
                     }}
                     source={{uri: item.Image}}
                   />
                 </View>
 
-                <View style={{paddingStart: Theme.wp('6%')}}>
+                <View
+                  style={{
+                    paddingStart: Theme.wp('3%'),
+                  }}>
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
+                      width: '65%',
+
                       marginTop: 5,
                     }}>
-                    <Text>Marhaba Hostels</Text>
+                    <Text style={{fontSize: 18}}>Marhaba Hostels</Text>
+
                     <TouchableOpacity onPress={onLikePressed}>
                       {isLiked ? (
                         <FontAwesome5
@@ -80,15 +92,15 @@ const UserHomeFlatList = props => {
                           style={{marginTop: 5, left: Theme.wp('2%')}}
                         />
                       )}
-                      {/* <FontAwesome5
-                  name={'star'}
-                  size={18}
-                  color={'black'}
-                  style={{marginTop: 5}}
-                /> */}
                     </TouchableOpacity>
                   </View>
-                  <View style={{flexDirection: 'row'}}>
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      marginTop: '5%',
+                      width: '70%',
+                    }}>
                     <Entypo
                       name={'location-pin'}
                       size={20}
@@ -96,66 +108,40 @@ const UserHomeFlatList = props => {
                       style={{}}
                     />
 
-                    <Text>Johar town, Lahore</Text>
+                    <Text style={{fontSize: 18}}>{item.location}</Text>
                   </View>
+
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      width: Theme.wp('44%'),
+                      // width: Theme.wp('44%'),
                       alignItems: 'center',
                     }}>
-                    <AntDesign
-                      name={'wifi'}
-                      size={20}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('3%')}}
-                    />
-                    <Ionicons
-                      name={'bed-outline'}
-                      size={20}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
-                    <FontAwesome5
-                      name={'utensils'}
-                      size={15}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
-                    <FontAwesome
-                      name={'bus'}
-                      size={15}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
                     <Text
                       style={{
-                        left: Theme.wp('3%'),
+                        marginLeft: Theme.wp('30%'),
+                        paddingTop: '7%',
                         fontWeight: 'bold',
-                        fontSize: 17,
+                        fontSize: 20,
                       }}>
-                      Rs
+                      Rs {item.Price}
                     </Text>
                   </View>
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      width: Theme.wp('47%'),
+                      // width: Theme.wp('47%'),
                       alignItems: 'center',
                     }}>
-                    <Text>Wifi</Text>
-                    <Text>Bed</Text>
-                    <Text>Mess</Text>
-                    <Text>Buss</Text>
                     <Text
                       style={{
                         fontWeight: 'bold',
-                        left: Theme.wp('3%'),
+                        left: Theme.wp('43%'),
                         fontSize: 17,
                       }}>
-                      {item.Price}
+                      {/* {item.Price} */}
                     </Text>
                   </View>
                 </View>

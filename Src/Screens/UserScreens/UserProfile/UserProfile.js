@@ -52,7 +52,7 @@ const UserProfile = () => {
           <View>
             <Image
               style={styles.Logo}
-              source={require('../../../Assets/admin.jpeg')}
+              source={require('../../../Assets/admin.png')}
             />
           </View>
         </View>

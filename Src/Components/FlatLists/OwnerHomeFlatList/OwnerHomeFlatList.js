@@ -19,7 +19,9 @@ import {useNavigation} from '@react-navigation/native';
 
 const OwnerHomeFlatList = props => {
   const navigation = useNavigation();
-  const {OwnerHomPg, Onpress} = props;
+  const {OwnerHomPg, Onpress, hostelName} = props;
+
+  console.log('Coming inside Flatlist ====>', hostelName);
   const [isLiked, setIsLike] = useState(false);
   const onLikePressed = () => {
     setIsLike(!isLiked);
@@ -36,10 +38,12 @@ const OwnerHomeFlatList = props => {
               onPress={() => navigation.navigate('Requests', {item: item})}
               style={{
                 borderRadius: 10,
+                borderBottomLeftRadius: 10,
                 borderWidth: 1,
                 borderColor: '#d4d4d4',
                 margin: 15,
-                width: '94%',
+
+                width: '90%',
               }}>
               <View
                 style={{
@@ -48,26 +52,36 @@ const OwnerHomeFlatList = props => {
                 <View style={{}}>
                   <Image
                     style={{
-                      width: Theme.wp('30%'),
-                      height: Theme.hp('14%'),
-
+                      width: Theme.wp('33%'),
+                      height: Theme.hp('18%'),
+                      borderRadius: 10,
                       resizeMode: 'cover',
                     }}
                     source={{uri: item.Image}}
                   />
                 </View>
 
-                <View style={{paddingStart: Theme.wp('6%')}}>
+                <View
+                  style={{
+                    paddingStart: Theme.wp('6%'),
+                  }}>
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       marginTop: 5,
+                      width: '90%',
                     }}>
-                    <Text>Marhaba Hostels</Text>
+                    <Text style={{fontSize: 18}}>{hostelName}</Text>
                   </View>
-                  <View style={{flexDirection: 'row'}}>
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      marginTop: '10%',
+                      width: '88%',
+                    }}>
                     <Entypo
                       name={'location-pin'}
                       size={20}
@@ -75,67 +89,24 @@ const OwnerHomeFlatList = props => {
                       style={{}}
                     />
 
-                    <Text>Johar town, Lahore</Text>
+                    <Text style={{fontSize: 18}}>{item.location}</Text>
                   </View>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      width: Theme.wp('40%'),
 
-                      alignItems: 'center',
-                    }}>
-                    <AntDesign
-                      name={'wifi'}
-                      size={20}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
-                    <Ionicons
-                      name={'bed-outline'}
-                      size={20}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
-                    <FontAwesome5
-                      name={'utensils'}
-                      size={15}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
-                    <FontAwesome
-                      name={'bus'}
-                      size={15}
-                      color={'black'}
-                      style={{marginTop: 5, marginRight: Theme.wp('5%')}}
-                    />
-                    <Text
-                      style={{
-                        left: Theme.wp('9%'),
-                        fontWeight: 'bold',
-                        fontSize: 17,
-                      }}>
-                      Rs
-                    </Text>
-                  </View>
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      width: Theme.wp('45%'),
+                      // width: Theme.wp('44%'),
                       alignItems: 'center',
                     }}>
-                    <Text style={{marginRight: Theme.wp('1%')}}>Wifi</Text>
-                    <Text style={{marginLeft: Theme.wp('1%')}}>Bed</Text>
-                    <Text style={{marginLeft: Theme.wp('1%')}}>Mess</Text>
-                    <Text style={{marginLeft: Theme.wp('1%')}}>Buss</Text>
                     <Text
                       style={{
+                        marginLeft: Theme.wp('24%'),
+                        paddingTop: '7%',
                         fontWeight: 'bold',
-                        left: Theme.wp('4%'),
-                        fontSize: 17,
+                        fontSize: 20,
                       }}>
-                      {item.Price}
+                      Rs {item.Price}
                     </Text>
                   </View>
                 </View>

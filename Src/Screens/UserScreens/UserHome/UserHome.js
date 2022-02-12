@@ -24,6 +24,7 @@ import {useNavigation} from '@react-navigation/native';
 // create a component
 const UserHome = () => {
   const navigation = useNavigation();
+  const [hostelNamee, SethostelNamee] = useState('');
   const [isLiked, setIsLike] = useState(false);
   const onLikePressed = () => {
     setIsLike(!isLiked);
@@ -34,6 +35,8 @@ const UserHome = () => {
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner/').child('/OwnerPostAdd');
+
+    const ref2 = db.ref('Owner/');
 
     await ref.on('value', snapshot => {
       if (snapshot.val()) {
@@ -49,8 +52,23 @@ const UserHome = () => {
       } else {
       }
     });
+
+    await ref2
+      .orderByKey()
+      .once('value', snapshot => {})
+      .then(firstSnapShot => {
+        firstSnapShot.forEach(cordSnapshot => {
+          const {HostelName} = cordSnapshot.val();
+          console.log('Here=====', HostelName);
+          SethostelNamee(HostelName);
+        });
+      })
+      .then(async () => {
+        // SetcustomMarkerCords(arraycords);
+      });
   };
-  // console.log('thisssss', Object.values(quesData1));
+
+  const ref2 = db.ref('Owner/');
 
   useEffect(() => {
     getValues();
@@ -137,6 +155,7 @@ const UserHome = () => {
         </Text>
         <UserHomeFlatList
           UserHomPg={quesData1}
+          hostelName={hostelNamee}
           // Onpress={() => navigation.navigate('HostelDetail')}
         />
       </View>

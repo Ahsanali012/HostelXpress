@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  Linking,
   TouchableOpacity,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
@@ -22,9 +23,15 @@ import openMap from 'react-native-open-maps';
 // create a component
 const UserHostelDetails = ({navigation}) => {
   const item = useRoute().params.item;
-  const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
-  const [toggleCheckBox2, setToggleCheckBox2] = useState(false);
-  const [toggleCheckBox3, setToggleCheckBox3] = useState(false);
+
+  let Phone = item.phoneNumber;
+  console.log('Phoneeee===', Phone);
+
+  console.log('Inside Item ==== ', item);
+
+  // const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
+  // const [toggleCheckBox2, setToggleCheckBox2] = useState(false);
+  // const [toggleCheckBox3, setToggleCheckBox3] = useState(false);
 
   const [longitude, SetLongitude] = useState('');
   const [latitude, Setlatitude] = useState('');
@@ -53,6 +60,18 @@ const UserHostelDetails = ({navigation}) => {
       .then(async () => {
         // SetcustomMarkerCords(arraycords);
       });
+  };
+  const dialCall = () => {
+    let phoneNumber = '';
+
+    if (Platform.OS === 'android') {
+      // phoneNumber = 'tel:${item.phoneNumber}';
+      phoneNumber = 'tel:${Phone}';
+    } else {
+      phoneNumber = 'telprompt:${1234567890}';
+    }
+
+    Linking.openURL(phoneNumber);
   };
   // console.log('thisssss', Object.values(quesData1));
 
@@ -89,55 +108,11 @@ const UserHostelDetails = ({navigation}) => {
               style={{paddingRight: 5}}
             />
             <Text style={{alignSelf: 'center', fontSize: 20, color: 'black'}}>
-              D Block Johar Town
+              {item.location}
             </Text>
           </View>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: Theme.wp('82%'),
-            // paddingLeft: '5%',
-            alignSelf: 'center',
-          }}>
-          <AntDesign
-            name={'wifi'}
-            size={20}
-            color={'black'}
-            style={{marginLeft: Theme.wp('5%')}}
-          />
-          <Ionicons
-            name={'bed-outline'}
-            size={20}
-            color={'black'}
-            style={{marginLeft: Theme.wp('5%')}}
-          />
-          <FontAwesome5
-            name={'utensils'}
-            size={15}
-            color={'black'}
-            style={{marginLeft: Theme.wp('5%')}}
-          />
-          <FontAwesome
-            name={'bus'}
-            size={15}
-            color={'black'}
-            style={{marginLeft: Theme.wp('5%')}}
-          />
-          <FontAwesome
-            name={'car'}
-            size={15}
-            color={'black'}
-            style={{marginLeft: Theme.wp('5%')}}
-          />
-          <MaterialCommunityIcons
-            name={'security'}
-            size={15}
-            color={'black'}
-            style={{marginLeft: Theme.wp('5%')}}
-          />
-        </View>
+
         <View
           style={{
             flexDirection: 'row',
@@ -145,24 +120,10 @@ const UserHostelDetails = ({navigation}) => {
             // width: Theme.wp('0%'),
             // paddingLeft: 14,
             alignSelf: 'center',
-          }}>
-          <View
-            style={{
-              justifyContent: 'space-evenly',
-              flexDirection: 'row',
-              paddingLeft: 20,
-            }}>
-            <Text>Wifi</Text>
-            <Text style={{marginLeft: Theme.wp('5%')}}>Bed</Text>
-            <Text style={{marginLeft: Theme.wp('5%')}}>Mess</Text>
-            <Text style={{marginLeft: Theme.wp('5%')}}>Buss</Text>
-            <Text style={{marginLeft: Theme.wp('5%')}}>Parking</Text>
-            <Text style={{marginLeft: Theme.wp('5%')}}>Security</Text>
-          </View>
-        </View>
+          }}></View>
         <View
           style={{
-            marginTop: 20,
+            // marginTop: 5,
             paddingLeft: 20,
             justifyContent: 'space-between',
             flexDirection: 'row',
@@ -182,84 +143,56 @@ const UserHostelDetails = ({navigation}) => {
         </View>
 
         <View style={styles.Card}>
-          <Text style={{padding: 10, alignItems: 'center'}}>
-            Lorem ipsum is a placeholder text commonly used to demonstrate the
-            visual form of a document or a typeface without relying
-            ondddddddddddddddddddddddddddd
+          <Text
+            style={{
+              padding: 10,
+              alignItems: 'center',
+              fontWeight: '700',
+              color: 'gray',
+            }}>
+            {item.postDesc}
           </Text>
         </View>
         <View style={{marginTop: 10, paddingLeft: 20}}>
-          <Text style={{fontSize: 20, color: 'black'}}>Optional Services:</Text>
+          <Text style={{fontSize: 20, color: 'black', paddingTop: '1%'}}>
+            {' '}
+            Services Available
+          </Text>
           <Text style={{color: 'gray'}}>
             * Charges maybe be vary upon selection
           </Text>
-        </View>
-        <View
-          style={{
-            paddingTop: 10,
-            width: 320,
-            alignSelf: 'center',
-            alignContent: 'center',
-          }}>
-          <View style={styles.spaceBetween}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CheckBox
-                disabled={false}
-                style={{alignSelf: 'center'}}
-                value={toggleCheckBox2}
-                onValueChange={newValue => setToggleCheckBox2(newValue)}
-              />
-              <Text>Mess</Text>
-            </View>
-            <Text>+ 4000 Rs </Text>
+
+          <View style={{marginTop: 15}}>
+            <Text style={{fontSize: 18, color: 'gray'}}>
+              Furnished = {item.Furnished}
+            </Text>
+            <Text style={{fontSize: 18, color: 'gray'}}>
+              Internet = {item.Internet}
+            </Text>
+            <Text style={{fontSize: 18, color: 'gray'}}>
+              Person Space = {item.Persons}
+            </Text>
+            <Text style={{fontSize: 18, color: 'gray'}}>
+              Mess = {item.Mess}
+            </Text>
           </View>
         </View>
-        <View
-          style={{
-            paddingTop: 10,
-            width: 270,
-            alignSelf: 'center',
-            alignContent: 'center',
-          }}>
-          <View style={styles.spaceBetween}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CheckBox
-                disabled={false}
-                style={{alignSelf: 'center'}}
-                value={toggleCheckBox3}
-                onValueChange={newValue => setToggleCheckBox3(newValue)}
-              />
-              <Text>Transport</Text>
-            </View>
-            <Text>+ 4000 Rs </Text>
-          </View>
+
+        <View style={[styles.spaceBetween1, {marginTop: '2%'}]}>
+          <Text style={{color: 'black', fontSize: 20, paddingBottom: '5%'}}>
+            Rent Per Month
+          </Text>
+          <Text style={{color: 'black', fontSize: 20, paddingBottom: '5%'}}>
+            {item.Price}
+          </Text>
         </View>
-        <View
-          style={{
-            paddingTop: 10,
-            width: 300,
-            alignSelf: 'center',
-            alignContent: 'center',
-          }}>
-          <View style={styles.spaceBetween}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CheckBox
-                disabled={false}
-                style={{alignSelf: 'center'}}
-                value={toggleCheckBox1}
-                onValueChange={newValue => setToggleCheckBox1(newValue)}
-              />
-              <Text>Parking</Text>
-            </View>
-            <Text>+ 4000 Rs </Text>
-          </View>
-        </View>
-        <View style={styles.spaceBetween1}>
-          <Text style={{color: 'black', fontSize: 20}}>Rent Per Month</Text>
-          <Text style={{color: 'black', fontSize: 20}}>{item.Price}</Text>
-        </View>
+
         <View style={styles.spaceBetween1}>
           <TouchableOpacity
+            onPress={() => {
+              dialCall();
+            }}
+            // activeOpacity={0.7}
             style={{
               width: 100,
               height: 30,
@@ -294,12 +227,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   Image: {
-    height: 170,
-    width: 360,
-    borderBottomRightRadius: 40,
+    width: Theme.wp('100%'),
+    height: Theme.hp('30%'),
+
+    resizeMode: 'stretch',
+    // backgroundColor: 'red',
+    borderBottomRightRadius: 30,
   },
   Card: {
-    height: 100,
+    height: Theme.hp('13%'),
     width: 300,
     marginLeft: 15,
     borderRadius: 20,
@@ -314,7 +250,7 @@ const styles = StyleSheet.create({
   },
   spaceBetween1: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     alignItems: 'center',
     paddingTop: 10,
   },
