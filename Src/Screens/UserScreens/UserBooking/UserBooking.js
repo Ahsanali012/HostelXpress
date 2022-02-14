@@ -28,8 +28,8 @@ const UserBooking = () => {
   const [Cashaccount, setCashaccount] = useState('');
 
   const [AllValues, setAllValues] = useState({});
-  console.log('AllValues======', AllValues);
-  console.log('Item Came = ', item);
+  // console.log('AllValues======', AllValues);
+  // console.log('Item Came = ', item);
 
   // var  seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
   // console.log(seq);
@@ -55,7 +55,7 @@ const UserBooking = () => {
     });
   }, []);
   const HandleBook = async () => {
-    console.log('ITEM', item);
+    alert('ITEM' + JSON.stringify(profile));
     const ref = db.ref('Booking').child(item?.uid).child(item?.HosteliD);
     const refRequest = db
       .ref('Request')
@@ -113,7 +113,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Name : </Text>
-            <Text>{AllValues.Name} </Text>
+            <Text>{AllValues?.Name} </Text>
           </View>
           <View
             style={{
@@ -124,7 +124,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Name : </Text>
-            <Text>{AllValues.BankName} </Text>
+            <Text>{AllValues?.BankName} </Text>
           </View>
           <View
             style={{
@@ -135,7 +135,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Account : </Text>
-            <Text>{AllValues.BankAccount} </Text>
+            <Text>{AllValues?.BankAccount} </Text>
           </View>
           <View
             style={{
@@ -146,7 +146,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Jazz Cash: </Text>
-            <Text>{AllValues.CashAccount} </Text>
+            <Text>{AllValues?.CashAccount} </Text>
           </View>
           <View
             style={{
@@ -157,7 +157,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Easy Paisa : </Text>
-            <Text>{AllValues.CashAccount} </Text>
+            <Text>{AllValues?.CashAccount} </Text>
           </View>
         </View>
         <View style={{marginVertical: '10%'}}>
