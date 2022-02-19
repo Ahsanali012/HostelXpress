@@ -11,7 +11,7 @@ const MyBookings = () => {
     const ref = db.ref('Request').child(auth.currentUser.uid);
     ref.on('value', snapshot => {
       if (snapshot.val()) {
-        console.log('SNAPSHOT', Object.values(snapshot.val()));
+        console.log('MY Booking=======>', Object.values(snapshot.val()));
         setBookings(Object.values(snapshot.val()));
       } else {
         setBookings([]);

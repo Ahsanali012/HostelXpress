@@ -13,6 +13,8 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 // create a component
 const UserBooking = () => {
   const item = useRoute().params.item;
+
+  console.log('Item of User booking =======>>', item);
   const [profile, setProfile] = useState({});
 
   console.log('This Profile === ', profile);
@@ -28,7 +30,7 @@ const UserBooking = () => {
   const [Cashaccount, setCashaccount] = useState('');
 
   const [AllValues, setAllValues] = useState({});
-  // console.log('AllValues======', AllValues);
+  console.log('AllValues Set ======', AllValues);
   // console.log('Item Came = ', item);
 
   // var  seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
@@ -38,16 +40,14 @@ const UserBooking = () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Customer').child(auth.currentUser.uid);
 
-    const refowner = db.ref('Owner/').child('Mvi8eW4x0XIZXjPbEjk');
+    // const refowner = db.ref('Owner/').child('Mvi8eW4x0XIZXjPbEjk');
 
-    console.log('refowner', refowner);
+    // refowner.on('value', snapshot => {
+    //   console.warn('SNAPSHOTTTOwner====', snapshot.val());
+    //   //  setProfile(snapshot.val());
 
-    refowner.on('value', snapshot => {
-      console.warn('SNAPSHOTTTOwner====', snapshot.val());
-      //  setProfile(snapshot.val());
-
-      setAllValues(snapshot.val());
-    });
+    //   setAllValues(snapshot.val());
+    // });
 
     ref.on('value', snapshot => {
       console.warn('SNAPSHOTTT', snapshot.val());
@@ -75,6 +75,7 @@ const UserBooking = () => {
       name: profile.Name,
       transactionId: TId,
       accepted: false,
+      HosteliD: item?.HosteliD,
     });
   };
 
