@@ -17,11 +17,13 @@ const Requests = () => {
     console.log('Checking Booking=========>>>', ref);
 
     ref.on('value', snapshot => {
-      console.log('Value Log ===>>>>>', snapshot);
+      // console.log('Value Log ===>>>>>', snapshot);
       if (snapshot.val()) {
-        console.log('SNAPSHOT Val ===========', Object.values(snapshot.val()));
-        setRequest(Object.values(snapshot.val()));
-        console.log('Request When Set =====', request);
+        snapshot.forEach(childSnapShot => {
+          let child = childSnapShot.val();
+          console.log('CHILD ===========', Object.values(child));
+          setRequest(Object.values(childSnapShot.val()));
+        });
       } else {
         setRequest([]);
       }
