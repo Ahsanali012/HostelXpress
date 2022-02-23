@@ -44,7 +44,7 @@ const BottomTab = () => (
         ),
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name={'AdminUser'}
       component={AdminUser}
       options={{
@@ -54,7 +54,7 @@ const BottomTab = () => (
           </Text>
         ),
       }}
-    />
+    /> */}
 
     <Tab.Screen
       name={'AdminProfile'}

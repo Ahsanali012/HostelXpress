@@ -19,12 +19,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './Style';
 import {auth, db} from '../../Utils/Exports';
 import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerHomeFlatList/OwnerHomeFlatList';
+import {useRoute} from '@react-navigation/native';
 // create a component
 const OwnerHome = ({navigation}) => {
   const [BookingStatus, setBookingStatus] = React.useState(false);
   const [hostelNamee, SethostelNamee] = useState('');
   const [AddsData, SetAddsData] = useState([]);
-
+  const {params} = useRoute();
+  const item = params?.item;
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
     const ref2 = db.ref('Owner/' + currentUid);
@@ -34,6 +36,7 @@ const OwnerHome = ({navigation}) => {
     await ref.on('value', snapshot => {
       if (snapshot.val()) {
         const data = snapshot.val();
+
         SetAddsData(Object.values(data));
 
         console.log('Data--', data);
@@ -47,11 +50,7 @@ const OwnerHome = ({navigation}) => {
 
     await ref2.on('value', snapshot => {
       if (snapshot.val()) {
-        const {HostelName} = snapshot.val();
-
-        SethostelNamee(HostelName);
-
-        console.log('Data 2 -------', HostelName);
+        // console.log('====>>>>', snapshot);
       } else {
       }
     });
@@ -59,6 +58,29 @@ const OwnerHome = ({navigation}) => {
     const hostelName = () => {};
   };
   // console.log('thisssss', Object.values(quesData1));
+
+  useEffect(() => {
+    console.log('ITEM', item);
+    const ref = db.ref('Booking').child(auth.currentUser.uid);
+
+    // .child(item?.HosteliD);
+
+    console.log('Checking Booking=========>>>', ref);
+
+    alert('Theres a booking Please Check Ads');
+
+    ref.on('value', snapshot => {
+      // console.log('Value Log ===>>>>>', snapshot);
+      if (snapshot.val()) {
+        snapshot.forEach(childSnapShot => {
+          let child = childSnapShot.val();
+          console.log('CHILD ==============', Object.values(child));
+        });
+      } else {
+        // setRequest([]);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     getValues();

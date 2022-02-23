@@ -28,22 +28,20 @@ const SignUp = () => {
   const [password, setpassword] = useState('');
   const [confirmpassword, setconfirmpassword] = useState('');
   const [value, setValue] = React.useState('');
-  const [HostelName, setHostelName] = useState('');
 
   console.log('Value===', value);
 
   const validation = Yup.object().shape({
     Name: Yup.string().required(),
     Email: Yup.string().required(),
-    Password: Yup.string()
-      .min(6, 'Enter min 6 digit')
-      .required()
-      .max(8, 'Input short digits string'),
-
     Cnic: Yup.string()
       .min(6, 'Enter min 13 digit')
       .required()
       .max(13, 'Input short digits string'),
+    Password: Yup.string()
+      .min(6, 'Enter min 6 digit')
+      .required()
+      .max(8, 'Input short digits string'),
 
     ConfirmPassword: Yup.string()
       .min(6, 'Enter min 6 digit')
@@ -52,10 +50,9 @@ const SignUp = () => {
       .required()
       .oneOf([Yup.ref('Password'), null], 'Password must match'),
 
-    BankName: Yup.string().required(),
-    BankAccount: Yup.string().required(),
-    CashAccount: Yup.string().required(),
-    HostelName: Yup.string().required(),
+    BankName: Yup.string(),
+    BankAccount: Yup.string(),
+    CashAccount: Yup.string(),
   });
 
   const SignUpFunc = (
@@ -66,7 +63,6 @@ const SignUp = () => {
     BankName,
     BankAccount,
     CashAccount,
-    HostelName,
   ) => {
     // console.log('Name', Name);
     auth
@@ -77,38 +73,60 @@ const SignUp = () => {
         const currentUid = auth.currentUser.uid;
 
         {
-          value == 'Owner'
-            ? db.ref('Owner/' + currentUid).set({
-                Email: Email,
-                uid: auth.currentUser.uid,
-                Name: Name,
-                Cnic: Cnic,
-                HostelName: HostelName,
-                BankName: BankName,
-                BankAccount: BankAccount,
-                CashAccount: CashAccount,
-              })
-            : db.ref('Customer/' + currentUid).set({
-                Email: Email,
-                uid: auth.currentUser.uid,
-                Name: Name,
-                Cnic: Cnic,
-              });
+          value == 'Owner' ? (
+            db.ref('Owner/' + currentUid).set({
+              Email: Email,
+              uid: auth.currentUser.uid,
+              Name: Name,
+              Cnic: Cnic,
+              BankName: BankName,
+              BankAccount: BankAccount,
+              CashAccount: CashAccount,
+            })
+          ) : (
+            <></>
+          );
+        }
+
+        {
+          value == 'Customer' ? (
+            db.ref('Customer/' + currentUid).set({
+              Email: Email,
+              uid: auth.currentUser.uid,
+              Name: Name,
+              Cnic: Cnic,
+            })
+          ) : (
+            <></>
+          );
+        }
+
+        {
+          value == 'Admin' ? (
+            db.ref('Admin/' + currentUid).set({
+              Email: Email,
+              uid: auth.currentUser.uid,
+              Name: Name,
+              Cnic: Cnic,
+            })
+          ) : (
+            <></>
+          );
         }
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          Setloader(false);
+          // Setloader(false);
           alert('That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {
-          Setloader(false);
+          // Setloader(false);
           alert('That email address is invalid!');
         }
 
         console.error(error);
-        Setloader(false);
+        // Setloader(false);
         alert(error);
       });
   };
@@ -126,10 +144,9 @@ const SignUp = () => {
             BankName: Bankname,
             BankAccount: BankAccount,
             CashAccount: CashAccount,
-            HostelName: HostelName,
           }}
-          onSubmit={(values, actions) => {
-            actions.resetForm();
+          onSubmit={(values, {resetForm}) => {
+            resetForm();
             SignUpFunc(
               values.Email,
               values.Password,
@@ -138,7 +155,6 @@ const SignUp = () => {
               values.BankName,
               values.BankAccount,
               values.CashAccount,
-              values.HostelName,
             );
             // console.warn(values);
             setname({
@@ -155,10 +171,6 @@ const SignUp = () => {
             });
             setconfirmpassword({
               confirmPassword: values.ConfirmPassword,
-            });
-
-            setHostelName({
-              HostelName: values.HostelName,
             });
 
             setBankname({
@@ -280,29 +292,6 @@ const SignUp = () => {
                     <>
                       <View style={styles.HeadingEmail}>
                         <Text style={{fontSize: 17, color: 'black'}}>
-                          Hostel Name :
-                        </Text>
-                      </View>
-
-                      <View>
-                        <TextInput
-                          placeholder="Enter Hostel Name"
-                          placeholderTextColor="gray"
-                          // onChangeText={Text => setBankname(Text)}
-                          // value={password}
-                          onChangeText={formikProps.handleChange('HostelName')}
-                          onBlur={formikProps.handleBlur('HostelName')}
-                          style={styles.markerTxin}
-                          multiline
-                        />
-                        <Text style={styles.errorBox}>
-                          {formikProps.touched.HostelName &&
-                            formikProps.errors.HostelName}
-                        </Text>
-                      </View>
-
-                      <View style={styles.HeadingEmail}>
-                        <Text style={{fontSize: 17, color: 'black'}}>
                           Bank Name:
                         </Text>
                       </View>
@@ -379,7 +368,7 @@ const SignUp = () => {
                     value={value}>
                     <RadioButton.Item
                       label="Customer"
-                      value="Cutomer"
+                      value="Customer"
                       color={'#1a4499'}
                     />
                   </RadioButton.Group>
@@ -391,6 +380,17 @@ const SignUp = () => {
                     <RadioButton.Item
                       label="Hostel Owner"
                       value="Owner"
+                      color={'#1a4499'}
+                    />
+                  </RadioButton.Group>
+                  <RadioButton.Group
+                    onValueChange={value => setValue(value)}
+                    // status={value === 'second' ? 'checked' : 'unchecked'}
+                    color={'black'}
+                    value={value}>
+                    <RadioButton.Item
+                      label="Admin"
+                      value="Admin"
                       color={'#1a4499'}
                     />
                   </RadioButton.Group>

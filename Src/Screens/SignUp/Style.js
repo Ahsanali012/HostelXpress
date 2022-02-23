@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
   },
   HeadingEmail: {
     margin: '3%',
-    // marginTop: '2%',
+    // marginTop: '3%',
+    paddingTop: '2%',
+    top: '0%',
     marginBottom: '4%',
     marginLeft: '5%',
     color: '#515467',
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   RadioBtnWrapper: {
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     flexDirection: 'row',
     // marginTop: '5%',
     width: '93%',

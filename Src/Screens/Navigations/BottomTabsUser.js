@@ -48,7 +48,7 @@ const BottomTabUser = () => (
         ),
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name={'UserSaved'}
       component={UserSaved}
       options={{
@@ -57,7 +57,7 @@ const BottomTabUser = () => (
           <Entypo name={'star'} size={20} style={{color}} color={'white'} />
         ),
       }}
-    />
+    /> */}
     <Tab.Screen
       name={'MyBookings'}
       component={MyBookings}

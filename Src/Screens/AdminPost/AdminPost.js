@@ -1,147 +1,112 @@
-import React, {Component, useState} from 'react';
+//import liraries
+
+import React, {useEffect, useState} from 'react';
 import {
-  Text,
   View,
-  FlatList,
+  Text,
+  StyleSheet,
   Image,
   TouchableOpacity,
-  Button,
-  Pressable,
-  TextInput,
+  TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
-
-import styles from './Style';
-import Transaction from './Transaction';
-import {useNavigation} from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
+
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
-const AdminPost = props => {
+import styles from './Style';
+import Theme from '../Utils/Theme';
+import {auth, db} from '../Utils/Exports';
+import UserHomeFlatList from '../../Components/FlatLists/UserHomeFlatList/UserHomeFlatList';
+import {useNavigation} from '@react-navigation/native';
+import AdminHomeFlatList from '../../Components/FlatLists/AdminHomeFlatList/AdminHomeFlatList';
+// create a component
+const AdminPost = () => {
   const navigation = useNavigation();
-  const renderFlatlist = ({item, index}) => {
-    return (
-      <View
-        style={{
-          borderRadius: 10,
-          borderWidth: 1,
-          borderColor: '#d4d4d4',
+  const [hostelNamee, SethostelNamee] = useState('');
+  const [isLiked, setIsLike] = useState(false);
+  const onLikePressed = () => {
+    setIsLike(!isLiked);
+  };
 
-          margin: 20,
-        }}>
+  const [quesData1, setQuesData1] = useState([]);
+
+  const getValues = async () => {
+    const currentUid = auth.currentUser.uid;
+    const ref = db.ref('Owner/').child('/OwnerPostAdd');
+
+    const ref2 = db.ref('Owner/');
+
+    await ref.on('value', snapshot => {
+      if (snapshot.val()) {
+        const data = snapshot.val();
+
+        setQuesData1(Object.values(data));
+
+        console.log('Data--', data);
+
+        // Object.values(snapshot.val()).map(item => {
+        //   console.log(item);
+        // });
+      } else {
+      }
+    });
+
+    await ref2
+      .orderByKey()
+      .once('value', snapshot => {})
+      .then(firstSnapShot => {
+        firstSnapShot.forEach(cordSnapshot => {
+          const {HostelName} = cordSnapshot.val();
+          console.log('Here=====', HostelName);
+          SethostelNamee(HostelName);
+        });
+      })
+      .then(async () => {
+        // SetcustomMarkerCords(arraycords);
+      });
+  };
+
+  const ref2 = db.ref('Owner/');
+
+  useEffect(() => {
+    getValues();
+  }, []);
+
+  return (
+    <ScrollView>
+      <View style={styles.container}>
         <View
           style={{
             flexDirection: 'row',
+            alignSelf: 'flex-start',
+
+            // alignItems: 'center',
           }}>
-          <View>
-            <Image
-              style={styles.Logo}
-              source={require('../../Assets/Flat.jpeg')}
-            />
-          </View>
-          <View style={{padding: 20}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <Text>Marhaba Hostels</Text>
-              <FontAwesome5
-                name={'trash'}
-                size={18}
-                color={'#c51a1a'}
-                style={{marginTop: 5, marginRight: 10}}
-              />
-            </View>
-            <View style={{flexDirection: 'row'}}>
-              <Entypo
-                name={'location-pin'}
-                size={20}
-                color={'black'}
-                style={{}}
-              />
-
-              <Text>Johar town, Lahore</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: 160,
-                alignItems: 'center',
-              }}>
-              <AntDesign
-                name={'wifi'}
-                size={20}
-                color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
-              />
-              <Ionicons
-                name={'bed-outline'}
-                size={20}
-                color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
-              />
-              <FontAwesome5
-                name={'utensils'}
-                size={15}
-                color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
-              />
-              <FontAwesome
-                name={'bus'}
-                size={15}
-                color={'black'}
-                style={{marginTop: 5, marginRight: 10}}
-              />
-              <Text>Rs</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: 175,
-                alignItems: 'center',
-              }}>
-              <Text>Wifi</Text>
-              <Text>Bed</Text>
-              <Text>Mess</Text>
-              <Text>Buss</Text>
-              <Text style={{fontWeight: 'bold'}}>9000</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                paddingTop: 10,
-                alignItems: 'center',
-                // width: '95%',
-              }}>
-              <Entypo name={'eye'} size={20} color={'black'} style={{}} />
-              <Text>119 views</Text>
-              <AntDesign name={'heart'} size={15} color={'red'} style={{}} />
-              <Text>119 Likes</Text>
-            </View>
-          </View>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              fontSize: 24,
+              marginLeft: 20,
+              padding: 10,
+            }}>
+            Hostels Ads
+          </Text>
         </View>
-      </View>
-    );
-  };
-  return (
-    <View style={{flex: 1}}>
-      <Text style={{padding: 30, fontSize: 30, color: '#1a4499'}}>Posts</Text>
 
-      <FlatList
-        data={Transaction}
-        renderItem={renderFlatlist}
-        scrollEnabled
-        inverted
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </View>
+        <AdminHomeFlatList
+          UserHomPg={quesData1}
+          hostelName={hostelNamee}
+          // Onpress={() => navigation.navigate('HostelDetail')}
+        />
+      </View>
+    </ScrollView>
   );
 };
+
+// define your styles
+
+//make this component available to the app
 export default AdminPost;

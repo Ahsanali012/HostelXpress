@@ -71,7 +71,7 @@ const BottomTabOwner = () => (
       }}
     />
 
-    <Tab.Screen
+    {/* <Tab.Screen
       name={'OwnerAds'}
       component={OwnerAds}
       options={{
@@ -85,7 +85,7 @@ const BottomTabOwner = () => (
           />
         ),
       }}
-    />
+    /> */}
     <Tab.Screen
       name={'OwnerProfile'}
       component={OwnerProfile}

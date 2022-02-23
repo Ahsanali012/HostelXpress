@@ -37,6 +37,7 @@ const OwnerPost = () => {
   const [price, Setprice] = React.useState('');
   const [location, Setlocation] = React.useState('');
   const [phoneNumber, SetphoneNumber] = React.useState('');
+  const [hostelName, Sethostelname] = React.useState('');
   const [postDesc, SetpostDesc] = React.useState('');
   const [types, setType] = useState('');
   const [img, SetImg] = useState('');
@@ -124,7 +125,7 @@ const OwnerPost = () => {
       postDesc: postDesc,
       location: location,
       Price: price,
-      Persons: value,
+      HostelName: hostelName,
       phoneNumber: phoneNumber,
       Furnished: value2,
       Mess: value3,
@@ -141,7 +142,7 @@ const OwnerPost = () => {
       location: location,
       Price: price,
       phoneNumber: phoneNumber,
-      Persons: value,
+      HostelName: hostelName,
       Furnished: value2,
       Mess: value3,
       Internet: value4,
@@ -310,6 +311,7 @@ const OwnerPost = () => {
               />
             </View>
           </View>
+
           <View style={{}}>
             <Text
               style={{
@@ -322,6 +324,7 @@ const OwnerPost = () => {
               }}>
               Phone Number:
             </Text>
+
             <TextInput
               onChangeText={Text => SetphoneNumber(Text)}
               placeholder="Phone Number"
@@ -337,58 +340,32 @@ const OwnerPost = () => {
             />
           </View>
         </View>
-
-        <View>
+        <View style={{}}>
           <Text
             style={{
-              paddingLeft: 30,
-              // paddingTop: 10,
+              flexDirection: 'row',
+              paddingLeft: 20,
+              color: '#1c449c',
               fontWeight: '600',
               fontSize: 20,
-              color: '#1c449c',
+              // paddingBottom: 2,
             }}>
-            Persons :
+            Hostel Name:
           </Text>
-          <View
+
+          <TextInput
+            onChangeText={Text => Sethostelname(Text)}
+            placeholder="Hostel Name"
+            value={hostelName}
             style={{
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
-            }}>
-            <View style={styles.RadioBtnWrapper}>
-              <RadioButton.Group
-                onValueChange={value1 => setValue(value1)}
-                // status={value === 'first' ? 'checked' : 'unchecked'}
-                value={value}>
-                <RadioButton.Item
-                  label="single"
-                  value="Single"
-                  color={'#1a4499'}
-                />
-              </RadioButton.Group>
-              <RadioButton.Group
-                onValueChange={value1 => setValue(value1)}
-                // status={value === 'first' ? 'checked' : 'unchecked'}
-                value={value}>
-                <RadioButton.Item
-                  label="Double"
-                  value="Double"
-                  color={'#1a4499'}
-                />
-              </RadioButton.Group>
-              <RadioButton.Group
-                onValueChange={value1 => setValue(value1)}
-                // status={value === 'second' ? 'checked' : 'unchecked'}
-                color={'black'}
-                value={value}>
-                <RadioButton.Item
-                  label="Triple"
-                  value="Triple"
-                  color={'#1a4499'}
-                />
-              </RadioButton.Group>
-            </View>
-          </View>
+              width: Theme.wp('85%'),
+              height: 40,
+              marginLeft: 20,
+              alignSelf: 'flex-start',
+              // backgroundColor: '#D4D4D4',
+              marginTop: 2,
+            }}
+          />
         </View>
 
         <View

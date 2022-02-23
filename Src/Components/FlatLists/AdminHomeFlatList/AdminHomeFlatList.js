@@ -9,7 +9,7 @@ import {
   Linking,
 } from 'react-native';
 import {auth, db} from '../../../Screens/Utils/Exports';
-import styles from './Style';
+
 import Theme from '../../../Screens/Utils/Theme';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -18,22 +18,26 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
-const UserHomeFlatList = props => {
+const AdminHomeFlatList = props => {
   const navigation = useNavigation();
   const {UserHomPg, Onpress, hostelName} = props;
 
   console.log('Coming inside Flatlist User ====>', hostelName);
   const [isLiked, setIsLike] = useState(false);
-  const onLikePressed = () => {
-    setIsLike(!isLiked);
+
+  const onDelete = ind => {
+    UserHomPg.pop(ind);
+    const currentUid = auth.currentUser.uid;
+
+    db.ref('Owner/').child('/OwnerPostAdd').remove();
   };
   return (
     <View style={{}}>
       <FlatList
         data={UserHomPg}
-        // keyExtractor={item => item.id}
+        keyExtractor={item => item.id}
         renderItem={({item, index}) => {
-          // console.log('--------> Inside UserFlatList', item.BookingStatus);
+          console.log('---> Item ', item.id);
           return (
             <TouchableOpacity
               onPress={() => navigation.navigate('HostelDetail', {item: item})}
@@ -70,28 +74,20 @@ const UserHomeFlatList = props => {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      width: '63%',
+                      width: '65%',
 
                       marginTop: 5,
                     }}>
-                    <Text style={{fontSize: 18}}>{item.HostelName}</Text>
+                    <Text style={{fontSize: 18}}>Marhaba Hostels</Text>
 
-                    <TouchableOpacity onPress={onLikePressed}>
-                      {isLiked ? (
-                        <FontAwesome5
-                          name={'star'}
-                          size={20}
-                          color={'black'}
-                          style={{marginTop: 5, left: Theme.wp('2%')}}
-                        />
-                      ) : (
-                        <FontAwesome
-                          name={'star'}
-                          size={22}
-                          color={'blue'}
-                          style={{marginTop: 5, left: Theme.wp('2%')}}
-                        />
-                      )}
+                    <TouchableOpacity>
+                      <FontAwesome5
+                        onPress={() => onDelete(item.index)}
+                        name={'trash'}
+                        size={20}
+                        color={'red'}
+                        style={{marginTop: 5, left: Theme.wp('2%')}}
+                      />
                     </TouchableOpacity>
                   </View>
 
@@ -101,12 +97,7 @@ const UserHomeFlatList = props => {
                       marginTop: '5%',
                       width: '70%',
                     }}>
-                    <Entypo
-                      name={'location-pin'}
-                      size={20}
-                      color={'black'}
-                      style={{}}
-                    />
+                    <Entypo name={'location-pin'} size={20} color={'black'} />
 
                     <Text style={{fontSize: 18}}>{item.location}</Text>
                   </View>
@@ -153,4 +144,4 @@ const UserHomeFlatList = props => {
     </View>
   );
 };
-export default UserHomeFlatList;
+export default AdminHomeFlatList;

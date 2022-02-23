@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   RadioBtnWrapper: {
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     flexDirection: 'row',
     marginTop: '5%',
     width: '90%',

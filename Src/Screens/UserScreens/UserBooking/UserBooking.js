@@ -114,7 +114,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Name : </Text>
-            <Text>{AllValues?.Name} </Text>
+            <Text>{profile?.Name} </Text>
           </View>
           <View
             style={{
@@ -125,7 +125,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Name : </Text>
-            <Text>{AllValues?.BankName} </Text>
+            {/* <Text>{AllValues?.BankName} </Text> */}
+            <Text>Meezan Bank </Text>
           </View>
           <View
             style={{
@@ -136,7 +137,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Account : </Text>
-            <Text>{AllValues?.BankAccount} </Text>
+            {/* <Text>{AllValues?.BankAccount} </Text> */}
+            <Text>Ahsan Ali </Text>
           </View>
           <View
             style={{
@@ -147,7 +149,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Jazz Cash: </Text>
-            <Text>{AllValues?.CashAccount} </Text>
+            {/* <Text>{AllValues?.CashAccount} </Text> */}
+            <Text>4455566</Text>
           </View>
           <View
             style={{
@@ -158,7 +161,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Easy Paisa : </Text>
-            <Text>{AllValues?.CashAccount} </Text>
+            <Text>2233444 </Text>
+            {/* <Text>{AllValues?.CashAccount} </Text> */}
           </View>
         </View>
         <View style={{marginVertical: '10%'}}>

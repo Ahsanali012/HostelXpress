@@ -95,15 +95,22 @@ const Loginscreen = () => {
         const authID = auth().currentUser.uid;
         const refOwner = db.ref('Owner/' + authID);
         const refUser = db.ref('Customer/' + authID);
-        refOwner.once('value', snapshotOwner => {
-          refUser.once('value', snapshotUserr => {
-            if (snapshotOwner.val() && value == 'Owner') {
-              navigation.replace('BottomTabOwner');
-            } else if (snapshotUserr.val() && value == 'Customer') {
-              navigation.replace('BottomTabUser');
-            } else {
-              alert('YOu have to sign up first');
-            }
+        const refAdmin = db.ref('Admin/' + authID);
+
+        refAdmin.once('value', snapshotAdmin => {
+          refOwner.once('value', snapshotOwner => {
+            refUser.once('value', snapshotUserr => {
+              if (snapshotOwner.val() && value == 'Owner') {
+                navigation.replace('BottomTabOwner');
+              }
+              if (snapshotAdmin.val() && value == 'Admin') {
+                navigation.replace('BottomTab');
+              } else if (snapshotUserr.val() && value == 'Customer') {
+                navigation.replace('BottomTabUser');
+              } else {
+                alert('YOu have to sign up first');
+              }
+            });
           });
         });
         // const refOwner=db.ref('Owner/'+)
@@ -151,9 +158,10 @@ const Loginscreen = () => {
               Email: email,
               Password: password,
             }}
-            onSubmit={(values, actions) => {
+            onSubmit={(values, {resetForm}) => {
               // action is use  for call reset form
-              actions.resetForm();
+              resetForm();
+
               loginFunc(values.Email, values.Password);
               // console.warn(values);
               setEmail({
@@ -232,6 +240,18 @@ const Loginscreen = () => {
                     <RadioButton.Item
                       label="Hostel Owner"
                       value="Owner"
+                      color={'#1a4499'}
+                    />
+                  </RadioButton.Group>
+
+                  <RadioButton.Group
+                    onValueChange={value1 => setValuein(value1)}
+                    // status={value === 'second' ? 'checked' : 'unchecked'}
+                    color={'black'}
+                    value={value}>
+                    <RadioButton.Item
+                      label="Admin"
+                      value="Admin"
                       color={'#1a4499'}
                     />
                   </RadioButton.Group>

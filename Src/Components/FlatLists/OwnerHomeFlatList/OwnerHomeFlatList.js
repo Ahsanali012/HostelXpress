@@ -73,7 +73,9 @@ const OwnerHomeFlatList = props => {
                       marginTop: 5,
                       width: '90%',
                     }}>
-                    <Text style={{fontSize: 18}}>Marhaba Hostels</Text>
+                    <Text style={{fontSize: 18, color: 'black'}}>
+                      {item.HostelName}
+                    </Text>
                   </View>
 
                   <View
