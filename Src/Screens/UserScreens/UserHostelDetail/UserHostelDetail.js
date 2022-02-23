@@ -108,7 +108,7 @@ const UserHostelDetails = ({navigation}) => {
               style={{paddingRight: 5}}
             />
             <Text style={{alignSelf: 'center', fontSize: 20, color: 'black'}}>
-              {item.location}
+              {item.HostelName} {','} {item.location}
             </Text>
           </View>
         </View>
@@ -169,9 +169,7 @@ const UserHostelDetails = ({navigation}) => {
             <Text style={{fontSize: 18, color: 'gray'}}>
               Internet = {item.Internet}
             </Text>
-            <Text style={{fontSize: 18, color: 'gray'}}>
-              Person Space = {item.Persons}
-            </Text>
+
             <Text style={{fontSize: 18, color: 'gray'}}>
               Mess = {item.Mess}
             </Text>

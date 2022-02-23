@@ -68,7 +68,21 @@ const UserHome = () => {
       });
   };
 
-  const ref2 = db.ref('Owner/');
+  useEffect(() => {
+    // console.log('ITEM', item);
+    const ref = db.ref('Request').child(auth.currentUser.uid);
+    ref.on('value', snapshot => {
+      if (snapshot.val()) {
+        console.log('MY Booking=======>', Object.values(snapshot.val()));
+        alert(
+          'Dear Customer Please Check Your Booking Status in My Booking Section',
+        );
+        // setBookings(Object.values(snapshot.val()));
+      } else {
+        // setBookings([]);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     getValues();
