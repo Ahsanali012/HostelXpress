@@ -22,20 +22,25 @@ const Requests = () => {
     console.log('ITEM', item);
     const ref = db.ref('Booking').child(auth.currentUser.uid);
 
-    // .child(item?.HosteliD);
-
     console.log('Checking Booking=========>>>', ref);
 
+    // Yaha Neechay Item.HostelId ki base ker request show kervani ha User ki Abhi har Jaga same jaari
+
+    var a = item?.HosteliD;
+    console.log('Checking=====>', a);
+
     ref.on('value', snapshot => {
-      // console.log('Value Log ===>>>>>', snapshot);
+      console.log('Value Log ===>>>>>', snapshot);
       if (snapshot.val()) {
         snapshot.forEach(childSnapShot => {
+          console.log('ChildSnapShot====>', childSnapShot);
+
           let child = childSnapShot.val();
           console.log('CHILD ==============', Object.values(child));
           setRequest(Object.values(childSnapShot.val()));
         });
       } else {
-        setRequest([]);
+        setRequest(null);
       }
     });
   }, []);

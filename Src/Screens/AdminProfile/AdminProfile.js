@@ -51,7 +51,7 @@ const AdminProfile = () => {
           <View>
             <Image
               style={styles.Logo}
-              source={require('../../Assets/adminPic.jpeg')}
+              source={require('../../Assets/adminPic.png')}
             />
           </View>
         </View>

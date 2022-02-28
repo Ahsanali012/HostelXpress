@@ -51,6 +51,7 @@ const AdminPost = () => {
         //   console.log(item);
         // });
       } else {
+        setQuesData1(null);
       }
     });
 

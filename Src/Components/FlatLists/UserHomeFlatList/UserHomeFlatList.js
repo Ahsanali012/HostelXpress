@@ -70,7 +70,7 @@ const UserHomeFlatList = props => {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      width: '63%',
+                      width: '58%',
 
                       marginTop: 5,
                     }}>

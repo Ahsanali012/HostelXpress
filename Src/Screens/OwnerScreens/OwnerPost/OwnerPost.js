@@ -91,14 +91,14 @@ const OwnerPost = () => {
     const task = storageRef.putFile(uploadUri);
 
     task.on('state_changed', snapshot => {
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      if (progress == 100) {
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 1000;
+      if (progress == 1000) {
       }
-      //  console.log('image uploaded')
     });
 
     try {
       await task;
+      console.warn('Post uploaded');
       const url = await storageRef.getDownloadURL();
       SetImg(null);
       console.log('======URL==========>', url);
@@ -112,51 +112,97 @@ const OwnerPost = () => {
     let imgUrl = await uploadImage();
 
     const currentUid = auth.currentUser.uid;
+
     const ref = db.ref('Owner/').child('/OwnerPostAdd');
     const refkey = db.ref('Owner/').child('/OwnerPostAdd').push().key;
     const ref2 = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+
     const refkey2 = db
       .ref('Owner/' + currentUid)
       .child('/OwnerPostAdd')
       .push().key;
 
-    ref.child(refkey).set({
-      Image: imgUrl,
-      postDesc: postDesc,
-      location: location,
-      Price: price,
-      HostelName: hostelName,
-      phoneNumber: phoneNumber,
-      Furnished: value2,
-      Mess: value3,
-      Internet: value4,
-      Latitude: currentLatitude,
-      Longitude: currentLongitude,
-      uid: currentUid,
-      BookingStatus: BookingStatus,
-      HosteliD: refkey,
-    });
-    ref2.child(refkey2).set({
-      Image: imgUrl,
-      postDesc: postDesc,
-      location: location,
-      Price: price,
-      phoneNumber: phoneNumber,
-      HostelName: hostelName,
-      Furnished: value2,
-      Mess: value3,
-      Internet: value4,
-      Latitude: currentLatitude,
-      Longitude: currentLongitude,
-      uid: currentUid,
-      BookingStatus: BookingStatus,
-      HosteliD: refkey2,
+    ref.once('value', snapshot => {
+      if (snapshot.val()) {
+        let newPost = [];
+        newPost = Object.values(snapshot.val());
+        newPost.push({
+          Image: imgUrl,
+          postDesc: postDesc,
+          location: location,
+          Price: price,
+          HostelName: hostelName,
+          phoneNumber: phoneNumber,
+          Furnished: value2,
+          Mess: value3,
+          Internet: value4,
+          Latitude: currentLatitude,
+          Longitude: currentLongitude,
+          uid: currentUid,
+          BookingStatus: BookingStatus,
+          HosteliD: refkey2,
+        });
+        ref.set(newPost);
+      } else {
+        ref.child(refkey2).set({
+          Image: imgUrl,
+          postDesc: postDesc,
+          location: location,
+          Price: price,
+          HostelName: hostelName,
+          phoneNumber: phoneNumber,
+          Furnished: value2,
+          Mess: value3,
+          Internet: value4,
+          Latitude: currentLatitude,
+          Longitude: currentLongitude,
+          uid: currentUid,
+          BookingStatus: BookingStatus,
+          HosteliD: refkey2,
+        });
+      }
     });
 
-    // await ref.set({
-    //   Image: img,
-    // });
-    // console.log('Stored=========>', img);
+    ref2.once('value', snapshot => {
+      if (snapshot.val()) {
+        let newPost = [];
+        newPost = Object.values(snapshot.val());
+        newPost.push({
+          Image: imgUrl,
+          postDesc: postDesc,
+          location: location,
+          Price: price,
+          HostelName: hostelName,
+          phoneNumber: phoneNumber,
+          Furnished: value2,
+          Mess: value3,
+          Internet: value4,
+          Latitude: currentLatitude,
+          Longitude: currentLongitude,
+          uid: currentUid,
+          BookingStatus: BookingStatus,
+          HosteliD: refkey,
+        });
+        ref2.set(newPost);
+      } else {
+        ref2.child(refkey).set({
+          Image: imgUrl,
+          postDesc: postDesc,
+          location: location,
+          Price: price,
+          HostelName: hostelName,
+          phoneNumber: phoneNumber,
+          Furnished: value2,
+          Mess: value3,
+          Internet: value4,
+          Latitude: currentLatitude,
+          Longitude: currentLongitude,
+          uid: currentUid,
+          BookingStatus: BookingStatus,
+          HosteliD: refkey,
+        });
+      }
+    });
   };
   const handleLocationPermission = async () => {
     let permissionCheck = '';

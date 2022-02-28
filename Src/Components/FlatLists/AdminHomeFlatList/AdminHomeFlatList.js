@@ -26,21 +26,23 @@ const AdminHomeFlatList = props => {
   const [isLiked, setIsLike] = useState(false);
 
   const onDelete = ind => {
-    UserHomPg.pop(ind);
+    console.log('Index======>>>', ind);
+    var indexString = ind.toString();
+    // UserHomPg.pop(ind);
     const currentUid = auth.currentUser.uid;
 
-    db.ref('Owner/').child('/OwnerPostAdd').remove();
+    db.ref('Owner/').child('/OwnerPostAdd').child(indexString).remove();
   };
   return (
     <View style={{}}>
       <FlatList
         data={UserHomPg}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => index.toString()}
+        inverted={true}
         renderItem={({item, index}) => {
-          console.log('---> Item ', item.id);
+          // console.log('---> Item ', item.id);
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('HostelDetail', {item: item})}
               style={{
                 borderRadius: 10,
                 borderBottomLeftRadius: 10,
@@ -74,15 +76,15 @@ const AdminHomeFlatList = props => {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      width: '65%',
+                      width: '59%',
 
                       marginTop: 5,
                     }}>
-                    <Text style={{fontSize: 18}}>Marhaba Hostels</Text>
+                    <Text style={{fontSize: 18}}>{item.HostelName}</Text>
 
                     <TouchableOpacity>
                       <FontAwesome5
-                        onPress={() => onDelete(item.index)}
+                        onPress={() => onDelete(index)}
                         name={'trash'}
                         size={20}
                         color={'red'}

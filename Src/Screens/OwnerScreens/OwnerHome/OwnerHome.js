@@ -27,6 +27,7 @@ const OwnerHome = ({navigation}) => {
   const [AddsData, SetAddsData] = useState([]);
   const {params} = useRoute();
   const item = params?.item;
+
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
     const ref2 = db.ref('Owner/' + currentUid);
@@ -45,6 +46,9 @@ const OwnerHome = ({navigation}) => {
         //   console.log(item);
         // });
       } else {
+        const data = snapshot.val();
+
+        SetAddsData(null);
       }
     });
 

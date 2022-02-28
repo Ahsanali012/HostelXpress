@@ -26,10 +26,23 @@ const OwnerHomeFlatList = props => {
   const onLikePressed = () => {
     setIsLike(!isLiked);
   };
+
+  const onDelete = ind => {
+    console.log('Index======>>>', ind);
+    var indexString = ind.toString();
+    // UserHomPg.pop(ind);
+    const currentUid = auth.currentUser.uid;
+
+    db.ref('Owner/' + currentUid)
+      .child('/OwnerPostAdd')
+      .child(indexString)
+      .remove();
+  };
   return (
     <View style={{}}>
       <FlatList
         data={OwnerHomPg}
+        inverted={true}
         // keyExtractor={item => item.id}
         renderItem={({item, index}) => {
           console.log('--------> Inside OwnerFlatList ', item);
@@ -71,11 +84,20 @@ const OwnerHomeFlatList = props => {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       marginTop: 5,
-                      width: '90%',
+                      width: '59%',
                     }}>
                     <Text style={{fontSize: 18, color: 'black'}}>
                       {item.HostelName}
                     </Text>
+                    <TouchableOpacity>
+                      <FontAwesome5
+                        onPress={() => onDelete(index)}
+                        name={'trash'}
+                        size={20}
+                        color={'red'}
+                        style={{marginTop: 5, left: Theme.wp('2%')}}
+                      />
+                    </TouchableOpacity>
                   </View>
 
                   <View
