@@ -8,6 +8,7 @@ const Requests = () => {
   const [request, setRequest] = useState([]);
   const [isLiked, setIsLike] = useState(false);
   const [Reject, setreject] = useState(false);
+  const item = params?.item;
 
   const onLikePressed = () => {
     setIsLike(true);
@@ -16,31 +17,35 @@ const Requests = () => {
   const onRejectPressed = () => {
     setreject(true);
   };
-  const item = params?.item;
 
   useEffect(() => {
     console.log('ITEM', item);
-    const ref = db.ref('Booking').child(auth.currentUser.uid);
+    const ref = db
+      .ref('Booking')
+      .child(auth.currentUser.uid)
+      .child(item?.HosteliD);
 
     console.log('Checking Booking=========>>>', ref);
 
     // Yaha Neechay Item.HostelId ki base ker request show kervani ha User ki Abhi har Jaga same jaari
 
     var a = item?.HosteliD;
-    console.log('Checking=====>', a);
+    console.log('Checking=====>', item?.HosteliD);
 
     ref.on('value', snapshot => {
-      console.log('Value Log ===>>>>>', snapshot);
       if (snapshot.val()) {
-        snapshot.forEach(childSnapShot => {
-          console.log('ChildSnapShot====>', childSnapShot);
+        console.log('Value Log NEW===>>>>>', snapshot);
+        setRequest(Object.values(snapshot.val()));
+        // snapshot.forEach(childSnapShot => {
+        //   console.log('ChildSnapShot====>', childSnapShot);
 
-          let child = childSnapShot.val();
-          console.log('CHILD ==============', Object.values(child));
-          setRequest(Object.values(childSnapShot.val()));
-        });
+        //   let child = childSnapShot.val();
+        //   console.log('CHILD ==============', Object.values(child));
+        //   setRequest(Object.values(childSnapShot.val()));
+        // });
       } else {
         setRequest(null);
+        console.log('NO DATA===>>>>>', snapshot);
       }
     });
   }, []);

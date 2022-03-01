@@ -37,8 +37,9 @@ const UserBooking = () => {
   // console.log(seq);
 
   useEffect(() => {
+    console.log('ITEEEM', item);
     const currentUid = auth.currentUser.uid;
-    const ref = db.ref('Customer').child(auth.currentUser.uid);
+    const ref = db.ref('Owner').child(item?.uid);
 
     // const refowner = db.ref('Owner/').child('Mvi8eW4x0XIZXjPbEjk');
 
@@ -125,8 +126,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Name : </Text>
-            {/* <Text>{AllValues?.BankName} </Text> */}
-            <Text>Meezan Bank </Text>
+            <Text>{profile?.BankName} </Text>
+            {/* <Text>Meezan Bank </Text> */}
           </View>
           <View
             style={{

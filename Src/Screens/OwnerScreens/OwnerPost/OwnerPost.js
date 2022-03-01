@@ -181,11 +181,11 @@ const OwnerPost = () => {
           Longitude: currentLongitude,
           uid: currentUid,
           BookingStatus: BookingStatus,
-          HosteliD: refkey,
+          HosteliD: refkey2,
         });
         ref2.set(newPost);
       } else {
-        ref2.child(refkey).set({
+        ref2.child(refkey2).set({
           Image: imgUrl,
           postDesc: postDesc,
           location: location,
@@ -199,7 +199,7 @@ const OwnerPost = () => {
           Longitude: currentLongitude,
           uid: currentUid,
           BookingStatus: BookingStatus,
-          HosteliD: refkey,
+          HosteliD: refkey2,
         });
       }
     });
