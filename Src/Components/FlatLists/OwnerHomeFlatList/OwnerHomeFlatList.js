@@ -46,6 +46,7 @@ const OwnerHomeFlatList = props => {
         // keyExtractor={item => item.id}
         renderItem={({item, index}) => {
           console.log('--------> Inside OwnerFlatList ', item);
+
           return (
             <TouchableOpacity
               onPress={() => navigation.navigate('Requests', {item: item})}

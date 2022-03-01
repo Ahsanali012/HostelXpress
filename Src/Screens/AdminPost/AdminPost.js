@@ -90,6 +90,7 @@ const AdminPost = () => {
             style={{
               fontWeight: 'bold',
               fontSize: 24,
+
               marginLeft: 20,
               padding: 10,
             }}>

@@ -94,6 +94,7 @@ const UserHome = () => {
         <View
           style={{
             padding: 40,
+
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',

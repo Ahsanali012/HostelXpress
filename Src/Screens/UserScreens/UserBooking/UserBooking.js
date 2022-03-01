@@ -151,6 +151,7 @@ const UserBooking = () => {
             }}>
             <Text>Jazz Cash: </Text>
             {/* <Text>{AllValues?.CashAccount} </Text> */}
+
             <Text>4455566</Text>
           </View>
           <View
