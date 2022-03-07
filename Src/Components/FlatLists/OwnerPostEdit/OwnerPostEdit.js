@@ -17,30 +17,41 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
-const OwnerHomeFlatList = props => {
+import {useRoute} from '@react-navigation/core';
+const OwnerPostEdit = props => {
   const navigation = useNavigation();
   const {OwnerHomPg, Onpress, hostelName} = props;
 
   console.log('Coming inside Flatlist ====>', hostelName);
+
   const [isLiked, setIsLike] = useState(false);
 
   const onLikePressed = () => {
     setIsLike(!isLiked);
   };
 
+  const onDelete = ind => {
+    console.log('Index======>>>', ind);
+    var indexString = ind.toString();
+    // UserHomPg.pop(ind);
+    const currentUid = auth.currentUser.uid;
+
+    db.ref('Owner/' + currentUid)
+      .child('/OwnerPostAdd')
+      .child(indexString)
+      .remove();
+  };
   return (
     <View style={{}}>
       <FlatList
         data={OwnerHomPg}
         inverted={true}
-        // keyExtractor={item => item.id}
         keyExtractor={item => item.key}
         renderItem={({item, index}) => {
           console.log('--------> Inside OwnerFlatList ', item);
 
           return (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Requests', {item: item})}
+            <View
               style={{
                 borderRadius: 10,
                 borderBottomLeftRadius: 10,
@@ -76,11 +87,34 @@ const OwnerHomeFlatList = props => {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       marginTop: 5,
-                      width: '59%',
+                      width: '65%',
                     }}>
                     <Text style={{fontSize: 18, color: 'black'}}>
                       {item.HostelName}
                     </Text>
+
+                    <TouchableOpacity>
+                      <FontAwesome5
+                        // onPress={() => console.warn(index)}
+                        onPress={() =>
+                          navigation.navigate('OwnerPost', {index: index})
+                        }
+                        name={'pen'}
+                        size={20}
+                        color={Theme.primary}
+                        style={{marginTop: 5, left: Theme.wp('2%')}}
+                      />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                      <FontAwesome5
+                        onPress={() => onDelete(index)}
+                        name={'trash'}
+                        size={20}
+                        color={'red'}
+                        style={{marginTop: 5, left: Theme.wp('2%')}}
+                      />
+                    </TouchableOpacity>
                   </View>
 
                   <View
@@ -118,11 +152,11 @@ const OwnerHomeFlatList = props => {
                   </View>
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
           );
         }}
       />
     </View>
   );
 };
-export default OwnerHomeFlatList;
+export default OwnerPostEdit;

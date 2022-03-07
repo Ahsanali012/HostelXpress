@@ -20,11 +20,13 @@ import styles from './Style';
 import {auth, db} from '../../Utils/Exports';
 import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerHomeFlatList/OwnerHomeFlatList';
 import {useRoute} from '@react-navigation/native';
+import OwnerPostEdit from '../../../Components/FlatLists/OwnerPostEdit/OwnerPostEdit';
 // create a component
 const OwnerHome = ({navigation}) => {
   const [BookingStatus, setBookingStatus] = React.useState(false);
   const [hostelNamee, SethostelNamee] = useState('');
   const [AddsData, SetAddsData] = useState([]);
+
   const {params} = useRoute();
   const item = params?.item;
 
@@ -144,7 +146,7 @@ const OwnerHome = ({navigation}) => {
           Recent Adds
         </Text>
 
-        <OwnerHomeFlatList OwnerHomPg={AddsData} hostelName={hostelNamee} />
+        <OwnerPostEdit OwnerHomPg={AddsData} />
       </View>
     </ScrollView>
   );

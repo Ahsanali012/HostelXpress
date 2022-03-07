@@ -200,6 +200,7 @@ const UserHostelDetails = ({navigation}) => {
             }}>
             <Text style={{color: 'white', marginTop: 5}}>Call Now</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() => navigation.navigate('UserBooking', {item: item})}
             style={{

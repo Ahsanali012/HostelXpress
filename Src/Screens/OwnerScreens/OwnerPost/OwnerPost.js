@@ -22,6 +22,7 @@ import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 //import all the components we are going to use.
 import Geolocation from '@react-native-community/geolocation';
 import Theme from '../../Utils/Theme';
+import {useRoute} from '@react-navigation/core';
 // create a component
 const OwnerPost = () => {
   const [value, setValue] = React.useState('');
@@ -42,6 +43,10 @@ const OwnerPost = () => {
   const [types, setType] = useState('');
   const [img, SetImg] = useState('');
   // const [Id, SetId] = useState(0);
+
+  const index = useRoute().params.index;
+  console.log('Value coming from Edit====>', index);
+
   const pickPicture = () => {
     ImagePicker.openPicker({
       width: 500,

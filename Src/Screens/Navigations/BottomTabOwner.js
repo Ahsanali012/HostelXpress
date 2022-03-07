@@ -71,11 +71,11 @@ const BottomTabOwner = () => (
       }}
     />
 
-    {/* <Tab.Screen
+    <Tab.Screen
       name={'OwnerAds'}
-      component={OwnerAds}
+      component={_UsersReq}
       options={{
-        tabBarLabel: 'My Ads',
+        tabBarLabel: 'Booking Requests',
         tabBarIcon: ({color, size}) => (
           <AntDesign
             name={'hearto'}
@@ -85,7 +85,7 @@ const BottomTabOwner = () => (
           />
         ),
       }}
-    /> */}
+    />
     <Tab.Screen
       name={'OwnerProfile'}
       component={OwnerProfile}
@@ -112,11 +112,40 @@ const _userHome = () => {
       // }}
       initialRouteName={'OwnerHostels'}
       headerMode="none">
-      <Stack.Screen name="Owner Hostels" component={OwnerHome} />
+      <Stack.Screen
+        name="Owner Hostels"
+        component={OwnerHome}
+        options={{
+          tabBarLabel: 'Post Ads',
+
+          tabBarIcon: ({color, size}) => (
+            <AntDesign
+              name={'plussquareo'}
+              size={20}
+              style={{color}}
+              color={'white'}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const _UsersReq = () => {
+  return (
+    <Stack.Navigator
+      // screenOptions={{
+      //   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      // }}
+      initialRouteName={'UsersReq'}
+      headerMode="none">
+      <Stack.Screen name="Booking Requests" component={OwnerAds} />
       <Stack.Screen name="Requests" component={Requests} />
     </Stack.Navigator>
   );
 };
+
 export default BottomTabOwner;
 const styles = StyleSheet.create({
   iconStyle: {alignSelf: 'center'},
