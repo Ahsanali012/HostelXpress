@@ -18,9 +18,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './Style';
 import {auth, db} from '../../Utils/Exports';
-import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerHomeFlatList/OwnerHomeFlatList';
+import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerPostReqFlatList/OwnerPostReqFlatList';
 import {useRoute} from '@react-navigation/native';
-import OwnerPostEdit from '../../../Components/FlatLists/OwnerPostEdit/OwnerPostEdit';
+import PostHomeFlatList from '../../../Components/FlatLists/PostHomeFlatList/PostHomeFlatList';
 // create a component
 const OwnerHome = ({navigation}) => {
   const [BookingStatus, setBookingStatus] = React.useState(false);
@@ -146,7 +146,7 @@ const OwnerHome = ({navigation}) => {
           Recent Adds
         </Text>
 
-        <OwnerPostEdit OwnerHomPg={AddsData} />
+        <PostHomeFlatList OwnerHomPg={AddsData} />
       </View>
     </ScrollView>
   );

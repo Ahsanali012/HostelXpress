@@ -17,7 +17,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
-const OwnerHomeFlatList = props => {
+const OwnerPostReqFlatList = props => {
   const navigation = useNavigation();
   const {OwnerHomPg, Onpress, hostelName} = props;
 
@@ -125,4 +125,4 @@ const OwnerHomeFlatList = props => {
     </View>
   );
 };
-export default OwnerHomeFlatList;
+export default OwnerPostReqFlatList;

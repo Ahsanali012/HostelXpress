@@ -17,12 +17,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './Style';
 import {useRoute} from '@react-navigation/native';
-import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerHomeFlatList/OwnerHomeFlatList';
+
+import OwnerPostReqFlatList from '../../../Components/FlatLists/OwnerPostReqFlatList/OwnerPostReqFlatList';
 // create a component
 const OwnerAds = ({navigation}) => {
   const [AddsData, SetAddsData] = useState([]);
   const {params} = useRoute();
-  const item = params?.item;
+  const item = params?.index;
 
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
@@ -86,7 +87,7 @@ const OwnerAds = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={{width: '95%', alignSelf: 'center', paddingTop: '5%'}}>
-        <OwnerHomeFlatList OwnerHomPg={AddsData} />
+        <OwnerPostReqFlatList OwnerHomPg={AddsData} />
       </View>
     </View>
   );

@@ -18,7 +18,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
 import {useRoute} from '@react-navigation/core';
-const OwnerPostEdit = props => {
+
+const PostHomeFlatList = props => {
   const navigation = useNavigation();
   const {OwnerHomPg, Onpress, hostelName} = props;
 
@@ -48,7 +49,7 @@ const OwnerPostEdit = props => {
         inverted={true}
         keyExtractor={item => item.key}
         renderItem={({item, index}) => {
-          console.log('--------> Inside OwnerFlatList ', item);
+          console.log('--------> Inside OwnerFlatList ', index);
 
           return (
             <View
@@ -59,7 +60,7 @@ const OwnerPostEdit = props => {
                 borderColor: '#d4d4d4',
                 margin: 15,
 
-                width: '90%',
+                width: '94%',
               }}>
               <View
                 style={{
@@ -89,20 +90,29 @@ const OwnerPostEdit = props => {
                       marginTop: 5,
                       width: '65%',
                     }}>
-                    <Text style={{fontSize: 18, color: 'black'}}>
+                    <Text
+                      style={{
+                        fontSize: 17,
+                        color: 'black',
+                        paddingRight: '10%',
+                      }}>
                       {item.HostelName}
                     </Text>
 
                     <TouchableOpacity>
                       <FontAwesome5
                         // onPress={() => console.warn(index)}
-                        onPress={() =>
-                          navigation.navigate('OwnerPost', {index: index})
+                        onPress={
+                          () =>
+                            navigation.navigate('OwnerPostUpdate', {
+                              index: index,
+                            })
+                          //  navigation.navigate('OwnerPost', {index: index})
                         }
                         name={'pen'}
-                        size={20}
+                        size={17}
                         color={Theme.primary}
-                        style={{marginTop: 5, left: Theme.wp('2%')}}
+                        style={{marginTop: 5, right: Theme.wp('2%')}}
                       />
                     </TouchableOpacity>
 
@@ -110,7 +120,7 @@ const OwnerPostEdit = props => {
                       <FontAwesome5
                         onPress={() => onDelete(index)}
                         name={'trash'}
-                        size={20}
+                        size={17}
                         color={'red'}
                         style={{marginTop: 5, left: Theme.wp('2%')}}
                       />
@@ -159,4 +169,4 @@ const OwnerPostEdit = props => {
     </View>
   );
 };
-export default OwnerPostEdit;
+export default PostHomeFlatList;

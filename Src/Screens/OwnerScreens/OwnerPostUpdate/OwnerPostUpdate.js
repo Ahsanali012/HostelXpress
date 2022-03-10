@@ -23,8 +23,9 @@ import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
 import Theme from '../../Utils/Theme';
 import {useRoute} from '@react-navigation/core';
+
 // create a component
-const OwnerPost = () => {
+const OwnerPostUpdate = () => {
   const [value, setValue] = React.useState('');
   const [value2, setValue2] = React.useState('');
   const [value3, setValue3] = React.useState('');
@@ -132,24 +133,24 @@ const OwnerPost = () => {
       .child('/OwnerPostAdd')
       .push().key;
 
-    // const refUpdate = db.ref('Owner/').child('/OwnerPostAdd').child(string);
+    const refUpdate = db.ref('Owner/').child('/OwnerPostAdd').child(string);
 
-    // refUpdate.update({
-    //   Image: imgUrl,
-    //   postDesc: postDesc,
-    //   location: location,
-    //   Price: price,
-    //   HostelName: hostelName,
-    //   phoneNumber: phoneNumber,
-    //   Furnished: value2,
-    //   Mess: value3,
-    //   Internet: value4,
-    //   Latitude: currentLatitude,
-    //   Longitude: currentLongitude,
-    //   uid: currentUid,
-    //   BookingStatus: BookingStatus,
-    //   HosteliD: refkey2,
-    // });
+    refUpdate.update({
+      Image: imgUrl,
+      postDesc: postDesc,
+      location: location,
+      Price: price,
+      HostelName: hostelName,
+      phoneNumber: phoneNumber,
+      Furnished: value2,
+      Mess: value3,
+      Internet: value4,
+      Latitude: currentLatitude,
+      Longitude: currentLongitude,
+      uid: currentUid,
+      BookingStatus: BookingStatus,
+      HosteliD: refkey2,
+    });
 
     ref.once('value', snapshot => {
       if (snapshot.val()) {
@@ -247,7 +248,29 @@ const OwnerPost = () => {
       .child('/OwnerPostAdd')
       .child(string);
 
+    const refUpdate2 = await db
+      .ref('Owner/' + currentUid)
+      .child('/OwnerPostAdd')
+      .child(string);
+
     refUpdate.update({
+      Image: imgUrl,
+      postDesc: postDesc,
+      location: location,
+      Price: price,
+      HostelName: hostelName,
+      phoneNumber: phoneNumber,
+      Furnished: value2,
+      Mess: value3,
+      Internet: value4,
+      Latitude: currentLatitude,
+      Longitude: currentLongitude,
+      uid: currentUid,
+      BookingStatus: BookingStatus,
+      HosteliD: refkey2,
+    });
+
+    refUpdate2.update({
       Image: imgUrl,
       postDesc: postDesc,
       location: location,
@@ -584,7 +607,7 @@ const OwnerPost = () => {
           </View>
         </View>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             handleUpdate();
             uploadImage();
@@ -603,9 +626,9 @@ const OwnerPost = () => {
           <Text style={{color: 'white', fontSize: 17, paddingTop: 10}}>
             Post Your Ad
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
-        {/* <TouchableOpacity
+        <TouchableOpacity
           onPress={() => {
             UpdateSpecificPost();
           }}
@@ -621,7 +644,7 @@ const OwnerPost = () => {
           <Text style={{color: 'white', fontSize: 17, paddingTop: 10}}>
             Update Ad
           </Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
       </KeyboardAwareScrollView>
     </ScrollView>
   );
@@ -653,4 +676,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default OwnerPost;
+export default OwnerPostUpdate;

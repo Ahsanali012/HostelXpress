@@ -17,6 +17,7 @@ import UserHostelDetails from '../UserScreens/UserHostelDetail/UserHostelDetail'
 import UserBooking from '../UserScreens/UserBooking/UserBooking';
 import BottomTabOwner from './BottomTabOwner';
 import Check from '../Utils/Check';
+import OwnerPostUpdate from '../OwnerScreens/OwnerPostUpdate/OwnerPostUpdate';
 
 import {auth, db} from '../Utils/Exports';
 const Stack = createNativeStackNavigator();
@@ -76,6 +77,7 @@ const Navigation = () => {
         <Stack.Screen name="SearchBar" component={SearchBar} />
         <Stack.Screen name="HostelDetail" component={UserHostelDetails} />
         <Stack.Screen name="UserBooking" component={UserBooking} />
+        <Stack.Screen name="OwnerPostUpdate" component={OwnerPostUpdate} />
       </Stack.Navigator>
     </SafeAreaView>
   );
