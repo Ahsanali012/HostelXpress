@@ -44,12 +44,12 @@ const OwnerPost = () => {
   const [img, SetImg] = useState('');
   // const [Id, SetId] = useState(0);
 
-  const index = useRoute().params.index;
-  console.log('Value coming from Edit====>', index);
+  // const index = useRoute().params.index;
+  // console.log('Value coming from Edit====>', index);
 
-  var obj = index;
-  var string = JSON.stringify(obj);
-  console.log('String Of Post==>', string);
+  // var obj = index;
+  // var string = JSON.stringify(obj);
+  // console.log('String Of Post==>', string);
 
   const pickPicture = () => {
     ImagePicker.openPicker({
