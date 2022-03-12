@@ -41,6 +41,8 @@ const PostHomeFlatList = props => {
       .child('/OwnerPostAdd')
       .child(indexString)
       .remove();
+
+    db.ref('Owner/').child('/OwnerPostAdd').child(indexString).remove();
   };
   return (
     <View style={{}}>
