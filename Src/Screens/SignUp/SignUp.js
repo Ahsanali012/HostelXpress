@@ -100,19 +100,6 @@ const SignUp = () => {
             <></>
           );
         }
-
-        {
-          value == 'Admin' ? (
-            db.ref('Admin/' + currentUid).set({
-              Email: Email,
-              uid: auth.currentUser.uid,
-              Name: Name,
-              Cnic: Cnic,
-            })
-          ) : (
-            <></>
-          );
-        }
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -380,17 +367,6 @@ const SignUp = () => {
                     <RadioButton.Item
                       label="Hostel Owner"
                       value="Owner"
-                      color={'#1a4499'}
-                    />
-                  </RadioButton.Group>
-                  <RadioButton.Group
-                    onValueChange={value => setValue(value)}
-                    // status={value === 'second' ? 'checked' : 'unchecked'}
-                    color={'black'}
-                    value={value}>
-                    <RadioButton.Item
-                      label="Admin"
-                      value="Admin"
                       color={'#1a4499'}
                     />
                   </RadioButton.Group>
