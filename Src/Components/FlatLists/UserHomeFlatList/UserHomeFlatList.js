@@ -20,6 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const UserHomeFlatList = props => {
   const navigation = useNavigation();
+
   const {UserHomPg, Onpress, hostelName} = props;
 
   console.log('Coming inside Flatlist User ====>', hostelName);
@@ -31,9 +32,8 @@ const UserHomeFlatList = props => {
     <View style={{}}>
       <FlatList
         data={UserHomPg}
-        // keyExtractor={item => item.id}
         renderItem={({item, index}) => {
-          // console.log('--------> Inside UserFlatList', item.BookingStatus);
+          console.log('--------> Inside UserFlatList');
           return (
             <TouchableOpacity
               onPress={() => navigation.navigate('HostelDetail', {item: item})}
@@ -109,6 +109,12 @@ const UserHomeFlatList = props => {
                     />
 
                     <Text style={{fontSize: 18}}>{item.location}</Text>
+                  </View>
+
+                  <View>
+                    <Text style={{fontSize: 18, paddingLeft: 5}}>
+                      {item.postDesc}
+                    </Text>
                   </View>
 
                   <View

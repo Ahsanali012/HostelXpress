@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   ScrollView,
+  Alert,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
@@ -32,6 +33,8 @@ const UserHome = () => {
 
   const [quesData1, setQuesData1] = useState([]);
 
+  // console.log('Values Inside UserState====>', quesData1);
+
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner/').child('/OwnerPostAdd');
@@ -41,6 +44,8 @@ const UserHome = () => {
     await ref.on('value', snapshot => {
       if (snapshot.val()) {
         const data = snapshot.val();
+
+        console.log('Before Setting===>', data);
 
         setQuesData1(Object.values(data));
 
@@ -69,14 +74,27 @@ const UserHome = () => {
   };
 
   useEffect(() => {
-    // console.log('ITEM', item);
     const ref = db.ref('Request').child(auth.currentUser.uid);
     ref.on('value', snapshot => {
       if (snapshot.val()) {
         console.log('MY Booking=======>', Object.values(snapshot.val()));
-        alert(
-          'Dear Customer Please Check Your Booking Status in My Booking Section',
+
+        Alert.alert(
+          'Booking Alert !',
+          'Dear Customer Please Check Your Booking Status in My Booking Tab',
+          [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {
+              text: 'OK',
+              onPress: () => navigation.navigate('MyBookings'),
+            },
+          ],
         );
+
         // setBookings(Object.values(snapshot.val()));
       } else {
         // setBookings([]);
@@ -102,6 +120,7 @@ const UserHome = () => {
           <Text style={{fontSize: 25, color: '#1a4499'}}>Welcome Back !</Text>
           <AntDesign size={20} color={'black'} name={'bells'} />
         </View>
+
         <View style={{}}>
           <SearchBar />
         </View>
@@ -168,11 +187,8 @@ const UserHome = () => {
           }}>
           Hostel near you
         </Text>
-        <UserHomeFlatList
-          UserHomPg={quesData1}
-          hostelName={hostelNamee}
-          // Onpress={() => navigation.navigate('HostelDetail')}
-        />
+
+        <UserHomeFlatList UserHomPg={quesData1} hostelName={hostelNamee} />
       </View>
     </ScrollView>
   );

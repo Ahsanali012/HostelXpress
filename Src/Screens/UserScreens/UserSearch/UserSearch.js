@@ -35,15 +35,10 @@ const UserSearch = props => {
 
   console.log('SearchArrayData==== ', array);
   const [price, Setprice] = useState('');
+  const [location, Setlocation] = useState('');
   const [quesData1, setQuesData1] = useState([]);
 
   console.log('Filter- ArrayData==== ', quesData1);
-
-  // let custom = quesData1.filter(function (value) {
-  //   return value.Price == price;
-  // });
-
-  // console.log('My Searched Value =====================', custom);
 
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
@@ -52,6 +47,8 @@ const UserSearch = props => {
     await ref.on('value', snapshot => {
       if (snapshot.val()) {
         const data = snapshot.val();
+        console.log('Alll=====', data);
+
         setQuesData1(Object.values(data));
 
         setspareArray(Object.values(data));
@@ -64,8 +61,10 @@ const UserSearch = props => {
   const myFilter = () => {
     let custom = spareArray.filter(function (value) {
       return (
-        value.Price <= price && value.Furnished == value2
-        // && value.Mess == value3
+        value.Price <= price &&
+          value.Furnished == value2 &&
+          value.Mess == value3,
+        value.location == location
       );
     });
     console.log('My Searched Value =====================', custom);
@@ -137,61 +136,6 @@ const UserSearch = props => {
                   placeholder={'Enter Your Price '}
                 />
               </View>
-              {/* <View
-                style={{
-                  paddingTop: 10,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: 80,
-                }}>
-                <Text style={{color: 'black'}}>From :</Text>
-
-                <View
-                  style={{
-                    width: 70,
-                    height: 25,
-                    borderRadius: 4,
-                    alignItems: 'center',
-                    borderColor: 'black',
-                    borderWidth: 1,
-                    paddingLeft: 5,
-                    left: 10,
-                  }}>
-                  <Text style={{paddingBottom: 1, fontSize: 16}}>3000 </Text>
-                </View>
-                <View
-                  style={{
-                    justifyContent: 'flex-end',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    width: 150,
-                  }}>
-                  <Text style={{}}>To</Text>
-                  <View
-                    style={{
-                      width: 70,
-                      height: 25,
-                      borderRadius: 4,
-                      alignItems: 'center',
-                      borderColor: 'black',
-                      borderWidth: 1,
-                      paddingLeft: 5,
-                      alignItems: 'center',
-                      left: 10,
-                    }}>
-                    <Text style={{paddingBottom: 1, fontSize: 16}}>
-                      10,000{' '}
-                    </Text>
-                  </View>
-                </View>
-              </View> */}
-              {/* <Slider
-                style={{width: 300, height: 40}}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#1a4499"
-                maximumTrackTintColor="blue"
-              /> */}
               <View
                 style={{
                   flexDirection: 'row',
@@ -205,17 +149,20 @@ const UserSearch = props => {
                   style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
                   Location:
                 </Text>
-                <View
+
+                <TextInput
                   style={{
-                    height: 30,
-                    width: 180,
+                    width: '61%',
+                    color: 'black',
+                    alignSelf: 'center',
+                    fontSize: 16,
                     borderRadius: 5,
                     borderWidth: 1,
                     borderColor: 'gray',
-                    alignItems: 'center',
-                  }}>
-                  <Text style={{paddingTop: 5}}>Location</Text>
-                </View>
+                  }}
+                  onChangeText={text => Setlocation(text)}
+                  placeholder={'Enter Location To Search '}
+                />
               </View>
               <View>
                 <View style={{paddingTop: 5}}>
@@ -390,11 +337,9 @@ const UserSearch = props => {
                   </View>
                   <TouchableOpacity
                     onPress={() => {
-                      // SearchFilterFunction(price, value2);
                       myFilter();
                       SetsearchData(true);
                     }}
-                    // onPress={() => navigation.navigate('UserHome')}
                     style={styles.SearchBtn}>
                     <Text style={styles.SearchBtnTxt}>Search</Text>
                   </TouchableOpacity>

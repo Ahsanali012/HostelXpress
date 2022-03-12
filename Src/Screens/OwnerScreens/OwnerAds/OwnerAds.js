@@ -64,10 +64,6 @@ const OwnerAds = ({navigation}) => {
 
     // .child(item?.HosteliD);
 
-    console.log('Checking Booking=========>>>', ref);
-
-    alert('Theres a booking Please Check Ads');
-
     ref.on('value', snapshot => {
       // console.log('Value Log ===>>>>>', snapshot);
       if (snapshot.val()) {

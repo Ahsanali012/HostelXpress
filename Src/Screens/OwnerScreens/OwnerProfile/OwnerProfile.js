@@ -1,13 +1,52 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+
 import styles from './Style';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {auth, db} from '../../Utils/Exports';
+import {firebase} from '@react-native-firebase/database';
+import React, {Component, useState, useEffect} from 'react';
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+  Modal,
+  Image,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 // create a component
 const OwnerProfile = () => {
+  const navigation = useNavigation();
+  const [loggedIn, SetloggedIn] = useState(null);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        SetloggedIn(true);
+      } else {
+        SetloggedIn(false);
+      }
+    });
+  }, []);
+
+  const signOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        navigation.replace('Login');
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <View style={{width: '95%'}}>
@@ -94,29 +133,35 @@ const OwnerProfile = () => {
           <View style={styles.bottomBorder}></View>
         </View>
         <View>
-          <View
+          <TouchableOpacity
+            onPress={() => {
+              signOut();
+            }}
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-between',
               alignItems: 'center',
+              paddingLeft: 20,
+              justifyContent: 'space-between',
             }}>
             <View
               style={{
+                marginTop: 7,
                 flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 20,
               }}>
-              <TouchableOpacity style={{marginTop: 7}}>
-                <Entypo style={{}} name="log-out" size={24} color={'black'} />
-              </TouchableOpacity>
-              <TouchableOpacity style={{marginTop: 7, paddingLeft: 15}}>
-                <Text>LogOut</Text>
-              </TouchableOpacity>
+              <Entypo
+                style={{paddingRight: 15}}
+                name="log-out"
+                size={24}
+                color={'black'}
+              />
+
+              <Text>LogOut</Text>
             </View>
-            <TouchableOpacity style={{}}>
+            <View>
               <AntDesign style={{}} name="right" size={24} color={'gray'} />
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
+
           <View style={styles.bottomBorder}></View>
         </View>
       </View>

@@ -113,7 +113,7 @@ const _userHome = () => {
       initialRouteName={'OwnerHostels'}
       headerMode="none">
       <Stack.Screen
-        name="Owner Hostels"
+        name="OwnerHostels"
         component={OwnerHome}
         options={{
           tabBarLabel: 'Post Ads',
@@ -140,7 +140,7 @@ const _UsersReq = () => {
       // }}
       initialRouteName={'UsersReq'}
       headerMode="none">
-      <Stack.Screen name="Booking Requests" component={OwnerAds} />
+      <Stack.Screen name="BookingRequests" component={OwnerAds} />
       <Stack.Screen name="Requests" component={Requests} />
     </Stack.Navigator>
   );

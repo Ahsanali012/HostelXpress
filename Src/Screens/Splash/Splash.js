@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, Animated} from 'react-native';
 import styles from './Styles';
+
 class SplashScreen extends Component {
   state = {
     logoAnimation: new Animated.Value(0),
     textAnimation: new Animated.Value(0),
     loadingSpinner: false,
   };
+
   componentDidMount() {
     const {logoAnimation, textAnimation} = this.state;
     Animated.parallel([

@@ -20,6 +20,7 @@ import Theme from '../../Utils/Theme';
 import {auth, db} from '../../Utils/Exports';
 import {useRoute} from '@react-navigation/core';
 import openMap from 'react-native-open-maps';
+
 // create a component
 const UserHostelDetails = ({navigation}) => {
   const item = useRoute().params.item;
@@ -136,7 +137,7 @@ const UserHostelDetails = ({navigation}) => {
               height: 25,
               borderRadius: 2,
               alignItems: 'center',
-              backgroundColor: 'blue',
+              backgroundColor: Theme.primary,
             }}>
             <Text style={{color: 'white', marginTop: 5}}>Get Directions</Text>
           </TouchableOpacity>
@@ -196,7 +197,7 @@ const UserHostelDetails = ({navigation}) => {
               height: 30,
               borderRadius: 5,
               alignItems: 'center',
-              backgroundColor: 'blue',
+              backgroundColor: Theme.primary,
             }}>
             <Text style={{color: 'white', marginTop: 5}}>Call Now</Text>
           </TouchableOpacity>
@@ -208,7 +209,7 @@ const UserHostelDetails = ({navigation}) => {
               height: 30,
               borderRadius: 5,
               alignItems: 'center',
-              backgroundColor: 'blue',
+              backgroundColor: Theme.primary,
             }}>
             <Text style={{color: 'white', marginTop: 5}}>Book Now</Text>
           </TouchableOpacity>

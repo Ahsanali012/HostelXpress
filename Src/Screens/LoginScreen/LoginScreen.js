@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   Modal,
   Image,
+  Alert,
 } from 'react-native';
 import styles from './Style';
 import {Provider, Appbar, RadioButton} from 'react-native-paper';
@@ -19,6 +20,7 @@ import authentication from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 import {Formik} from 'formik';
+import Dialog from 'react-native-dialog';
 import * as Yup from 'yup';
 
 const Loginscreen = () => {
@@ -26,9 +28,13 @@ const Loginscreen = () => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [emaill, setEmaill] = useState('');
+
   const [passwordd, setpasswordd] = useState('');
+
   const [value, setValue] = React.useState('');
   const [loader, Setloader] = React.useState(false);
+
+  const [visible, setVisible] = useState(false);
 
   const setValuein = async value1 => {
     await AsyncStorage.setItem('this', JSON.stringify(value1));
@@ -36,6 +42,21 @@ const Loginscreen = () => {
     setValue(value1);
     console.log('Value =====', value2);
   };
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleDelete = () => {
+    // The user has pressed the "Delete" button, so here you can do your own logic.
+    // ...Your logic
+    setVisible(false);
+  };
+
   // const getValue = async () => {
   //   const value1 = await AsyncStorage.getItem('this');
   //   console.log('getting', value1);
@@ -108,25 +129,26 @@ const Loginscreen = () => {
               } else if (snapshotUserr.val() && value == 'Customer') {
                 navigation.replace('BottomTabUser');
               } else {
-                alert('YOu have to sign up first');
+                // alert('YOu have to sign up first');
+
+                Alert.alert(
+                  'Wrong Account Login',
+                  'You have to sign up first!',
+                  [
+                    {
+                      text: 'Cancel',
+                      onPress: () => console.log('Cancel Pressed'),
+                      style: 'cancel',
+                    },
+                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                  ],
+                );
               }
             });
           });
         });
-        // const refOwner=db.ref('Owner/'+)
 
         Setloader(false);
-        // {
-        //   value == 'Owner'
-        //     ? navigation.replace('BottomTabOwner')
-        //     : navigation.replace('BottomTabUser');
-        // }
-
-        // if (snapshot.val()) {
-        //   navigation.navigate('BottomTabOwner');
-        // } else {
-        //   navigation.navigate('BottomTabUser');
-        // }
       })
 
       .catch(error => {

@@ -73,13 +73,18 @@ const OwnerPostReqFlatList = props => {
                   <View
                     style={{
                       flexDirection: 'row',
-                      justifyContent: 'space-between',
+
                       alignItems: 'center',
                       marginTop: 5,
-                      width: '59%',
                     }}>
                     <Text style={{fontSize: 18, color: 'black'}}>
                       {item.HostelName}
+                    </Text>
+                  </View>
+
+                  <View>
+                    <Text style={{fontSize: 18, color: 'gray'}}>
+                      {item.postDesc}
                     </Text>
                   </View>
 

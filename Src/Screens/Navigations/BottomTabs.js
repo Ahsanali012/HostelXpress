@@ -13,6 +13,7 @@ import AdminPost from '../AdminPost/AdminPost';
 import AdminProfile from '../AdminProfile/AdminProfile';
 import AdminUser from '../AdminUser/AdminUser';
 const Tab = createBottomTabNavigator();
+
 const BottomTab = () => (
   <Tab.Navigator
     initialRouteName={'AdminPost'}

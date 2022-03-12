@@ -22,6 +22,7 @@ const Check = () => {
   return (
     <View style={styles.container}>
       <Button title="Show dialog" onPress={showDialog} />
+
       <Dialog.Container visible={visible}>
         <Dialog.Title>Account delete</Dialog.Title>
         <Dialog.Description>

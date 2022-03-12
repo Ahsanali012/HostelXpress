@@ -49,6 +49,7 @@ const Navigation = () => {
         initialRouteName="Splash"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={SplashScreen} />
+
         <Stack.Screen
           name="BottomTab"
           component={BottomTab}

@@ -10,6 +10,7 @@ import {
   Platform,
   Image,
   Button,
+  Alert,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -19,12 +20,15 @@ import {auth, db} from '../../Utils/Exports';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {useNavigation} from '@react-navigation/native';
 //import all the components we are going to use.
 import Geolocation from '@react-native-community/geolocation';
 import Theme from '../../Utils/Theme';
 import {useRoute} from '@react-navigation/core';
 // create a component
 const OwnerPost = () => {
+  const navigation = useNavigation();
+
   const [value, setValue] = React.useState('');
   const [value2, setValue2] = React.useState('');
   const [value3, setValue3] = React.useState('');
@@ -107,7 +111,15 @@ const OwnerPost = () => {
 
     try {
       await task;
-      console.warn('Post uploaded');
+
+      Alert.alert('Post Uploaded !', 'Post Uploaded Succesfully!', [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => navigation.navigate('OwnerHome')},
+      ]);
       const url = await storageRef.getDownloadURL();
       SetImg(null);
       console.log('======URL==========>', url);

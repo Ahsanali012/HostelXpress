@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   ScrollView,
+  Alert,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -21,14 +22,33 @@ import {auth, db} from '../../Utils/Exports';
 import OwnerHomeFlatList from '../../../Components/FlatLists/OwnerPostReqFlatList/OwnerPostReqFlatList';
 import {useRoute} from '@react-navigation/native';
 import PostHomeFlatList from '../../../Components/FlatLists/PostHomeFlatList/PostHomeFlatList';
+import {useNavigation} from '@react-navigation/native';
+
 // create a component
-const OwnerHome = ({navigation}) => {
+const OwnerHome = () => {
+  const navigation = useNavigation();
   const [BookingStatus, setBookingStatus] = React.useState(false);
   const [hostelNamee, SethostelNamee] = useState('');
   const [AddsData, SetAddsData] = useState([]);
 
   const {params} = useRoute();
   const item = params?.item;
+
+  const [visible, setVisible] = useState(false);
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleDelete = () => {
+    // The user has pressed the "Delete" button, so here you can do your own logic.
+    // ...Your logic
+    setVisible(false);
+  };
 
   const getValues = async () => {
     const currentUid = auth.currentUser.uid;
@@ -65,6 +85,21 @@ const OwnerHome = ({navigation}) => {
   };
   // console.log('thisssss', Object.values(quesData1));
 
+  const Message = () => {
+    Alert.alert(
+      'Booking Alert !',
+      'Please Check Your Booking Request Tab to See Booking For Your Post',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => navigation.navigate('OwnerAds')},
+      ],
+    );
+  };
+
   useEffect(() => {
     console.log('ITEM', item);
     const ref = db.ref('Booking').child(auth.currentUser.uid);
@@ -73,11 +108,9 @@ const OwnerHome = ({navigation}) => {
 
     console.log('Checking Booking=========>>>', ref);
 
-    alert('Theres a booking Please Check Ads');
-
     ref.on('value', snapshot => {
-      // console.log('Value Log ===>>>>>', snapshot);
       if (snapshot.val()) {
+        Message();
         snapshot.forEach(childSnapShot => {
           let child = childSnapShot.val();
           console.log('CHILD ==============', Object.values(child));

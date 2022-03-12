@@ -19,7 +19,7 @@ const UserBooking = () => {
 
   console.log('This Profile === ', profile);
   const [ownerName, setownerName] = useState('');
-
+  const [quantity, setquantity] = useState(1);
   const [TId, SetId] = useState('');
 
   console.log('TransactionId=====', TId);
@@ -41,15 +41,6 @@ const UserBooking = () => {
     const currentUid = auth.currentUser.uid;
     const ref = db.ref('Owner').child(item?.uid);
 
-    // const refowner = db.ref('Owner/').child('Mvi8eW4x0XIZXjPbEjk');
-
-    // refowner.on('value', snapshot => {
-    //   console.warn('SNAPSHOTTTOwner====', snapshot.val());
-    //   //  setProfile(snapshot.val());
-
-    //   setAllValues(snapshot.val());
-    // });
-
     ref.on('value', snapshot => {
       console.warn('SNAPSHOTTT', snapshot.val());
       setProfile(snapshot.val());
@@ -58,6 +49,7 @@ const UserBooking = () => {
   const HandleBook = async () => {
     alert('ITEM' + JSON.stringify(profile));
     const ref = db.ref('Booking').child(item?.uid).child(item?.HosteliD);
+
     const refRequest = db
       .ref('Request')
       .child(auth.currentUser.uid)
@@ -74,6 +66,8 @@ const UserBooking = () => {
     });
     refRequest.set({
       name: profile.Name,
+      hostelName: profile.HostelName,
+      quantity: quantity,
       transactionId: TId,
       accepted: false,
       HosteliD: item?.HosteliD,
@@ -138,8 +132,7 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Bank Account : </Text>
-            {/* <Text>{AllValues?.BankAccount} </Text> */}
-            <Text>Ahsan Ali </Text>
+            <Text>{profile?.BankAccount} </Text>
           </View>
           <View
             style={{
@@ -150,9 +143,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Jazz Cash: </Text>
-            {/* <Text>{AllValues?.CashAccount} </Text> */}
 
-            <Text>4455566</Text>
+            <Text>{profile?.CashAccount} </Text>
           </View>
           <View
             style={{
@@ -163,8 +155,8 @@ const UserBooking = () => {
               alignSelf: 'center',
             }}>
             <Text>Easy Paisa : </Text>
-            <Text>2233444 </Text>
-            {/* <Text>{AllValues?.CashAccount} </Text> */}
+
+            <Text>{profile?.CashAccount} </Text>
           </View>
         </View>
         <View style={{marginVertical: '10%'}}>

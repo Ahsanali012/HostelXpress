@@ -70,7 +70,7 @@ const PostHomeFlatList = props => {
                   <Image
                     style={{
                       width: Theme.wp('33%'),
-                      height: Theme.hp('18%'),
+                      height: Theme.hp('20%'),
                       borderRadius: 10,
                       resizeMode: 'cover',
                     }}
@@ -141,6 +141,10 @@ const PostHomeFlatList = props => {
                     />
 
                     <Text style={{fontSize: 18}}>{item.location}</Text>
+                  </View>
+
+                  <View style={{marginTop: 5}}>
+                    <Text style={{fontSize: 18}}>{item.postDesc}</Text>
                   </View>
 
                   <View

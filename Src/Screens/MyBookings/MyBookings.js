@@ -20,26 +20,39 @@ const MyBookings = () => {
   }, []);
   const renderRequests = ({item, index}) => {
     return (
-      <View style={{padding: 10}}>
-        <View style={{flexDirection: 'row'}}>
-          <Text>Hostal Name:</Text>
-          <Text>{item?.name}</Text>
+      console.log('Item Coming======', item),
+      (
+        <View style={{padding: 10}}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{fontSize: 20, color: 'black'}}>Hostal Name:</Text>
+            <Text style={{paddingLeft: 10, fontSize: 20}}>
+              {item?.hostelName}
+            </Text>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{fontSize: 20, color: 'black'}}>Transaction ID:</Text>
+            <Text style={{fontSize: 20, paddingLeft: 10}}>
+              {item?.transactionId}
+            </Text>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{fontSize: 20, color: 'black'}}>Room Quanitity:</Text>
+            <Text style={{paddingLeft: 10, fontSize: 20}}>
+              {item?.quantity}
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              padding: 5,
+              backgroundColor: Theme.blueBtn,
+            }}>
+            <Text>{item?.accepted == false ? 'Pending' : 'Accepted'}</Text>
+            {/* <Text>Reject</Text> */}
+          </View>
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <Text>Transaction ID:</Text>
-          <Text>{item?.transactionId}</Text>
-        </View>
-        <View
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            padding: 5,
-            backgroundColor: Theme.blueBtn,
-          }}>
-          <Text>{item?.accepted == false ? 'Pending' : 'Accepted'}</Text>
-          {/* <Text>Reject</Text> */}
-        </View>
-      </View>
+      )
     );
   };
   return (
