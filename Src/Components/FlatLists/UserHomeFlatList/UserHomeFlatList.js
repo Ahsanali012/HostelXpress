@@ -24,10 +24,7 @@ const UserHomeFlatList = props => {
   const {UserHomPg, Onpress, hostelName} = props;
 
   console.log('Coming inside Flatlist User ====>', hostelName);
-  const [isLiked, setIsLike] = useState(false);
-  const onLikePressed = () => {
-    setIsLike(!isLiked);
-  };
+
   return (
     <View style={{}}>
       <FlatList
@@ -75,24 +72,6 @@ const UserHomeFlatList = props => {
                       marginTop: 5,
                     }}>
                     <Text style={{fontSize: 18}}>{item.HostelName}</Text>
-
-                    <TouchableOpacity onPress={onLikePressed}>
-                      {isLiked ? (
-                        <FontAwesome5
-                          name={'star'}
-                          size={20}
-                          color={'black'}
-                          style={{marginTop: 5, left: Theme.wp('2%')}}
-                        />
-                      ) : (
-                        <FontAwesome
-                          name={'star'}
-                          size={22}
-                          color={'blue'}
-                          style={{marginTop: 5, left: Theme.wp('2%')}}
-                        />
-                      )}
-                    </TouchableOpacity>
                   </View>
 
                   <View

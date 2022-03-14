@@ -83,7 +83,7 @@ const OwnerPostReqFlatList = props => {
                   </View>
 
                   <View>
-                    <Text style={{fontSize: 18, color: 'gray'}}>
+                    <Text style={{fontSize: 18, color: 'gray', width: 200}}>
                       {item.postDesc}
                     </Text>
                   </View>

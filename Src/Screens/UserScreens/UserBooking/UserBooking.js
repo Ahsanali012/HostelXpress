@@ -42,7 +42,7 @@ const UserBooking = () => {
     const ref = db.ref('Owner').child(item?.uid);
 
     ref.on('value', snapshot => {
-      console.warn('SNAPSHOTTT', snapshot.val());
+      console.warn('SNAPSHOTTT=====>>>', snapshot.val());
       setProfile(snapshot.val());
     });
   }, []);

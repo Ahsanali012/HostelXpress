@@ -20,6 +20,7 @@ import Theme from '../../Utils/Theme';
 import {auth, db} from '../../Utils/Exports';
 import {useRoute} from '@react-navigation/core';
 import openMap from 'react-native-open-maps';
+import {createOpenLink} from 'react-native-open-maps';
 
 // create a component
 const UserHostelDetails = ({navigation}) => {
@@ -37,9 +38,10 @@ const UserHostelDetails = ({navigation}) => {
   const [longitude, SetLongitude] = useState('');
   const [latitude, Setlatitude] = useState('');
 
+  console.log('Value of Latitiude====>', latitude);
+
   const getValues = async () => {
-    const currentUid = auth.currentUser.uid;
-    const ref = db.ref('Owner/' + currentUid).child('/OwnerPostAdd');
+    const ref = db.ref('Owner/').child('/OwnerPostAdd');
 
     const userLong = [];
     const userLat = [];
@@ -49,8 +51,9 @@ const UserHostelDetails = ({navigation}) => {
       .once('value', snapshot => {})
       .then(firstSnapShot => {
         firstSnapShot.forEach(cordSnapshot => {
-          const {Longitude, Latitude} = cordSnapshot.val();
-          console.log(Longitude, Latitude);
+          console.log('SnapshotValue====>', cordSnapshot);
+          const {Longitude} = cordSnapshot.val();
+          console.log('Here=====>', Longitude);
 
           Setlatitude(Latitude);
           SetLongitude(Longitude);
@@ -67,7 +70,8 @@ const UserHostelDetails = ({navigation}) => {
 
     if (Platform.OS === 'android') {
       // phoneNumber = 'tel:${item.phoneNumber}';
-      phoneNumber = 'tel:${Phone}';
+      phoneNumber = 'tel:${030080852}';
+      // phoneNumber = 'tel:${Phone}';
     } else {
       phoneNumber = 'telprompt:${1234567890}';
     }
@@ -80,9 +84,13 @@ const UserHostelDetails = ({navigation}) => {
     getValues();
   }, []);
 
+  const yosemite = {latitude: 31.4697, longitude: 74.2728};
+  const openYosemite = createOpenLink(yosemite);
+  const openYosemiteZoomedOut = createOpenLink({...yosemite, zoom: 30});
+
   const GoToLocation = () => {
     const lat = parseFloat(latitude); //10.256
-    console.log('Map Value', lat);
+    console.log('Map Value======>', lat);
 
     const longi = parseFloat(longitude); //10.256
     openMap({latitude: lat, longitude: longi});
@@ -131,7 +139,7 @@ const UserHostelDetails = ({navigation}) => {
           }}>
           <Text style={{fontSize: 20, color: 'black'}}>Description</Text>
           <TouchableOpacity
-            onPress={() => GoToLocation()}
+            onPress={() => openYosemite()}
             style={{
               width: 100,
               height: 25,

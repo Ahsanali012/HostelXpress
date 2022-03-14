@@ -146,7 +146,9 @@ const PostHomeFlatList = props => {
                   </View>
 
                   <View style={{marginTop: 5}}>
-                    <Text style={{fontSize: 18}}>{item.postDesc}</Text>
+                    <Text style={{fontSize: 18, width: 200}}>
+                      {item.postDesc}
+                    </Text>
                   </View>
 
                   <View
